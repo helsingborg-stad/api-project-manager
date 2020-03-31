@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name:       API project manager
+ * Plugin Name:       Project manager
  * Plugin URI:        (#plugin_url#)
  * Description:       Creates WordPress Rest API endpoint for projects
  * Version:           1.0.0
@@ -21,6 +21,7 @@ if (! defined('WPINC')) {
 define('APIPROJECTMANAGER_PATH', plugin_dir_path(__FILE__));
 define('APIPROJECTMANAGER_URL', plugins_url('', __FILE__));
 define('APIPROJECTMANAGER_TEMPLATE_PATH', APIPROJECTMANAGER_PATH . 'templates/');
+define('APIPROJECTMANAGER_TEXTDOMAIN', 'api-project-manager');
 
 load_plugin_textdomain('api-project-manager', false, plugin_basename(dirname(__FILE__)) . '/languages');
 

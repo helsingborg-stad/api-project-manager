@@ -4,247 +4,227 @@ namespace ApiProjectManager\Helper;
 
 class PostType
 {
-    public $post_type_name;
-    public $post_type_args;
-    public $post_type_labels;
+    public $postTypeName;
+    public $nameSingular;
+    public $namePlural;
+    public $postTypeArgs;
+    public $postTypeLabels;
 
     /* Class constructor */
-    public function __construct($name, $args = array(), $labels = array())
+    public function __construct($postTypeName, $nameSingular, $namePlural, $args = array(), $labels = array())
     {
         // Set some important variables
-        $this->post_type_name       = strtolower(str_replace(' ', '_', $name));
-        $this->post_type_args       = $args;
-        $this->post_type_labels     = $labels;
+        $this->postTypeName = $postTypeName;
+        $this->nameSingular = $nameSingular;
+        $this->namePlural = $namePlural;
+        $this->postTypeArgs = $args;
+        $this->postTypeLabels = $labels;
 
         // Add action to register the post type, if the post type doesnt exist
-        if (!post_type_exists($this->post_type_name)) {
-            add_action('init', array( &$this, 'register_post_type' ));
+        if (!post_type_exists($this->postTypeName)) {
+            add_action('init', array(&$this, 'registerPostType'));
         }
 
         // Listen for the save post hook
-        $this->save();
+        // $this->save();
     }
 
     /* Method which registers the post type */
-    public function register_post_type()
+    public function registerPostType()
     {
-        //Capitilize the words and make it plural
-        $name       = ucwords(str_replace('_', ' ', $this->post_type_name));
-        $plural     = $name . 's';
-
         // We set the default labels based on the post type name and plural. We overwrite them with the given labels.
         $labels = array_merge(
-
-                // Default
-                array(
-                    'name'                  => _x($plural, 'post type general name', APIPROJECTMANAGER_TEXTDOMAIN),
-                    'singular_name'         => _x($name, 'post type singular name', APIPROJECTMANAGER_TEXTDOMAIN),
-                    'add_new'               => _x('Add New', strtolower($name), APIPROJECTMANAGER_TEXTDOMAIN),
-                    'add_new_item'          => __('Add New ' . $name, APIPROJECTMANAGER_TEXTDOMAIN),
-                    'edit_item'             => __('Edit ' . $name, APIPROJECTMANAGER_TEXTDOMAIN),
-                    'new_item'              => __('New ' . $name, APIPROJECTMANAGER_TEXTDOMAIN),
-                    'all_items'             => __('All ' . $plural, APIPROJECTMANAGER_TEXTDOMAIN),
-                    'view_item'             => __('View ' . $name, APIPROJECTMANAGER_TEXTDOMAIN),
-                    'search_items'          => __('Search ' . $plural, APIPROJECTMANAGER_TEXTDOMAIN),
-                    'not_found'             => __('No ' . strtolower($plural) . ' found', APIPROJECTMANAGER_TEXTDOMAIN),
-                    'not_found_in_trash'    => __('No ' . strtolower($plural) . ' found in Trash', APIPROJECTMANAGER_TEXTDOMAIN),
-                    'parent_item_colon'     => '',
-                    'menu_name'             => $plural
-                ),
-
-                // Given labels
-                $this->post_type_labels
-
-            );
+            // Default
+            array(
+              'name'              => $this->namePlural,
+              'singular_name'     => $this->nameSingular,
+              'add_new'             => sprintf(__('Add new %s', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($this->nameSingular)),
+              'add_new_item'        => sprintf(__('Add new %s', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($this->nameSingular)),
+              'edit_item'           => sprintf(__('Edit %s', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($this->nameSingular)),
+              'new_item'            => sprintf(__('New %s', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($this->nameSingular)),
+              'view_item'           => sprintf(__('View %s', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($this->nameSingular)),
+              'search_items'        => sprintf(__('Search %s', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($this->namePlural)),
+              'not_found'           => sprintf(__('No %s found', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($this->namePlural)),
+              'not_found_in_trash'  => sprintf(__('No %s found in trash', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($this->namePlural)),
+              'parent_item_colon'   => sprintf(__('Parent %s:', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($this->nameSingular)),
+              'menu_name'           => $this->namePlural,
+            ),
+            // Given labels
+            $this->postTypeLabels
+        );
 
         // Same principle as the labels. We set some default and overwite them with the given arguments.
         $args = array_merge(
-
-                // Default
-                array(
-                    'label'                 => $plural,
-                    'labels'                => $labels,
-                    'public'                => true,
-                    'show_ui'               => true,
-                    'supports'              => array( 'title', 'editor' ),
-                    'show_in_nav_menus'     => true,
-                    '_builtin'              => false,
-                ),
-
-                // Given args
-                $this->post_type_args
-
-            );
+            // Default
+            array(
+                'label'                 => $this->namePlural,
+                'labels'                => $labels,
+                'public'                => true,
+                'show_ui'               => true,
+                'supports'              => array('title', 'editor'),
+                'show_in_nav_menus'     => true,
+                '_builtin'              => false,
+            ),
+            // Given args
+            $this->postTypeArgs
+        );
 
         // Register the post type
-        register_post_type($this->post_type_name, $args);
+        register_post_type($this->postTypeName, $args);
     }
 
     /* Method to attach the taxonomy to the post type */
-    public function add_taxonomy($name, $args = array(), $labels = array())
+    public function addTaxonomy($taxonomySlug, $nameSingular, $namePlural, $args = array(), $labels = array())
     {
-        if (!empty($name)) {
+        if (!empty($nameSingular)) {
             // We need to know the post type name, so the new taxonomy can be attached to it.
-            $post_type_name = $this->post_type_name;
+            $postTypeName = $this->postTypeName;
 
             // Taxonomy properties
-            $taxonomy_name      = strtolower(str_replace(' ', '_', $name));
-            $taxonomy_labels    = $labels;
-            $taxonomy_args      = $args;
+            $taxonomyLabels = $labels;
+            $taxonomyArgs = $args;
 
-            if (!taxonomy_exists($taxonomy_name)) {
-                //Capitilize the words and make it plural
-                $name       = ucwords(str_replace('_', ' ', $name));
-                $plural     = $name . 's';
-
+            if (!taxonomy_exists($taxonomySlug)) {
                 // Default labels, overwrite them with the given labels.
                 $labels = array_merge(
-
-                                // Default
-                                array(
-                                    'name'                  => _x($plural, 'taxonomy general name', APIPROJECTMANAGER_TEXTDOMAIN),
-                                    'singular_name'         => _x($name, 'taxonomy singular name', APIPROJECTMANAGER_TEXTDOMAIN),
-                                    'search_items'          => __('Search ' . $plural, APIPROJECTMANAGER_TEXTDOMAIN),
-                                    'all_items'             => __('All ' . $plural, APIPROJECTMANAGER_TEXTDOMAIN),
-                                    'parent_item'           => __('Parent ' . $name, APIPROJECTMANAGER_TEXTDOMAIN),
-                                    'parent_item_colon'     => __('Parent ' . $name . ':', APIPROJECTMANAGER_TEXTDOMAIN),
-                                    'edit_item'             => __('Edit ' . $name, APIPROJECTMANAGER_TEXTDOMAIN),
-                                    'update_item'           => __('Update ' . $name, APIPROJECTMANAGER_TEXTDOMAIN),
-                                    'add_new_item'          => __('Add New ' . $name, APIPROJECTMANAGER_TEXTDOMAIN),
-                                    'new_item_name'         => __('New ' . $name . ' Name', APIPROJECTMANAGER_TEXTDOMAIN),
-                                    'menu_name'             => __($plural, APIPROJECTMANAGER_TEXTDOMAIN),
-                                ),
-
-                                // Given labels
-                                $taxonomy_labels
-
-                            );
+                    // Default
+                    array(
+                        'name'              => $namePlural,
+                        'singular_name'     => $nameSingular,
+                        'search_items'      => sprintf(__('Search %s', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($namePlural)),
+                        'all_items'         => sprintf(__('All %s', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($namePlural)),
+                        'parent_item'       => sprintf(__('Parent %s:', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($nameSingular)),
+                        'parent_item_colon' => sprintf(__('Parent %s:', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($nameSingular)) . ':',
+                        'edit_item'         => sprintf(__('Edit %s', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($nameSingular)),
+                        'update_item'       => sprintf(__('Update %s', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($nameSingular)),
+                        'add_new_item'      => sprintf(__('Add new %s', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($nameSingular)),
+                        'new_item_name'     => sprintf(__('New %s Name', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($nameSingular)),
+                        'menu_name'         => $namePlural,
+                    ),
+                    // Given labels
+                    $taxonomyLabels
+                );
 
                 // Default arguments, overwitten with the given arguments
                 $args = array_merge(
-
-                                // Default
-                                array(
-                                    'label'                 => $plural,
-                                    'labels'                => $labels,
-                                    'public'                => true,
-                                    'show_ui'               => true,
-                                    'show_in_nav_menus'     => true,
-                                    '_builtin'              => false,
-                                ),
-
-                                // Given
-                                $taxonomy_args
-
-                            );
+                    array(
+                      'label'                 => $namePlural,
+                      'labels'                => $labels,
+                      'public'                => true,
+                      'show_ui'               => true,
+                      'show_in_nav_menus'     => true,
+                      '_builtin'              => false,
+                      ),
+                    $taxonomyArgs
+                );
 
                 // Add the taxonomy to the post type
                 add_action(
                     'init',
-                    function () use ($taxonomy_name, $post_type_name, $args) {
-                        register_taxonomy($taxonomy_name, $post_type_name, $args);
+                    function () use ($taxonomySlug, $postTypeName, $args) {
+                        register_taxonomy($taxonomySlug, $postTypeName, $args);
                     }
-                            );
+                );
             } else {
                 add_action(
                     'init',
-                    function () use ($taxonomy_name, $post_type_name) {
-                        register_taxonomy_for_object_type($taxonomy_name, $post_type_name);
+                    function () use ($taxonomySlug, $postTypeName) {
+                        register_taxonomy_for_object_type($taxonomySlug, $postTypeName);
                     }
-                            );
+                );
             }
         }
     }
 
-    /* Attaches meta boxes to the post type */
-    public function add_meta_box($title, $fields = array(), $context = 'normal', $priority = 'default')
-    {
-        if (!empty($title)) {
-            // We need to know the Post Type name again
-            $post_type_name = $this->post_type_name;
+    // /* Attaches meta boxes to the post type */
+    // public function add_meta_box($title, $fields = array(), $context = 'normal', $priority = 'default')
+    // {
+    //     if (!empty($title)) {
+    //         // We need to know the Post Type name again
+    //         $postTypeName = $this->postTypeName;
 
-            // Meta variables
-            $box_id         = strtolower(str_replace(' ', '_', $title));
-            $box_title      = ucwords(str_replace('_', ' ', $title));
-            $box_context    = $context;
-            $box_priority   = $priority;
+    //         // Meta variables
+    //         $box_id         = strtolower(str_replace(' ', '_', $title));
+    //         $box_title      = ucwords(str_replace('_', ' ', $title));
+    //         $box_context    = $context;
+    //         $box_priority   = $priority;
 
-            // Make the fields global
-            global $custom_fields;
-            $custom_fields[$title] = $fields;
+    //         // Make the fields global
+    //         global $custom_fields;
+    //         $custom_fields[$title] = $fields;
 
-            add_action(
-                'admin_init',
-                function () use ($box_id, $box_title, $post_type_name, $box_context, $box_priority, $fields) {
-                    add_meta_box(
-                        $box_id,
-                        $box_title,
-                        function ($post, $data) {
-                            global $post;
+    //         add_action(
+    //             'admin_init',
+    //             function () use ($box_id, $box_title, $postTypeName, $box_context, $box_priority, $fields) {
+    //                 add_meta_box(
+    //                     $box_id,
+    //                     $box_title,
+    //                     function ($post, $data) {
+    //                         global $post;
 
-                            // Nonce field for some validation
-                            wp_nonce_field(plugin_basename(__FILE__), 'custom_post_type');
+    //                         // Nonce field for some validation
+    //                         wp_nonce_field(plugin_basename(__FILE__), 'custom_post_type');
 
-                            // Get all inputs from $data
-                            $custom_fields = $data['args'][0];
+    //                         // Get all inputs from $data
+    //                         $custom_fields = $data['args'][0];
 
-                            // Get the saved values
-                            $meta = get_post_custom($post->ID);
+    //                         // Get the saved values
+    //                         $meta = get_post_custom($post->ID);
 
-                            // Check the array and loop through it
-                            if (!empty($custom_fields)) {
-                                /* Loop through $custom_fields */
-                                foreach ($custom_fields as $label => $type) {
-                                    $field_id_name  = strtolower(str_replace(' ', '_', $data['id'])) . '_' . strtolower(str_replace(' ', '_', $label));
+    //                         // Check the array and loop through it
+    //                         if (!empty($custom_fields)) {
+    //                             /* Loop through $custom_fields */
+    //                             foreach ($custom_fields as $label => $type) {
+    //                                 $field_id_name  = strtolower(str_replace(' ', '_', $data['id'])) . '_' . strtolower(str_replace(' ', '_', $label));
 
-                                    echo '<label for="' . $field_id_name . '">' . $label . '</label><input type="text" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" value="' . $meta[$field_id_name][0] . '" />';
-                                }
-                            }
-                        },
-                        $post_type_name,
-                        $box_context,
-                        $box_priority,
-                        array( $fields )
-                            );
-                }
-                    );
-        }
-    }
+    //                                 echo '<label for="' . $field_id_name . '">' . $label . '</label><input type="text" name="custom_meta[' . $field_id_name . ']" id="' . $field_id_name . '" value="' . $meta[$field_id_name][0] . '" />';
+    //                             }
+    //                         }
+    //                     },
+    //                     $postTypeName,
+    //                     $box_context,
+    //                     $box_priority,
+    //                     array( $fields )
+    //                         );
+    //             }
+    //                 );
+    //     }
+    // }
 
-    /* Listens for when the post type being saved */
-    public function save()
-    {
-        // Need the post type name again
-        $post_type_name = $this->post_type_name;
+    // /* Listens for when the post type being saved */
+    // public function save()
+    // {
+    //     // Need the post type name again
+    //     $postTypeName = $this->postTypeName;
 
-        add_action(
-            'save_post',
-            function () use ($post_type_name) {
-                // Deny the wordpress autosave function
-                if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-                    return;
-                }
+    //     add_action(
+    //         'save_post',
+    //         function () use ($postTypeName) {
+    //             // Deny the wordpress autosave function
+    //             if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+    //                 return;
+    //             }
 
-                if (!wp_verify_nonce($_POST['custom_post_type'], plugin_basename(__FILE__))) {
-                    return;
-                }
+    //             if (!wp_verify_nonce($_POST['custom_post_type'], plugin_basename(__FILE__))) {
+    //                 return;
+    //             }
 
-                global $post;
+    //             global $post;
 
-                if (isset($_POST) && isset($post->ID) && get_post_type($post->ID) == $post_type_name) {
-                    global $custom_fields;
+    //             if (isset($_POST) && isset($post->ID) && get_post_type($post->ID) == $postTypeName) {
+    //                 global $custom_fields;
 
-                    // Loop through each meta box
-                    foreach ($custom_fields as $title => $fields) {
-                        // Loop through all fields
-                        foreach ($fields as $label => $type) {
-                            $field_id_name  = strtolower(str_replace(' ', '_', $title)) . '_' . strtolower(str_replace(' ', '_', $label));
+    //                 // Loop through each meta box
+    //                 foreach ($custom_fields as $title => $fields) {
+    //                     // Loop through all fields
+    //                     foreach ($fields as $label => $type) {
+    //                         $field_id_name  = strtolower(str_replace(' ', '_', $title)) . '_' . strtolower(str_replace(' ', '_', $label));
 
-                            update_post_meta($post->ID, $field_id_name, $_POST['custom_meta'][$field_id_name]);
-                        }
-                    }
-                }
-            }
-            );
-    }
+    //                         update_post_meta($post->ID, $field_id_name, $_POST['custom_meta'][$field_id_name]);
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         );
+    // }
 }

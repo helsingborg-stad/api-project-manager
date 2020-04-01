@@ -12,6 +12,20 @@ class Setup
     {
         add_action('init', array($this, 'redirectToApi'));
         add_action('after_setup_theme', array($this, 'themeSupport'));
+        add_filter('get_sample_permalink_html', array($this, 'replacePermalink'), 10, 5);
+    }
+
+    /**
+     * Replaces permalink on edit post with API-url
+     * @return string
+     */
+    public function replacePermalink($return, $post_id, $new_title, $new_slug, $post)
+    {
+        $postType = $post->post_type;
+        $jsonUrl = get_rest_url(null, 'wp/v2/' . $postType) . '/';
+        $apiUrl = $jsonUrl . $post_id;
+
+        return '<strong>' . __('API-url', 'event-manager') . ':</strong> <a href="' . $apiUrl . '" target="_blank">' . $apiUrl . '</a>';
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiProjectManager\Admin;
+namespace ApiProjectManager\Theme;
 
 /**
  * Cleaning up the wordpress api

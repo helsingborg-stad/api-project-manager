@@ -6,7 +6,9 @@ class App
 {
     public function __construct()
     {
-        new Admin\UI();
+        new Theme\Setup();
+        new Theme\UI();
+
         new PostTypes\Project();
 
         // add_action('admin_enqueue_scripts', array($this, 'enqueueStyles'));

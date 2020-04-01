@@ -21,8 +21,8 @@ class Project
             'capability_type'    => 'post',
             'has_archive'        => true,
             'hierarchical'       => false,
-            'supports'           => array('title', 'revisions', 'editor', 'thumbnail'),
-            'show_in_rest' => true,
+            'supports'           => array('title', 'author', 'revisions', 'editor', 'thumbnail', 'themes'),
+            'show_in_rest'       => true,
         );
 
         $postType = new \ApiProjectManager\Helper\PostType(
@@ -32,16 +32,14 @@ class Project
             $args
         );
 
+        // Status taxonomy
         $postType->addTaxonomy(
             'status',
             __('Status', APIPROJECTMANAGER_TEXTDOMAIN),
             __('Statuses', APIPROJECTMANAGER_TEXTDOMAIN),
             array(
-                'hierarchical'      => false,
-                'show_ui'           => true,
+                'hierarchical'      => true,
                 'show_admin_column' => true,
-                'query_var'         => true,
-                'meta_box_cb'       => false,
                 )
         );
     }

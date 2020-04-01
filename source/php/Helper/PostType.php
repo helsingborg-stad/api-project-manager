@@ -117,7 +117,6 @@ class PostType
                       ),
                     $taxonomyArgs
                 );
-
                 // Add the taxonomy to the post type
                 add_action(
                     'init',

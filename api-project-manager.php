@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name:       Project manager
+ * Plugin Name:       API Project Manager
  * Plugin URI:        (#plugin_url#)
  * Description:       Creates WordPress Rest API endpoint for projects
  * Version:           1.0.0

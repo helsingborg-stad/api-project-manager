@@ -48,7 +48,9 @@ class UI
      */
     public function removeRowActions($actions)
     {
+        unset($actions['inline hide-if-no-js']);
         unset($actions['view']);
+
         return $actions;
     }
 

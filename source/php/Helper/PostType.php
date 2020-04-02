@@ -23,10 +23,8 @@ class PostType
         // Add action to register the post type, if the post type doesnt exist
         if (!post_type_exists($this->postTypeName)) {
             add_action('init', array(&$this, 'registerPostType'));
+            add_action('rest_api_init', array($this, 'registerAcfMetadataInApi'));
         }
-
-        // Listen for the save post hook
-        // $this->save();
     }
 
     /* Method which registers the post type */
@@ -71,6 +69,53 @@ class PostType
 
         // Register the post type
         register_post_type($this->postTypeName, $args);
+    }
+
+    public function registerAcfMetadataInApi()
+    {
+        if (empty($this->postTypeArgs['show_in_rest'])) {
+            return;
+        }
+
+        // Collect ACF field groups
+        $groups = acf_get_field_groups(array('post_type' => $this->postTypeName));
+
+        // List of field types to skip
+        $skipTypes = array('tab', 'accordion');
+
+        // Loop over field groups
+        foreach ($groups as $key => $group) {
+            // Get all fields
+            $fields = acf_get_fields($group['key']);
+            // Bail if empty
+            if (empty($fields)) {
+                continue;
+            }
+            // Loop over meta fields and register to rest response
+            foreach ($fields as $key => $field) {
+                if (!$field['name'] || in_array($field['type'], $skipTypes)) {
+                    continue;
+                }
+                // Register meta as rest field
+                register_rest_field(
+                    $this->postTypeName,
+                    $field['name'],
+                    array(
+                      'get_callback' => array( $this, 'getCallback'),
+                      'schema' => null,
+                    )
+                );
+            }
+        }
+    }
+
+    public function getCallback($object, $fieldName, $request)
+    {
+        if (function_exists('get_field')) {
+            return get_field($fieldName, $object['id']);
+        }
+
+        return get_post_meta($object['id'], $fieldName, true);
     }
 
     /* Method to attach the taxonomy to the post type */

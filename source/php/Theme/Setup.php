@@ -25,7 +25,7 @@ class Setup
         $jsonUrl = get_rest_url(null, 'wp/v2/' . $postType) . '/';
         $apiUrl = $jsonUrl . $post_id;
 
-        return '<strong>' . __('API-url', 'event-manager') . ':</strong> <a href="' . $apiUrl . '" target="_blank">' . $apiUrl . '</a>';
+        return '<strong>' . __('URL', 'event-manager') . ':</strong> <a href="' . $apiUrl . '" target="_blank">' . $apiUrl . '</a>';
     }
 
     /**

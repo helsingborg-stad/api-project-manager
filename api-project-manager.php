@@ -20,13 +20,26 @@ if (! defined('WPINC')) {
 
 define('APIPROJECTMANAGER_PATH', plugin_dir_path(__FILE__));
 define('APIPROJECTMANAGER_URL', plugins_url('', __FILE__));
-define('APIPROJECTMANAGER_TEMPLATE_PATH', APIPROJECTMANAGER_PATH . 'templates/');
 define('APIPROJECTMANAGER_TEXTDOMAIN', 'api-project-manager');
 
 load_plugin_textdomain('api-project-manager', false, plugin_basename(dirname(__FILE__)) . '/languages');
 
 require_once APIPROJECTMANAGER_PATH . 'source/php/Vendor/Psr4ClassLoader.php';
 require_once APIPROJECTMANAGER_PATH . 'Public.php';
+if (file_exists(APIPROJECTMANAGER_PATH . 'vendor/autoload.php')) {
+    require_once APIPROJECTMANAGER_PATH . 'vendor/autoload.php';
+}
+
+// Acf auto import and export
+add_action('plugins_loaded', function () {
+    $acfExportManager = new \AcfExportManager\AcfExportManager();
+    $acfExportManager->setTextdomain(APIPROJECTMANAGER_TEXTDOMAIN);
+    $acfExportManager->setExportFolder(APIPROJECTMANAGER_PATH . 'source/php/AcfFields/');
+    $acfExportManager->autoExport(array(
+        'project' => 'group_5e859cc1f2e8e',
+    ));
+    $acfExportManager->import();
+});
 
 // Instantiate and register the autoloader
 $loader = new ApiProjectManager\Vendor\Psr4ClassLoader();

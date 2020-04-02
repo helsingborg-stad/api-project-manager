@@ -1,20 +1,20 @@
 {
-    "name": "helsingborg-stad/api-project-manager",
-    "description": "Manage projects",
-    "type": "wordpress-plugin",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Jonatan Hanson",
-            "email": "jonatan.hanson@helsingborg.se"
-        },
-        {
-            "name": "Nikolas Ramstedt",
-            "email": "nikolas.ramstedt@helsingborg.se"
-        }
-    ],
-    "require": {
-        "composer/installers": "~1.0",
-        "giggsey/libphonenumber-for-php": "^7.4"
+  "name": "helsingborg-stad/api-project-manager",
+  "description": "Manage projects",
+  "type": "wordpress-plugin",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jonatan Hanson",
+      "email": "jonatan.hanson@helsingborg.se"
+    },
+    {
+      "name": "Nikolas Ramstedt",
+      "email": "nikolas.ramstedt@helsingborg.se"
     }
+  ],
+  "require": {
+    "composer/installers": "~1.0",
+    "helsingborg-stad/acf-export-manager": ">=1.0.0"
+  }
 }

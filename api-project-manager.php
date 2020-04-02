@@ -37,6 +37,7 @@ add_action('plugins_loaded', function () {
     $acfExportManager->setExportFolder(APIPROJECTMANAGER_PATH . 'source/php/AcfFields/');
     $acfExportManager->autoExport(array(
         'project' => 'group_5e859cc1f2e8e',
+        'internal_project' => 'group_5e85b62821647',
     ));
     $acfExportManager->import();
 });

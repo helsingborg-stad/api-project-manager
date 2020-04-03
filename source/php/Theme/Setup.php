@@ -13,6 +13,7 @@ class Setup
         add_action('init', array($this, 'redirectToApi'));
         add_action('after_setup_theme', array($this, 'themeSupport'));
         add_filter('get_sample_permalink_html', array($this, 'replacePermalink'), 10, 5);
+        add_filter('post_updated_messages', array($this, 'postPublishedMsg'));
     }
 
     /**
@@ -80,5 +81,21 @@ class Setup
                 'chat'
             )
         );
+    }
+
+    /**
+     * Update admin notice messages. Removes public links.
+     * @return array
+     */
+    public function postPublishedMsg($messages)
+    {
+        foreach ($messages as $key => $value) {
+            $messages['post'][1] = __('Post updated.', APIPROJECTMANAGER_TEXTDOMAIN);
+            $messages['post'][6] = __('Post published.', APIPROJECTMANAGER_TEXTDOMAIN);
+            $messages['post'][8] = __('Post submitted.', APIPROJECTMANAGER_TEXTDOMAIN);
+            $messages['post'][10] = __('Post draft updated.', APIPROJECTMANAGER_TEXTDOMAIN);
+        }
+
+        return $messages;
     }
 }

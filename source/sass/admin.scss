@@ -1,0 +1,4 @@
+/* Hide meta box content from publish */
+.misc-pub-visibility, .misc-pub-curtime, #preview-action {
+    display: none !important;
+}

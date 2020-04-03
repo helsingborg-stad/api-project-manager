@@ -97,8 +97,8 @@
         ),
         2 => array(
             'key' => 'field_5e859e9a26596',
-            'label' => __('Contact', 'api-project-manager'),
-            'name' => 'contact',
+            'label' => __('Contacts', 'api-project-manager'),
+            'name' => 'contacts',
             'type' => 'repeater',
             'instructions' => '',
             'required' => 0,

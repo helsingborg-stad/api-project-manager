@@ -104,7 +104,7 @@ class PostType
                     $this->postTypeName,
                     $field['name'],
                     array(
-                      'get_callback' => array( $this, 'getCallback'),
+                      'get_callback' => array($this, 'getCallback'),
                       'schema' => null,
                     )
                 );
@@ -115,7 +115,21 @@ class PostType
     public function getCallback($object, $fieldName, $request)
     {
         if (function_exists('get_field')) {
-            return get_field($fieldName, $object['id']);
+            $fieldObj = get_field_object($fieldName);
+            $type = $fieldObj['type'] ?? 'text';
+            // Return different values based on field type
+            switch ($type) {
+              case 'true_false':
+                $value = get_field($fieldName, $object['id']);
+                break;
+
+              default:
+                // Return null if value is empty
+                $value = !empty(get_field($fieldName, $object['id'])) ? get_field($fieldName, $object['id']) : null;
+                break;
+            }
+
+            return $value;
         }
 
         return get_post_meta($object['id'], $fieldName, true);

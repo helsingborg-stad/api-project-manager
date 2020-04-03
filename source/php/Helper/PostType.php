@@ -8,22 +8,25 @@ class PostType
     public $nameSingular;
     public $namePlural;
     public $postTypeArgs;
+    public $postTypeRestArgs;
     public $postTypeLabels;
 
     /* Class constructor */
-    public function __construct($postTypeName, $nameSingular, $namePlural, $args = array(), $labels = array())
+    public function __construct($postTypeName, $nameSingular, $namePlural, $args = array(), $labels = array(), $restArgs = array())
     {
         // Set some important variables
         $this->postTypeName = $postTypeName;
         $this->nameSingular = $nameSingular;
         $this->namePlural = $namePlural;
         $this->postTypeArgs = $args;
+        $this->postTypeRestArgs = $restArgs;
         $this->postTypeLabels = $labels;
 
         // Add action to register the post type, if the post type doesnt exist
         if (!post_type_exists($this->postTypeName)) {
             add_action('init', array(&$this, 'registerPostType'));
             add_action('rest_api_init', array($this, 'registerAcfMetadataInApi'));
+            add_action('rest_prepare_' . $postTypeName, array($this, 'removeResponseKeys'), 10, 3);
         }
     }
 
@@ -116,6 +119,16 @@ class PostType
         }
 
         return get_post_meta($object['id'], $fieldName, true);
+    }
+
+    public function removeResponseKeys($response, $post, $request)
+    {
+        // List of blacklisted keys
+        $excludeKeys = $this->postTypeRestArgs['exclude_keys'] ?? array();
+        // Remove blacklisted keys from rest response
+        $response->data = array_diff_key($response->data, array_flip($excludeKeys));
+
+        return $response;
     }
 
     /* Method to attach the taxonomy to the post type */

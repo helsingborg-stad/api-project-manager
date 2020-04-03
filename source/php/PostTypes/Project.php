@@ -25,11 +25,17 @@ class Project
             'show_in_rest'       => true,
         );
 
+        $restArgs = array(
+          'exclude_keys' => array('author', 'acf', 'guid', 'link', 'template', 'meta', 'taxonomy', 'menu_order')
+        );
+
         $postType = new \ApiProjectManager\Helper\PostType(
             'project',
             __('Project', APIPROJECTMANAGER_TEXTDOMAIN),
             __('Projects', APIPROJECTMANAGER_TEXTDOMAIN),
-            $args
+            $args,
+            array(),
+            $restArgs
         );
 
         // Statuses

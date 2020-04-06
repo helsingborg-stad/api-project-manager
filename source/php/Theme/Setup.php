@@ -14,6 +14,7 @@ class Setup
         add_action('after_setup_theme', array($this, 'themeSupport'));
         add_filter('get_sample_permalink_html', array($this, 'replacePermalink'), 10, 5);
         add_filter('post_updated_messages', array($this, 'postPublishedMsg'));
+        add_action('rest_api_init', array($this, 'disableRestApi'), 11);
     }
 
     /**
@@ -97,5 +98,18 @@ class Setup
         }
 
         return $messages;
+    }
+
+    public function disableRestApi()
+    {
+        global $wp_post_types;
+
+        $post_types = array('post', 'page', 'comments');
+
+        foreach ($post_types as $post_type) {
+            if (isset($wp_post_types[$post_type]) && is_object($wp_post_types[$post_type])) {
+                $wp_post_types[$post_type]->show_in_rest = false;
+            }
+        }
     }
 }

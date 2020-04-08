@@ -27,7 +27,7 @@
         {
             "key": "field_5e8d9d0289bc7",
             "label": "Technologies",
-            "name": "technologies",
+            "name": "technology",
             "type": "taxonomy",
             "instructions": "",
             "required": 0,
@@ -38,6 +38,72 @@
                 "id": ""
             },
             "taxonomy": "technology",
+            "field_type": "multi_select",
+            "allow_null": 1,
+            "add_term": 1,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_5e8dcdf152c5d",
+            "label": "Sectors",
+            "name": "sector",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "sector",
+            "field_type": "multi_select",
+            "allow_null": 1,
+            "add_term": 1,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_5e8dce344f6b4",
+            "label": "Organisation",
+            "name": "organisation",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "organisation",
+            "field_type": "multi_select",
+            "allow_null": 1,
+            "add_term": 1,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_5e8dce65e835b",
+            "label": "Global goal",
+            "name": "global_goal",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "global_goal",
             "field_type": "multi_select",
             "allow_null": 1,
             "add_term": 1,

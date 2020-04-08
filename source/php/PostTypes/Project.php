@@ -71,7 +71,13 @@ class Project
             'sector',
             __('Sector', APIPROJECTMANAGER_TEXTDOMAIN),
             __('Sectors', APIPROJECTMANAGER_TEXTDOMAIN),
-            array('hierarchical' => true)
+            array(
+                'hierarchical' => true,
+                'show_ui' => true,
+                'show_in_rest' => true,
+                'show_in_quick_edit' => false,
+                'meta_box_cb' => false,
+            )
         );
 
         // Organisations
@@ -79,7 +85,13 @@ class Project
             'organisation',
             __('Organisation', APIPROJECTMANAGER_TEXTDOMAIN),
             __('Organisations', APIPROJECTMANAGER_TEXTDOMAIN),
-            array('hierarchical' => true)
+            array(
+                'hierarchical' => true,
+                'show_ui' => true,
+                'show_in_rest' => true,
+                'show_in_quick_edit' => false,
+                'meta_box_cb' => false,
+            )
         );
 
         // Global goals
@@ -87,15 +99,13 @@ class Project
             'global_goal',
             __('Global goal', APIPROJECTMANAGER_TEXTDOMAIN),
             __('Global goals', APIPROJECTMANAGER_TEXTDOMAIN),
-            array('hierarchical' => true)
-        );
-
-        // Categories
-        $postType->addTaxonomy(
-            'category',
-            __('Category', APIPROJECTMANAGER_TEXTDOMAIN),
-            __('Categories', APIPROJECTMANAGER_TEXTDOMAIN),
-            array('hierarchical' => true)
+            array(
+                'hierarchical' => true,
+                'show_ui' => true,
+                'show_in_rest' => true,
+                'show_in_quick_edit' => false,
+                'meta_box_cb' => false,
+            )
         );
     }
 }

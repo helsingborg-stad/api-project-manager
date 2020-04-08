@@ -43,10 +43,13 @@ class Project
             'status',
             __('Status', APIPROJECTMANAGER_TEXTDOMAIN),
             __('Statuses', APIPROJECTMANAGER_TEXTDOMAIN),
-            array('hierarchical' => false, 
-            'show_ui' => true, 
-            'show_in_menu' => true,
-            'show_in_rest' => true)
+            array(
+              'hierarchical' => false,
+              'show_ui' => true,
+              'show_in_rest' => true,
+              'show_in_quick_edit' => false,
+              'meta_box_cb' => false,
+            )
         );
 
         // Technologies
@@ -54,7 +57,13 @@ class Project
             'technology',
             __('Technology', APIPROJECTMANAGER_TEXTDOMAIN),
             __('Technologies', APIPROJECTMANAGER_TEXTDOMAIN),
-            array('hierarchical' => true)
+            array(
+              'hierarchical' => false,
+              'show_ui' => true,
+              'show_in_rest' => true,
+              'show_in_quick_edit' => false,
+              'meta_box_cb' => false,
+            )
         );
 
         // Sectors

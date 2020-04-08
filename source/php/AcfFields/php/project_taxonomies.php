@@ -50,6 +50,28 @@
             'multiple' => 0,
         ),
         2 => array(
+            'key' => 'field_5e8dd435ea9df',
+            'label' => __('Partners', 'api-project-manager'),
+            'name' => 'partner',
+            'type' => 'taxonomy',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'taxonomy' => 'partner',
+            'field_type' => 'multi_select',
+            'allow_null' => 0,
+            'add_term' => 1,
+            'save_terms' => 0,
+            'load_terms' => 0,
+            'return_format' => 'object',
+            'multiple' => 0,
+        ),
+        3 => array(
             'key' => 'field_5e8dcdf152c5d',
             'label' => __('Sectors', 'api-project-manager'),
             'name' => 'sector',
@@ -71,7 +93,7 @@
             'return_format' => 'object',
             'multiple' => 0,
         ),
-        3 => array(
+        4 => array(
             'key' => 'field_5e8dce344f6b4',
             'label' => __('Organisation', 'api-project-manager'),
             'name' => 'organisation',
@@ -93,7 +115,7 @@
             'return_format' => 'object',
             'multiple' => 0,
         ),
-        4 => array(
+        5 => array(
             'key' => 'field_5e8dce65e835b',
             'label' => __('Global goal', 'api-project-manager'),
             'name' => 'global_goal',

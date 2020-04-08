@@ -154,62 +154,6 @@
             ),
         ),
         3 => array(
-            'key' => 'field_5e85c03168d8d',
-            'label' => __('Partners', 'api-project-manager'),
-            'name' => 'partners',
-            'type' => 'repeater',
-            'instructions' => '',
-            'required' => 0,
-            'conditional_logic' => 0,
-            'wrapper' => array(
-                'width' => '',
-                'class' => '',
-                'id' => '',
-            ),
-            'collapsed' => '',
-            'min' => 0,
-            'max' => 0,
-            'layout' => 'block',
-            'button_label' => '',
-            'sub_fields' => array(
-                0 => array(
-                    'key' => 'field_5e85c04368d8e',
-                    'label' => __('Name', 'api-project-manager'),
-                    'name' => 'name',
-                    'type' => 'text',
-                    'instructions' => '',
-                    'required' => 0,
-                    'conditional_logic' => 0,
-                    'wrapper' => array(
-                        'width' => '50',
-                        'class' => '',
-                        'id' => '',
-                    ),
-                    'default_value' => '',
-                    'placeholder' => '',
-                    'prepend' => '',
-                    'append' => '',
-                    'maxlength' => '',
-                ),
-                1 => array(
-                    'key' => 'field_5e85c05668d8f',
-                    'label' => __('Website', 'api-project-manager'),
-                    'name' => 'website',
-                    'type' => 'url',
-                    'instructions' => '',
-                    'required' => 0,
-                    'conditional_logic' => 0,
-                    'wrapper' => array(
-                        'width' => '50',
-                        'class' => '',
-                        'id' => '',
-                    ),
-                    'default_value' => '',
-                    'placeholder' => '',
-                ),
-            ),
-        ),
-        4 => array(
             'key' => 'field_5e85bf9b29a78',
             'label' => __('Media', 'api-project-manager'),
             'name' => '',
@@ -225,7 +169,7 @@
             'placement' => 'top',
             'endpoint' => 0,
         ),
-        5 => array(
+        4 => array(
             'key' => 'field_5e85d8d2e7fbc',
             'label' => __('Files', 'api-project-manager'),
             'name' => 'files',
@@ -284,7 +228,7 @@
                 ),
             ),
         ),
-        6 => array(
+        5 => array(
             'key' => 'field_5e85c486d76c6',
             'label' => __('Gallery', 'api-project-manager'),
             'name' => 'gallery',
@@ -311,7 +255,7 @@
             'max_size' => '',
             'mime_types' => '',
         ),
-        7 => array(
+        6 => array(
             'key' => 'field_5e8d89e3d1e27',
             'label' => __('Video', 'api-project-manager'),
             'name' => 'video',
@@ -348,7 +292,7 @@
                 ),
             ),
         ),
-        8 => array(
+        7 => array(
             'key' => 'field_5e85bfc9e8866',
             'label' => __('Links', 'api-project-manager'),
             'name' => '',
@@ -364,7 +308,7 @@
             'placement' => 'top',
             'endpoint' => 0,
         ),
-        9 => array(
+        8 => array(
             'key' => 'field_5e85d43b28e4b',
             'label' => __('Links', 'api-project-manager'),
             'name' => 'links',
@@ -420,7 +364,7 @@
                 ),
             ),
         ),
-        10 => array(
+        9 => array(
             'key' => 'field_5e8d8c6e4b176',
             'label' => __('Map', 'api-project-manager'),
             'name' => '',
@@ -436,7 +380,7 @@
             'placement' => 'top',
             'endpoint' => 0,
         ),
-        11 => array(
+        10 => array(
             'key' => 'field_5e8d8c874b177',
             'label' => __('Map', 'api-project-manager'),
             'name' => 'map',

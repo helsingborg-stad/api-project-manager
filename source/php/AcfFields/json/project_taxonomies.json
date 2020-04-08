@@ -47,6 +47,28 @@
             "multiple": 0
         },
         {
+            "key": "field_5e8dd435ea9df",
+            "label": "Partners",
+            "name": "partner",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "partner",
+            "field_type": "multi_select",
+            "allow_null": 0,
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
             "key": "field_5e8dcdf152c5d",
             "label": "Sectors",
             "name": "sector",

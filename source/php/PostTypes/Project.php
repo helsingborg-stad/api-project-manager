@@ -43,7 +43,10 @@ class Project
             'status',
             __('Status', APIPROJECTMANAGER_TEXTDOMAIN),
             __('Statuses', APIPROJECTMANAGER_TEXTDOMAIN),
-            array('hierarchical' => true)
+            array('hierarchical' => false, 
+            'show_ui' => true, 
+            'show_in_menu' => true,
+            'show_in_rest' => true)
         );
 
         // Technologies

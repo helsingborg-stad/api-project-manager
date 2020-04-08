@@ -10,5 +10,6 @@ class App
         new Theme\UI();
         new Theme\Enqueue();
         new PostTypes\Project();
+        new Options();
     }
 }

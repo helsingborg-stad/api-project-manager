@@ -38,6 +38,7 @@ add_action('plugins_loaded', function () {
     $acfExportManager->autoExport(array(
         'project' => 'group_5e859cc1f2e8e',
         'internal_project' => 'group_5e85b62821647',
+        'project_settings' => 'group_5e8d8de5b9d01',
     ));
     $acfExportManager->import();
 });

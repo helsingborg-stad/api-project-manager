@@ -28,9 +28,9 @@
     'location' => array(
         0 => array(
             0 => array(
-                'param' => 'post_type',
+                'param' => 'options_page',
                 'operator' => '==',
-                'value' => 'post',
+                'value' => 'project-options',
             ),
         ),
     ),

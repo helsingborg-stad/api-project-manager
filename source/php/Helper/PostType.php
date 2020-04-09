@@ -117,7 +117,7 @@ class PostType
         if (function_exists('get_field')) {
             $fieldObj = get_field_object($fieldName);
             $type = $fieldObj['type'] ?? 'text';
-            // error_log($type);
+            
             // Return different values based on field type
             switch ($type) {
               case 'true_false':

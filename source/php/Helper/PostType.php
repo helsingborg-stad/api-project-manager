@@ -117,10 +117,17 @@ class PostType
         if (function_exists('get_field')) {
             $fieldObj = get_field_object($fieldName);
             $type = $fieldObj['type'] ?? 'text';
+            // error_log($type);
             // Return different values based on field type
             switch ($type) {
               case 'true_false':
                 $value = get_field($fieldName, $object['id']);
+                break;
+            case 'taxonomy':
+                $value = !empty(get_field($fieldName, $object['id'])) ? get_field($fieldName, $object['id']) : null;              
+                
+                // Wrapping so that we allways return objects in an array
+                $value = (!empty($value) && is_object($value)) ? array($value) : $value;
                 break;
 
               default:
@@ -128,11 +135,16 @@ class PostType
                 $value = !empty(get_field($fieldName, $object['id'])) ? get_field($fieldName, $object['id']) : null;
                 break;
             }
+            
+            $value = apply_filters('api_project_manager/' . $this->postTypeName . '/rest_field', $value, $type, $fieldName);
 
             return $value;
         }
 
-        return get_post_meta($object['id'], $fieldName, true);
+        $value = get_post_meta($object['id'], $fieldName, true);
+        $value = apply_filters('api_project_manager/' . $this->postTypeName . '/rest_field', $value, $type, $fieldName);
+
+        return $value;
     }
 
     public function removeResponseKeys($response, $post, $request)

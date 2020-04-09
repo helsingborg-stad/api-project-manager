@@ -58,7 +58,7 @@ class Project
             __('Technology', APIPROJECTMANAGER_TEXTDOMAIN),
             __('Technologies', APIPROJECTMANAGER_TEXTDOMAIN),
             array(
-              'hierarchical' => false,
+              'hierarchical' => true,
               'show_ui' => true,
               'show_in_rest' => true,
               'show_in_quick_edit' => false,

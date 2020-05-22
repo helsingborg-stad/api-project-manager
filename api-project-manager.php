@@ -40,6 +40,7 @@ add_action('plugins_loaded', function () {
         'internal_project' => 'group_5e85b62821647',
         'project_settings' => 'group_5e8d8de5b9d01',
         'project_taxonomies' => 'group_5e8d9b68e7f35',
+        'project_about' => 'group_5ec3d447df4ae',
     ));
     $acfExportManager->import();
 });

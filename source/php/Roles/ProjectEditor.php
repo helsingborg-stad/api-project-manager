@@ -22,7 +22,7 @@ class ProjectEditor
         }
 
         $user = get_user_by('id', get_current_user_id());
-        $userOrganisations = get_field('organisation', 'user_' . get_current_user_id());
+        $userOrganisations = get_field('organisation', 'user_' . $user->ID);
 
         if (!in_array($this->role, $user->roles) || empty($userOrganisations)) {
             return;

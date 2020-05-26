@@ -8,8 +8,23 @@ class ProjectEditor
 
     public function __construct()
     {
-        add_action('init', array($this, 'registerCustomRole'));
+        add_action('admin_init', array($this, 'registerCustomRole'));
         add_action('pre_get_posts', array($this, 'filterProjectsByOrganisation'));
+        add_action('acf/save_post', array($this, 'setOrganisationOnSaveProject'));
+    }
+
+    public function setOrganisationOnSaveProject($postId)
+    {
+        $user = get_user_by('id', get_current_user_id());
+        $userOrganisations = get_field('organisation', 'user_' . $user->ID);
+
+        if (get_post_type($postId) !== 'project'
+        || !in_array($this->role, $user->roles)
+        || empty($userOrganisations)) {
+            return;
+        }
+
+        update_field('organisation', $userOrganisations, $postId);
     }
 
     public function filterProjectsByOrganisation($query)

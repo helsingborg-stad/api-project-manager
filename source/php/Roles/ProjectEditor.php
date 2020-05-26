@@ -11,6 +11,16 @@ class ProjectEditor
         add_action('admin_init', array($this, 'registerCustomRole'));
         add_action('pre_get_posts', array($this, 'filterProjectsByOrganisation'));
         add_action('acf/save_post', array($this, 'setOrganisationOnSaveProject'));
+        add_filter('login_redirect', array($this, 'redirectToProjectsAfterLogin'), 10, 3);
+    }
+
+    public function redirectToProjectsAfterLogin($redirectTo, $requestedRedirectTo, $user)
+    {
+        if (!in_array($this->role, $user->roles)) {
+            return $redirectTo;
+        }
+
+        return 'wp-admin/edit.php?post_type=project';
     }
 
     public function setOrganisationOnSaveProject($postId)

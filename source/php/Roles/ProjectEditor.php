@@ -86,8 +86,8 @@ class ProjectEditor
     public function formatPostCount(array $view) {
         global  $wpdb;
 
-        $user = get_current_user_id();
-        $userOrg = $wpdb->get_var("SELECT meta_value FROM $wpdb->usermeta WHERE (meta_key = 'organisation')");
+        $user = get_user_by('id', get_current_user_id());
+        $userOrg = serialize(get_field('organisation', 'user_' . $user->ID));
 
         $total = $wpdb->get_var(
             "SELECT COUNT(*) FROM $wpdb->postmeta 
@@ -101,7 +101,7 @@ class ProjectEditor
             INNER JOIN $wpdb->posts ON ($wpdb->postmeta.post_id = $wpdb->posts.ID)
             AND ($wpdb->postmeta.meta_value = '$userOrg')
             AND ($wpdb->posts.post_parent = 0)
-            AND ($wpdb->posts.post_author = $user)"
+            AND ($wpdb->posts.post_author = $user->ID)"
         );
 
         $publish =  $wpdb->get_var(

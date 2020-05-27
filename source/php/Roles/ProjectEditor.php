@@ -71,7 +71,8 @@ class ProjectEditor
      *
      * @param $query
      */
-    public function formatAdminPageByOrganisation($query) {
+    public function formatAdminPageByOrganisation($query)
+    {
         if ($query->id === 'edit-project') {
             add_filter("views_{$query->id}", array($this, 'formatPostCount'));
         }
@@ -83,11 +84,16 @@ class ProjectEditor
      * @param array $view
      * @return array
      */
-    public function formatPostCount(array $view) {
+    public function formatPostCount($view)
+    {
         global  $wpdb;
 
         $user = get_user_by('id', get_current_user_id());
         $userOrg = serialize(get_field('organisation', 'user_' . $user->ID));
+
+        if (!in_array($this->role, $user->roles) || empty(get_field('organisation', 'user_' . $user->ID))) {
+            return $view;
+        }
 
         $total = $wpdb->get_var(
             "SELECT COUNT(*) FROM $wpdb->postmeta 
@@ -112,9 +118,9 @@ class ProjectEditor
             AND ($wpdb->posts.post_status = 'publish')"
         );
 
-        $view['all'] = preg_replace( '/\(.+\)/U', '('.$total.')', $view['all'] );
-        $view['mine'] = preg_replace( '/\(.+\)/U', '('.$mine.')', $view['mine'] );
-        $view['publish'] = preg_replace( '/\(.+\)/U', '('.$publish.')', $view['publish'] );
+        $view['all'] = preg_replace('/\(.+\)/U', '('.$total.')', $view['all']);
+        $view['mine'] = preg_replace('/\(.+\)/U', '('.$mine.')', $view['mine']);
+        $view['publish'] = preg_replace('/\(.+\)/U', '('.$publish.')', $view['publish']);
 
         return $view;
     }

@@ -104,6 +104,8 @@ class ProjectEditor
 
                     if ($status !== 'all') {
                         $queryString .= " AND dev_12_posts.post_status = '$status'";
+                    } else {
+                        $queryString .= " AND NOT dev_12_posts.post_status = 'trash'";
                     }
 
                     return $queryString;

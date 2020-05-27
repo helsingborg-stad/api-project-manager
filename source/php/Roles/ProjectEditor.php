@@ -89,38 +89,44 @@ class ProjectEditor
         global  $wpdb;
 
         $user = get_user_by('id', get_current_user_id());
-        $userOrg = serialize(get_field('organisation', 'user_' . $user->ID));
+        $userOrg = get_field('organisation', 'user_' . $user->ID);
 
         if (!in_array($this->role, $user->roles) || empty(get_field('organisation', 'user_' . $user->ID))) {
             return $view;
         }
 
-        $total = $wpdb->get_var(
-            "SELECT COUNT(*) FROM $wpdb->postmeta 
-            INNER JOIN $wpdb->posts ON ($wpdb->postmeta.post_id = $wpdb->posts.ID)
-            AND ($wpdb->postmeta.meta_value = '$userOrg')
-            AND ($wpdb->posts.post_parent = 0)"
-        );
+        $postStatues = array('all', 'publish', 'trash', 'draft');
 
-        $mine =  $wpdb->get_var(
-            "SELECT COUNT(*) FROM $wpdb->postmeta 
-            INNER JOIN $wpdb->posts ON ($wpdb->postmeta.post_id = $wpdb->posts.ID)
-            AND ($wpdb->postmeta.meta_value = '$userOrg')
-            AND ($wpdb->posts.post_parent = 0)
-            AND ($wpdb->posts.post_author = $user->ID)"
-        );
+        foreach ($postStatues as $status) {
+            if (isset($view[$status])) {
+                $onQuery = implode(' OR ', array_map(function ($organisationId) use ($status) {
+                    $queryString = "dev_12_posts.ID = dev_12_term_relationships.object_id AND dev_12_term_relationships.term_taxonomy_id = " . $organisationId . " AND dev_12_posts.post_type = 'project'";
 
-        $publish =  $wpdb->get_var(
-            "SELECT COUNT(*) FROM $wpdb->postmeta 
-            INNER JOIN $wpdb->posts ON ($wpdb->postmeta.post_id = $wpdb->posts.ID)
-            AND ($wpdb->postmeta.meta_value = '$userOrg')
-            AND ($wpdb->posts.post_parent = 0)
-            AND ($wpdb->posts.post_status = 'publish')"
-        );
+                    if ($status !== 'all') {
+                        $queryString .= " AND dev_12_posts.post_status = '$status'";
+                    }
 
-        $view['all'] = preg_replace('/\(.+\)/U', '('.$total.')', $view['all']);
-        $view['mine'] = preg_replace('/\(.+\)/U', '('.$mine.')', $view['mine']);
-        $view['publish'] = preg_replace('/\(.+\)/U', '('.$publish.')', $view['publish']);
+                    return $queryString;
+                }, $userOrg));
+
+                $queryResult = $wpdb->get_var(
+                    "SELECT COUNT(*) 
+                    FROM dev_12_posts
+                    INNER JOIN dev_12_term_relationships
+                    ON {$onQuery};"
+                );
+
+                $view[$status] = preg_replace('/\(.+\)/U', '('.$queryResult.')', $view[$status]);
+            }
+        }
+
+        $postStatuesToRemove = array('mine');
+        
+        foreach ($postStatuesToRemove as $status) {
+            if (isset($view[$status])) {
+                unset($view[$status]);
+            }
+        }
 
         return $view;
     }

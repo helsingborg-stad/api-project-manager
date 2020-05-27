@@ -86,7 +86,7 @@ class ProjectEditor
      */
     public function formatPostCount($view)
     {
-        global  $wpdb;
+        global $wpdb;
 
         $user = get_user_by('id', get_current_user_id());
         $userOrg = get_field('organisation', 'user_' . $user->ID);
@@ -99,22 +99,23 @@ class ProjectEditor
 
         foreach ($postStatues as $status) {
             if (isset($view[$status])) {
-                $onQuery = implode(' OR ', array_map(function ($organisationId) use ($status) {
-                    $queryString = "dev_12_posts.ID = dev_12_term_relationships.object_id AND dev_12_term_relationships.term_taxonomy_id = " . $organisationId . " AND dev_12_posts.post_type = 'project'";
+                $onQuery = implode(' OR ', array_map(function ($organisationId) use ($status, $wpdb) {
+                    $queryString = $wpdb->posts . ".ID = " .$wpdb->term_relationships . ".object_id AND " .$wpdb->term_relationships . ".term_taxonomy_id = " . $organisationId . " AND " . $wpdb->posts .".post_type = 'project'";
 
                     if ($status !== 'all') {
-                        $queryString .= " AND dev_12_posts.post_status = '$status'";
+                        $queryString .= " AND " . $wpdb->posts . ".post_status = '$status'";
                     } else {
-                        $queryString .= " AND NOT dev_12_posts.post_status = 'trash'";
+                        $queryString .= " AND NOT " . $wpdb->posts . ".post_status = 'trash'";
                     }
 
                     return $queryString;
                 }, $userOrg));
 
+
                 $queryResult = $wpdb->get_var(
                     "SELECT COUNT(*) 
-                    FROM dev_12_posts
-                    INNER JOIN dev_12_term_relationships
+                    FROM {$wpdb->posts}
+                    INNER JOIN {$wpdb->term_relationships}
                     ON {$onQuery};"
                 );
 

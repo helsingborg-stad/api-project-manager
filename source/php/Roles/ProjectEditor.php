@@ -12,6 +12,7 @@ class ProjectEditor
         add_action('pre_get_posts', array($this, 'filterProjectsByOrganisation'));
         add_action('acf/save_post', array($this, 'setOrganisationOnSaveProject'));
         add_filter('login_redirect', array($this, 'redirectToProjectsAfterLogin'), 10, 3);
+        add_action('current_screen', array($this, 'formatAdminPageByOrganisation'), 20);
     }
 
     public function redirectToProjectsAfterLogin($redirectTo, $requestedRedirectTo, $user)
@@ -63,6 +64,59 @@ class ProjectEditor
         );
 
         $query->set('tax_query', $taxquery);
+    }
+
+    /**
+     * Administration page shall only display relevant information for logged in user.
+     *
+     * @param $query
+     */
+    public function formatAdminPageByOrganisation($query) {
+        if ($query->id === 'edit-project') {
+            add_filter("views_{$query->id}", array($this, 'formatPostCount'));
+        }
+    }
+
+    /**
+     * Format and display correct post count for user by matching post and user organisation.
+     *
+     * @param array $view
+     * @return array
+     */
+    public function formatPostCount(array $view) {
+        global  $wpdb;
+
+        $user = get_current_user_id();
+        $userOrg = $wpdb->get_var("SELECT meta_value FROM $wpdb->usermeta WHERE (meta_key = 'organisation')");
+
+        $total = $wpdb->get_var(
+            "SELECT COUNT(*) FROM $wpdb->postmeta 
+            INNER JOIN $wpdb->posts ON ($wpdb->postmeta.post_id = $wpdb->posts.ID)
+            AND ($wpdb->postmeta.meta_value = '$userOrg')
+            AND ($wpdb->posts.post_parent = 0)"
+        );
+
+        $mine =  $wpdb->get_var(
+            "SELECT COUNT(*) FROM $wpdb->postmeta 
+            INNER JOIN $wpdb->posts ON ($wpdb->postmeta.post_id = $wpdb->posts.ID)
+            AND ($wpdb->postmeta.meta_value = '$userOrg')
+            AND ($wpdb->posts.post_parent = 0)
+            AND ($wpdb->posts.post_author = $user)"
+        );
+
+        $publish =  $wpdb->get_var(
+            "SELECT COUNT(*) FROM $wpdb->postmeta 
+            INNER JOIN $wpdb->posts ON ($wpdb->postmeta.post_id = $wpdb->posts.ID)
+            AND ($wpdb->postmeta.meta_value = '$userOrg')
+            AND ($wpdb->posts.post_parent = 0)
+            AND ($wpdb->posts.post_status = 'publish')"
+        );
+
+        $view['all'] = preg_replace( '/\(.+\)/U', '('.$total.')', $view['all'] );
+        $view['mine'] = preg_replace( '/\(.+\)/U', '('.$mine.')', $view['mine'] );
+        $view['publish'] = preg_replace( '/\(.+\)/U', '('.$publish.')', $view['publish'] );
+
+        return $view;
     }
 
     public function registerCustomRole()

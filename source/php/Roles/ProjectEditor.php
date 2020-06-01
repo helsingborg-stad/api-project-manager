@@ -13,6 +13,21 @@ class ProjectEditor
         add_action('acf/save_post', array($this, 'setOrganisationOnSaveProject'));
         add_filter('login_redirect', array($this, 'redirectToProjectsAfterLogin'), 10, 3);
         add_action('current_screen', array($this, 'formatAdminPageByOrganisation'), 20);
+        add_action('admin_head', array($this, 'hideFields'));
+    }
+
+    public function hideFields()
+    {
+        $user = get_user_by('id', get_current_user_id());
+        $screen = get_current_screen();
+
+        if ($screen->base !== 'post'
+        || $screen->post_type !== 'project'
+        || !in_array($this->role, $user->roles)) {
+            return;
+        }
+
+        echo '<style>[data-name="organisation"], #pageparentdiv, #acf-group_56c33cf1470dc, #acf-group_56d83cff12bb3 {display: none !important;}</style>';
     }
 
     public function redirectToProjectsAfterLogin($redirectTo, $requestedRedirectTo, $user)

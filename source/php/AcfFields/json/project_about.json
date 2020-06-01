@@ -6,7 +6,7 @@
             "key": "field_5ec3d5649134a",
             "label": "What?",
             "name": "project_what",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "What are we telling - pick up a core sentence and use it as a preamble",
             "required": 0,
             "conditional_logic": 0,
@@ -16,16 +16,16 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": 4,
-            "new_lines": ""
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_5ec3d5889134b",
             "label": "Why?",
             "name": "project_why",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "Why is it good - what is the benefit \/ what need is addressed and what is new with the solution.",
             "required": 0,
             "conditional_logic": 0,
@@ -35,16 +35,16 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": 4,
-            "new_lines": ""
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
         },
         {
             "key": "field_5ec3d5969134c",
             "label": "How?",
             "name": "project_how",
-            "type": "textarea",
+            "type": "wysiwyg",
             "instructions": "How do we solve this - what kind of solutions are we testing",
             "required": 0,
             "conditional_logic": 0,
@@ -54,10 +54,10 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": 4,
-            "new_lines": ""
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
         }
     ],
     "location": [
@@ -69,9 +69,9 @@
             }
         ]
     ],
-    "menu_order": -99,
-    "position": "normal",
-    "style": "default",
+    "menu_order": -9999999,
+    "position": "acf_after_title",
+    "style": "seamless",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",

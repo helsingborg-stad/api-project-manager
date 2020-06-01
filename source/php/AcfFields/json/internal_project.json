@@ -31,13 +31,13 @@
             }
         ]
     ],
-    "menu_order": 0,
+    "menu_order": 100,
     "position": "side",
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": true,
+    "active": 1,
     "description": ""
 }]
 

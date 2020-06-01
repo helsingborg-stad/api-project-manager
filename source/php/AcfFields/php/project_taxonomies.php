@@ -147,7 +147,7 @@
             ),
         ),
     ),
-    'menu_order' => 0,
+    'menu_order' => 99,
     'position' => 'side',
     'style' => 'default',
     'label_placement' => 'top',

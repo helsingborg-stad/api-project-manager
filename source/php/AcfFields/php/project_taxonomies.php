@@ -11,7 +11,7 @@
             'name' => 'status',
             'type' => 'taxonomy',
             'instructions' => '',
-            'required' => 0,
+            'required' => 1,
             'conditional_logic' => 0,
             'wrapper' => array(
                 'width' => '',
@@ -20,7 +20,7 @@
             ),
             'taxonomy' => 'status',
             'field_type' => 'select',
-            'allow_null' => 1,
+            'allow_null' => 0,
             'add_term' => 1,
             'save_terms' => 1,
             'load_terms' => 1,
@@ -107,8 +107,8 @@
                 'id' => '',
             ),
             'taxonomy' => 'organisation',
-            'field_type' => 'multi_select',
-            'allow_null' => 1,
+            'field_type' => 'select',
+            'allow_null' => 0,
             'add_term' => 1,
             'save_terms' => 1,
             'load_terms' => 1,
@@ -153,7 +153,7 @@
     'label_placement' => 'top',
     'instruction_placement' => 'label',
     'hide_on_screen' => '',
-    'active' => true,
+    'active' => 1,
     'description' => '',
 ));
 }

@@ -27,7 +27,7 @@ class ProjectEditor
             return;
         }
 
-        echo '<style>[data-name="organisation"], #pageparentdiv, #acf-group_56c33cf1470dc, #acf-group_56d83cff12bb3 {display: none !important;}</style>';
+        echo '<style>[data-name="organisation"], #pageparentdiv, #acf-group_56c33cf1470dc, #acf-group_56d83cff12bb3, #lix-calculator {display: none !important;}</style>';
     }
 
     public function redirectToProjectsAfterLogin($redirectTo, $requestedRedirectTo, $user)

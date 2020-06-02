@@ -3,6 +3,28 @@
     "title": "Taxonomies",
     "fields": [
         {
+            "key": "field_5e8dce344f6b4",
+            "label": "Organisation",
+            "name": "organisation",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "organisation",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 1,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
             "key": "field_5e8d9b71fc34b",
             "label": "Status",
             "name": "status",
@@ -18,28 +40,6 @@
             "taxonomy": "status",
             "field_type": "select",
             "allow_null": 0,
-            "add_term": 1,
-            "save_terms": 1,
-            "load_terms": 1,
-            "return_format": "object",
-            "multiple": 0
-        },
-        {
-            "key": "field_5e8d9d0289bc7",
-            "label": "Technologies",
-            "name": "technology",
-            "type": "taxonomy",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "taxonomy": "technology",
-            "field_type": "multi_select",
-            "allow_null": 1,
             "add_term": 1,
             "save_terms": 1,
             "load_terms": 1,
@@ -91,9 +91,9 @@
             "multiple": 0
         },
         {
-            "key": "field_5e8dce344f6b4",
-            "label": "Organisation",
-            "name": "organisation",
+            "key": "field_5e8d9d0289bc7",
+            "label": "Technologies",
+            "name": "technology",
             "type": "taxonomy",
             "instructions": "",
             "required": 0,
@@ -103,9 +103,9 @@
                 "class": "",
                 "id": ""
             },
-            "taxonomy": "organisation",
-            "field_type": "select",
-            "allow_null": 0,
+            "taxonomy": "technology",
+            "field_type": "multi_select",
+            "allow_null": 1,
             "add_term": 1,
             "save_terms": 1,
             "load_terms": 1,

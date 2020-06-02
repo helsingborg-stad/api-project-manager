@@ -10,10 +10,28 @@ class ProjectEditor
     {
         add_action('admin_init', array($this, 'registerCustomRole'));
         add_action('pre_get_posts', array($this, 'filterProjectsByOrganisation'));
-        add_action('acf/save_post', array($this, 'setOrganisationOnSaveProject'));
         add_filter('login_redirect', array($this, 'redirectToProjectsAfterLogin'), 10, 3);
         add_action('current_screen', array($this, 'formatAdminPageByOrganisation'), 20);
+        add_action('acf_load', array($this, 'formatAdminPageByOrganisation'), 20);
         add_action('admin_head', array($this, 'hideFields'));
+        add_filter('acf/fields/taxonomy/query', array($this, 'limitOptionsToUserOrganisations'), 10, 2);
+    }
+
+    public function limitOptionsToUserOrganisations($args, $field)
+    {
+        $user = get_user_by('id', get_current_user_id());
+        $userOrganisations = get_field('organisation', 'user_' . $user->ID);
+
+        if (!in_array($this->role, $user->roles)
+        || empty($userOrganisations)
+        || $field['key'] !== 'field_5e8dce344f6b4') {
+            return $args;
+        }
+
+        $args['include'] = $userOrganisations;
+        $args['hide_empty'] = false;
+
+        return $args;
     }
 
     public function hideFields()
@@ -27,7 +45,7 @@ class ProjectEditor
             return;
         }
 
-        echo '<style>[data-name="organisation"], #pageparentdiv, #acf-group_56c33cf1470dc, #acf-group_56d83cff12bb3, #lix-calculator {display: none !important;}</style>';
+        echo '<style>#pageparentdiv, #acf-group_56c33cf1470dc, #acf-group_56d83cff12bb3, #lix-calculator {display: none !important;}</style>';
     }
 
     public function redirectToProjectsAfterLogin($redirectTo, $requestedRedirectTo, $user)
@@ -37,20 +55,6 @@ class ProjectEditor
         }
 
         return 'wp-admin/edit.php?post_type=project';
-    }
-
-    public function setOrganisationOnSaveProject($postId)
-    {
-        $user = get_user_by('id', get_current_user_id());
-        $userOrganisations = get_field('organisation', 'user_' . $user->ID);
-
-        if (get_post_type($postId) !== 'project'
-        || !in_array($this->role, $user->roles)
-        || empty($userOrganisations)) {
-            return;
-        }
-
-        update_field('organisation', $userOrganisations, $postId);
     }
 
     public function filterProjectsByOrganisation($query)

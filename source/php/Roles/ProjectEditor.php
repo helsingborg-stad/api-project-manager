@@ -15,6 +15,23 @@ class ProjectEditor
         add_action('acf_load', array($this, 'formatAdminPageByOrganisation'), 20);
         add_action('admin_head', array($this, 'hideFields'));
         add_filter('acf/fields/taxonomy/query', array($this, 'limitOptionsToUserOrganisations'), 10, 2);
+        add_action('acf/save_post', array($this, 'setOrganisationOnSaveDraft'));
+    }
+
+    public function setOrganisationOnSaveDraft($postId)
+    {
+        $user = get_user_by('id', get_current_user_id());
+        $userOrganisations = get_field('organisation', 'user_' . $user->ID);
+
+        if (get_post_type($postId) !== 'project'
+        || get_post_status($postId) !== 'draft'
+        || !empty(get_field('organisation', $postId))
+        || !in_array($this->role, $user->roles)
+        || empty($userOrganisations)) {
+            return;
+        }
+
+        update_field('organisation', $userOrganisations[0], $postId);
     }
 
     public function limitOptionsToUserOrganisations($args, $field)

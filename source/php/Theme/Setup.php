@@ -15,6 +15,16 @@ class Setup
         add_filter('get_sample_permalink_html', array($this, 'replacePermalink'), 10, 5);
         add_filter('post_updated_messages', array($this, 'postPublishedMsg'));
         add_action('rest_api_init', array($this, 'disableRestApi'), 11);
+        add_filter('wp_insert_post_data', array($this, 'forceTitleGeneratedSlug'), 99, 2);
+    }
+
+    public function forceTitleGeneratedSlug($data, $postArr)
+    {
+        if (! in_array($data['post_status'], array( 'draft', 'pending', 'auto-draft' ))) {
+            $data['post_name'] = sanitize_title($data['post_title']);
+        }
+
+        return $data;
     }
 
     /**

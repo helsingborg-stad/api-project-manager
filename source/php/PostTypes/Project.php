@@ -127,16 +127,14 @@ class Project
 
     public function addExportButton($views)
     {
-        $markup = '<a href="' . admin_url('edit.php?post_type=project&export=csv') . '" class="button" target="_blank">' . __('Export CSV', APIPROJECTMANAGER_TEXTDOMAIN) . '</a>';
-
-
+        $markup = '<a href="' . admin_url('edit.php?post_type=project&export=csv') . '" class="page-title-action" target="_blank">' . __('Export CSV', APIPROJECTMANAGER_TEXTDOMAIN) . '</a>';
         $views['csv-export'] = $markup;
 
         return $views;
     }
 
     /**
-     * Export from submissions
+     * Export projects as CSV
      * @return void
      */
     public function export()
@@ -147,50 +145,85 @@ class Project
 
         $screen = get_current_screen();
 
-        if ($screen->post_type !== 'project' || !isset($_GET['export'])) {
+        // Bail if export csv attributes is not set
+        if ($screen->post_type !== 'project' || !(isset($_GET['export']) && $_GET['export'] === 'csv')) {
             return;
         }
 
-        error_log(print_r("export me", true));
+        $args = array(
+          'numberposts' => -1,
+          'post_type' => 'project',
+          'orderby' => 'title',
+          'order' => 'ASC',
+        );
+        $projects = get_posts($args);
 
-        $type = $_GET['export'];
-        error_log(print_r($type, true));
-
-        $projects = new \WP_Query(array(
-            'posts_per_page' => -1,
-            'post_type' => 'project',
-            'post_status' => 'publish',
-            // ADD
-            // 'meta_query' => array(
-            //     'relation' => 'OR',
-            //     array(
-            //         'key' => 'modularity-form-id',
-            //         'value' => $formId,
-            //         'compare' => '='
-            //     )
-            // )
-        ));
-
-        $projects = $projects->posts;
         $csvData = array();
 
         foreach ($projects as $project) {
-            error_log(print_r($project, true));
-            //$data = Submission::getSubmissionData($submission->ID);
+            $projectData = $this->mapExportData($project);
 
             // Flaten arrays
             $data = array_map(function ($a) {
                 return is_array($a) ? implode(',', $a) : $a;
-            }, (array) $project);
+            }, $projectData);
 
             $csvData[] = $data;
         }
 
-        $this->downloadSendHeaders(sanitize_title("projects_export") . '_' . date('Y-m-d') . '.csv');
+        $this->downloadSendHeaders(sanitize_title("project_export") . '_' . date('Y-m-d') . '.csv');
         echo chr(239) . chr(187) . chr(191);
         echo $this->array2csv($csvData);
 
         die();
+    }
+
+    public function mapExportData($data)
+    {
+        $exportData = array();
+
+        if (empty($data->ID)) {
+            return $exportData;
+        }
+
+        // Collect meta data
+        $metaData = get_fields($data->ID, true);
+
+        // Define all data to be exported for each project
+        $exportData['ID'] = $data->ID ?? '';
+        $exportData[__('Date', APIPROJECTMANAGER_TEXTDOMAIN)] = $data->post_date ?? '';
+        $exportData[__('Modified', APIPROJECTMANAGER_TEXTDOMAIN)] = $data->post_date ?? '';
+        $exportData[__('Title', APIPROJECTMANAGER_TEXTDOMAIN)] = $data->post_title ?? '';
+        $exportData[__('What?', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['project_what']) ? sanitize_text_field($metaData['project_what']) : '';
+        $exportData[__('Why?', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['project_why']) ? sanitize_text_field($metaData['project_why']) : '';
+        $exportData[__('How?', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['project_how']) ? sanitize_text_field($metaData['project_how']) : '';
+        $exportData[__('Organisation', APIPROJECTMANAGER_TEXTDOMAIN)] = $metaData['organisation']->name ?? '';
+        $exportData[__('Status', APIPROJECTMANAGER_TEXTDOMAIN)] = $metaData['status']->name ?? '';
+        $exportData[__('Technologies', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['technology']) ? $this->gatherTaxonomyValues($metaData['technology']) : '';
+        $exportData[__('Partners', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['partner']) ? $this->gatherTaxonomyValues($metaData['partner']) : '';
+        $exportData[__('Sectors', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['sector']) ? $this->gatherTaxonomyValues($metaData['sector']) : '';
+        $exportData[__('Global goals', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['global_goal']) ? $this->gatherTaxonomyValues($metaData['global_goal']) : '';
+
+        return $exportData;
+    }
+
+    public function gatherTaxonomyValues($data)
+    {
+        if (empty($data) || !is_array($data)) {
+            return null;
+        }
+
+        $taxonomyNames = array();
+
+        foreach ($data as $key => $value) {
+            if (!empty($value->name)) {
+                $taxonomyNames[] = $value->name;
+            }
+        }
+
+        $taxonomyNames = \implode(', ', $taxonomyNames);
+
+        return $taxonomyNames;
     }
 
     public function array2csv(array &$array)
@@ -200,14 +233,14 @@ class Project
         }
 
         ob_start();
-        $df = fopen("php://output", 'w');
-        fputcsv($df, array_keys(reset($array)), ';');
+        $handle = fopen("php://output", 'w');
+        fputcsv($handle, array_keys(reset($array)), ';');
 
         foreach ($array as $row) {
-            fputcsv($df, $row, ';');
+            fputcsv($handle, $row, ';');
         }
 
-        fclose($df);
+        fclose($handle);
         return ob_get_clean();
     }
 

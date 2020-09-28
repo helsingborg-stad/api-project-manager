@@ -100,6 +100,7 @@ class Exporter
         $exportData[__('Partners', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['partner']) ? $this->gatherTaxonomyValues($metaData['partner']) : '';
         $exportData[__('Sectors', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['sector']) ? $this->gatherTaxonomyValues($metaData['sector']) : '';
         $exportData[__('Global goals', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['global_goal']) ? $this->gatherTaxonomyValues($metaData['global_goal']) : '';
+        $exportData[__('Address', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['address']) && is_array($metaData['address']) ? implode(array_filter($metaData['address']), ', ') : '';
 
         return $exportData;
     }

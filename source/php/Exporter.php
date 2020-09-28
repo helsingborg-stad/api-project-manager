@@ -88,7 +88,7 @@ class Exporter
 
         // Define all data to be exported for each project
         $exportData['ID'] = $data->ID ?? '';
-        $exportData[__('Date', APIPROJECTMANAGER_TEXTDOMAIN)] = $data->post_date ?? '';
+        $exportData[__('Published', APIPROJECTMANAGER_TEXTDOMAIN)] = $data->post_date ?? '';
         $exportData[__('Last modified', APIPROJECTMANAGER_TEXTDOMAIN)] = $data->post_date ?? '';
         $exportData[__('Title', APIPROJECTMANAGER_TEXTDOMAIN)] = $data->post_title ?? '';
         $exportData[__('What?', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['project_what']) ? sanitize_text_field($metaData['project_what']) : '';

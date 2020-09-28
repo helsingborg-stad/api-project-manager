@@ -18,7 +18,7 @@ class Exporter
      */
     public function addExportButton($views)
     {
-        $markup = '<a href="' . admin_url('edit.php?post_type=project&export=csv') . '" class="page-title-action" target="_blank">' . __('Export CSV', APIPROJECTMANAGER_TEXTDOMAIN) . '</a>';
+        $markup = '<a href="' . admin_url('edit.php?post_type=project&export=csv') . '" class="page-title-action" target="_blank">' . __('Export as CSV', APIPROJECTMANAGER_TEXTDOMAIN) . '</a>';
         $views['csv-export'] = $markup;
 
         return $views;
@@ -89,7 +89,7 @@ class Exporter
         // Define all data to be exported for each project
         $exportData['ID'] = $data->ID ?? '';
         $exportData[__('Date', APIPROJECTMANAGER_TEXTDOMAIN)] = $data->post_date ?? '';
-        $exportData[__('Modified', APIPROJECTMANAGER_TEXTDOMAIN)] = $data->post_date ?? '';
+        $exportData[__('Last modified', APIPROJECTMANAGER_TEXTDOMAIN)] = $data->post_date ?? '';
         $exportData[__('Title', APIPROJECTMANAGER_TEXTDOMAIN)] = $data->post_title ?? '';
         $exportData[__('What?', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['project_what']) ? sanitize_text_field($metaData['project_what']) : '';
         $exportData[__('Why?', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['project_why']) ? sanitize_text_field($metaData['project_why']) : '';

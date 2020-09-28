@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Project manager\n"
-"POT-Creation-Date: 2020-09-28 16:57+0200\n"
-"PO-Revision-Date: 2020-09-28 16:57+0200\n"
+"POT-Creation-Date: 2020-09-28 21:53+0200\n"
+"PO-Revision-Date: 2020-09-28 21:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -199,8 +199,8 @@ msgid "Export as CSV"
 msgstr "Exportera som CSV"
 
 #: source/php/Exporter.php:91
-msgid "Date"
-msgstr "Datum"
+msgid "Published"
+msgstr "Publicerad"
 
 #: source/php/Exporter.php:92
 msgid "Last modified"
@@ -353,6 +353,9 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "(#plugin_author_url#)"
 msgstr ""
+
+#~ msgid "Date"
+#~ msgstr "Datum"
 
 #~ msgid "Category"
 #~ msgstr "Kategori"

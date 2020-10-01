@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Project manager\n"
-"POT-Creation-Date: 2020-05-22 09:15+0200\n"
-"PO-Revision-Date: 2020-05-22 09:16+0200\n"
+"POT-Creation-Date: 2020-09-28 21:53+0200\n"
+"PO-Revision-Date: 2020-09-28 21:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -20,6 +20,12 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
+#: api-project-manager.php:60
+msgid ""
+"API Project Manager require Advanced Custom Fields PRO to function. Please "
+"make sure that this is installed and enabled."
+msgstr ""
+
 #: source/php/AcfFields/php/internal_project.php:6
 msgid "Internal project"
 msgstr ""
@@ -36,94 +42,81 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: source/php/AcfFields/php/project.php:6 source/php/PostTypes/Project.php:34
-msgid "Project"
-msgstr "Projekt"
+#: source/php/AcfFields/php/project.php:6
+msgid "Project details"
+msgstr ""
 
 #: source/php/AcfFields/php/project.php:10
-msgid "Information"
+msgid "Location & Contact"
 msgstr ""
 
 #: source/php/AcfFields/php/project.php:26
-msgid "Address"
+msgid "Map"
 msgstr ""
 
-#: source/php/AcfFields/php/project.php:41
-msgid "Street address"
-msgstr ""
-
-#: source/php/AcfFields/php/project.php:60
-msgid "Postal code"
-msgstr ""
-
-#: source/php/AcfFields/php/project.php:79
-msgid "City"
-msgstr ""
-
-#: source/php/AcfFields/php/project.php:100
+#: source/php/AcfFields/php/project.php:44
 msgid "Contacts"
 msgstr ""
 
-#: source/php/AcfFields/php/project.php:119
+#: source/php/AcfFields/php/project.php:59
+msgid "Add contact person"
+msgstr ""
+
+#: source/php/AcfFields/php/project.php:63
 msgid "Name"
 msgstr ""
 
-#: source/php/AcfFields/php/project.php:138
+#: source/php/AcfFields/php/project.php:82
 msgid "Email"
 msgstr ""
 
-#: source/php/AcfFields/php/project.php:158
-msgid "Media"
-msgstr ""
-
-#: source/php/AcfFields/php/project.php:174
-msgid "Files"
-msgstr ""
-
-#: source/php/AcfFields/php/project.php:193
-#: source/php/AcfFields/php/project.php:332
-msgid "Title"
-msgstr ""
-
-#: source/php/AcfFields/php/project.php:212
-msgid "File"
-msgstr ""
-
-#: source/php/AcfFields/php/project.php:233
-msgid "Gallery"
-msgstr ""
-
-#: source/php/AcfFields/php/project.php:236
-msgid "Add images to this project."
-msgstr ""
-
-#: source/php/AcfFields/php/project.php:260
-msgid "Video"
-msgstr ""
-
-#: source/php/AcfFields/php/project.php:279
-msgid "Url"
-msgstr ""
-
-#: source/php/AcfFields/php/project.php:297
-#: source/php/AcfFields/php/project.php:313
+#: source/php/AcfFields/php/project.php:102
+#: source/php/AcfFields/php/project.php:118
 msgid "Links"
 msgstr ""
 
-#: source/php/AcfFields/php/project.php:351 source/php/Theme/Setup.php:30
+#: source/php/AcfFields/php/project.php:137
+#: source/php/AcfFields/php/project.php:209 source/php/Exporter.php:93
+msgid "Title"
+msgstr "Titel"
+
+#: source/php/AcfFields/php/project.php:156 source/php/Theme/Setup.php:40
 msgid "URL"
 msgstr "URL\v"
 
-#: source/php/AcfFields/php/project.php:369
-#: source/php/AcfFields/php/project.php:385
-msgid "Map"
+#: source/php/AcfFields/php/project.php:174
+msgid "Media"
+msgstr ""
+
+#: source/php/AcfFields/php/project.php:190
+msgid "Files"
+msgstr ""
+
+#: source/php/AcfFields/php/project.php:228
+msgid "File"
+msgstr ""
+
+#: source/php/AcfFields/php/project.php:249
+msgid "Gallery"
+msgstr ""
+
+#: source/php/AcfFields/php/project.php:252
+msgid "Add images to this project."
+msgstr ""
+
+#: source/php/AcfFields/php/project.php:276
+msgid "Video"
+msgstr ""
+
+#: source/php/AcfFields/php/project.php:295
+msgid "Url"
 msgstr ""
 
 #: source/php/AcfFields/php/project_about.php:6
 msgid "About the project"
 msgstr "Om projektet"
 
-#: source/php/AcfFields/php/project_about.php:10
+#: source/php/AcfFields/php/project_about.php:10 source/php/Exporter.php:94
 msgid "What?"
 msgstr "Vad?"
 
@@ -133,7 +126,7 @@ msgstr ""
 "Vad är det vi berättar om – plocka upp en kärnfull mening och använd som "
 "ingress"
 
-#: source/php/AcfFields/php/project_about.php:29
+#: source/php/AcfFields/php/project_about.php:29 source/php/Exporter.php:95
 msgid "Why?"
 msgstr "Varför?"
 
@@ -145,13 +138,24 @@ msgstr ""
 "Varför är det bra – vad är nyttan/vilket behov adresseras och vad är nytt "
 "med lösningen."
 
-#: source/php/AcfFields/php/project_about.php:48
+#: source/php/AcfFields/php/project_about.php:48 source/php/Exporter.php:96
 msgid "How?"
 msgstr "Hur?"
 
 #: source/php/AcfFields/php/project_about.php:51
 msgid "How do we solve this - what kind of solutions are we testing"
 msgstr "Hur löser vi detta - vilken typ av lösningar är det vi testar"
+
+#: source/php/AcfFields/php/project_editor.php:6
+#: source/php/Roles/ProjectEditor.php:175
+msgid "Project Editor"
+msgstr ""
+
+#: source/php/AcfFields/php/project_editor.php:10
+#: source/php/AcfFields/php/project_taxonomies.php:10
+#: source/php/Exporter.php:97 source/php/PostTypes/Project.php:86
+msgid "Organisation"
+msgstr "Organisation"
 
 #: source/php/AcfFields/php/project_settings.php:6
 msgid "Project settings"
@@ -165,35 +169,50 @@ msgstr ""
 msgid "Taxonomies"
 msgstr "Taxonomier"
 
-#: source/php/AcfFields/php/project_taxonomies.php:10
-#: source/php/PostTypes/Project.php:44
+#: source/php/AcfFields/php/project_taxonomies.php:32
+#: source/php/Exporter.php:98 source/php/PostTypes/Project.php:44
 msgid "Status"
 msgstr "Status"
 
-#: source/php/AcfFields/php/project_taxonomies.php:32
-#: source/php/PostTypes/Project.php:59
-msgid "Technologies"
-msgstr "Teknologier"
-
 #: source/php/AcfFields/php/project_taxonomies.php:54
-#: source/php/PostTypes/Project.php:115
+#: source/php/Exporter.php:100 source/php/PostTypes/Project.php:115
 msgid "Partners"
-msgstr ""
+msgstr "Partners"
 
 #: source/php/AcfFields/php/project_taxonomies.php:76
-#: source/php/PostTypes/Project.php:73
+#: source/php/Exporter.php:101 source/php/PostTypes/Project.php:73
 msgid "Sectors"
 msgstr "Sektorer"
 
 #: source/php/AcfFields/php/project_taxonomies.php:98
-#: source/php/PostTypes/Project.php:86
-msgid "Organisation"
-msgstr "Organisation"
+#: source/php/Exporter.php:99 source/php/PostTypes/Project.php:59
+msgid "Technologies"
+msgstr "Teknologier"
 
 #: source/php/AcfFields/php/project_taxonomies.php:120
 #: source/php/PostTypes/Project.php:100
 msgid "Global goal"
 msgstr "Globala mål"
+
+#: source/php/Exporter.php:21
+msgid "Export as CSV"
+msgstr "Exportera som CSV"
+
+#: source/php/Exporter.php:91
+msgid "Published"
+msgstr "Publicerad"
+
+#: source/php/Exporter.php:92
+msgid "Last modified"
+msgstr "Senast ändrad"
+
+#: source/php/Exporter.php:102 source/php/PostTypes/Project.php:101
+msgid "Global goals"
+msgstr "Globala mål"
+
+#: source/php/Exporter.php:103
+msgid "Address"
+msgstr "Adress"
 
 #: source/php/Helper/PostType.php:42 source/php/Helper/PostType.php:43
 #: source/php/Helper/PostType.php:184
@@ -262,6 +281,10 @@ msgctxt "Project Manager settings"
 msgid "Options"
 msgstr ""
 
+#: source/php/PostTypes/Project.php:34
+msgid "Project"
+msgstr "Projekt"
+
 #: source/php/PostTypes/Project.php:35
 msgid "Projects"
 msgstr "Projekt"
@@ -282,27 +305,23 @@ msgstr "Sektor"
 msgid "Organisations"
 msgstr "Organisationer"
 
-#: source/php/PostTypes/Project.php:101
-msgid "Global goals"
-msgstr "Globala mål"
-
 #: source/php/PostTypes/Project.php:114
 msgid "Partner"
-msgstr ""
+msgstr "Partner"
 
-#: source/php/Theme/Setup.php:94
+#: source/php/Theme/Setup.php:104
 msgid "Post updated."
 msgstr ""
 
-#: source/php/Theme/Setup.php:95
+#: source/php/Theme/Setup.php:105
 msgid "Post published."
 msgstr ""
 
-#: source/php/Theme/Setup.php:96
+#: source/php/Theme/Setup.php:106
 msgid "Post submitted."
 msgstr ""
 
-#: source/php/Theme/Setup.php:97
+#: source/php/Theme/Setup.php:107
 msgid "Post draft updated."
 msgstr ""
 
@@ -334,6 +353,9 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "(#plugin_author_url#)"
 msgstr ""
+
+#~ msgid "Date"
+#~ msgstr "Datum"
 
 #~ msgid "Category"
 #~ msgstr "Kategori"

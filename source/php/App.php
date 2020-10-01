@@ -12,5 +12,6 @@ class App
         new PostTypes\Project();
         new Roles\ProjectEditor();
         new Options();
+        new Exporter();
     }
 }

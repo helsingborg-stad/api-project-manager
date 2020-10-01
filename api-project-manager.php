@@ -52,5 +52,15 @@ $loader->addPrefix('ApiProjectManager', APIPROJECTMANAGER_PATH);
 $loader->addPrefix('ApiProjectManager', APIPROJECTMANAGER_PATH . 'source/php/');
 $loader->register();
 
-// Start application
-new ApiProjectManager\App();
+// Start application if ACF plugin if activated
+if (!function_exists('get_field')) {
+    add_action('admin_notices', function () {
+        echo '<div class="notice notice-error">';
+        echo '<p>';
+        _e("API Project Manager require Advanced Custom Fields PRO to function. Please make sure that this is installed and enabled.", APIPROJECTMANAGER_TEXTDOMAIN);
+        echo '</p>';
+        echo '</div>';
+    });
+} else {
+    new ApiProjectManager\App();
+}

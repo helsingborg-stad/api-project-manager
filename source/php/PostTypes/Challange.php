@@ -21,7 +21,7 @@ class Challange
             'capability_type'    => 'post',
             'has_archive'        => true,
             'hierarchical'       => false,
-            'supports'           => array('title', 'author', 'revisions', 'editor', 'thumbnail', 'themes'),
+            'supports'           => array('title', 'author', 'revisions', 'editor', 'thumbnail', 'excerpt'),
             'show_in_rest'       => true,
         );
 
@@ -49,6 +49,20 @@ class Challange
               'show_in_rest' => true,
               'show_in_quick_edit' => false,
               'meta_box_cb' => false,
+            )
+        );
+
+        // Global goals
+        $postType->addTaxonomy(
+            'global_goal',
+            __('Global goal', APIPROJECTMANAGER_TEXTDOMAIN),
+            __('Global goals', APIPROJECTMANAGER_TEXTDOMAIN),
+            array(
+                'hierarchical' => true,
+                'show_ui' => true,
+                'show_in_rest' => true,
+                'show_in_quick_edit' => false,
+                'meta_box_cb' => false,
             )
         );
     }

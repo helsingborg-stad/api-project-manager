@@ -43,6 +43,7 @@ add_action('plugins_loaded', function () {
         'project_about' => 'group_5ec3d447df4ae',
         'project_editor' => 'group_5ec7baa64e985',
         'challange_taxonomies' => 'group_5fb3c4e538202',
+        'challange_details' => 'group_5fb3d23d5b176',
     ));
     $acfExportManager->import();
 });

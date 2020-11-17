@@ -50,6 +50,50 @@
             'multiple' => 0,
         ),
         2 => array(
+            'key' => 'field_5fb3d0dbb2bd9',
+            'label' => __('Category', 'api-project-manager'),
+            'name' => 'challenge_category',
+            'type' => 'taxonomy',
+            'instructions' => '',
+            'required' => 1,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'taxonomy' => 'challenge_category',
+            'field_type' => 'select',
+            'allow_null' => 0,
+            'add_term' => 1,
+            'save_terms' => 1,
+            'load_terms' => 1,
+            'return_format' => 'object',
+            'multiple' => 0,
+        ),
+        3 => array(
+            'key' => 'field_5fb3d0a6b2bd8',
+            'label' => __('Challenge', 'api-project-manager'),
+            'name' => 'challenge',
+            'type' => 'post_object',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'post_type' => array(
+                0 => 'challange',
+            ),
+            'taxonomy' => '',
+            'allow_null' => 1,
+            'multiple' => 0,
+            'return_format' => 'object',
+            'ui' => 1,
+        ),
+        4 => array(
             'key' => 'field_5e8dd435ea9df',
             'label' => __('Partners', 'api-project-manager'),
             'name' => 'partner',
@@ -71,7 +115,7 @@
             'return_format' => 'object',
             'multiple' => 0,
         ),
-        3 => array(
+        5 => array(
             'key' => 'field_5e8dcdf152c5d',
             'label' => __('Sectors', 'api-project-manager'),
             'name' => 'sector',
@@ -93,7 +137,7 @@
             'return_format' => 'object',
             'multiple' => 0,
         ),
-        4 => array(
+        6 => array(
             'key' => 'field_5e8d9d0289bc7',
             'label' => __('Technologies', 'api-project-manager'),
             'name' => 'technology',
@@ -115,7 +159,7 @@
             'return_format' => 'object',
             'multiple' => 0,
         ),
-        5 => array(
+        7 => array(
             'key' => 'field_5e8dce65e835b',
             'label' => __('Global goal', 'api-project-manager'),
             'name' => 'global_goal',
@@ -153,7 +197,7 @@
     'label_placement' => 'top',
     'instruction_placement' => 'label',
     'hide_on_screen' => '',
-    'active' => 1,
+    'active' => true,
     'description' => '',
 ));
 }

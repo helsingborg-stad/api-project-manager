@@ -52,6 +52,20 @@ class Project
             )
         );
 
+        // Category
+        $postType->addTaxonomy(
+            'challenge_category',
+            __('Category', APIPROJECTMANAGER_TEXTDOMAIN),
+            __('Categories', APIPROJECTMANAGER_TEXTDOMAIN),
+            array(
+              'hierarchical' => false,
+              'show_ui' => true,
+              'show_in_rest' => true,
+              'show_in_quick_edit' => false,
+              'meta_box_cb' => false,
+            )
+        );
+
         // Technologies
         $postType->addTaxonomy(
             'technology',

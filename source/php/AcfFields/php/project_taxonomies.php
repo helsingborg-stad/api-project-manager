@@ -197,7 +197,7 @@
     'label_placement' => 'top',
     'instruction_placement' => 'label',
     'hide_on_screen' => '',
-    'active' => true,
+    'active' => 1,
     'description' => '',
 ));
 }

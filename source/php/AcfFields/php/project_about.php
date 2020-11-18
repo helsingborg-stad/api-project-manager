@@ -80,7 +80,7 @@
     'hide_on_screen' => array(
         0 => 'the_content',
     ),
-    'active' => true,
+    'active' => 1,
     'description' => '',
 ));
 }

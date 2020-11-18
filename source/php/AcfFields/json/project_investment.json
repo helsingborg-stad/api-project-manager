@@ -1,0 +1,106 @@
+[{
+    "key": "group_5fb3dd484fcb4",
+    "title": "Project investment",
+    "fields": [
+        {
+            "key": "field_5fb3dd4fb968f",
+            "label": "Investment type",
+            "name": "investment_type",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "amount": "Amount (in kr)",
+                "hours": "Hours"
+            },
+            "allow_custom": 0,
+            "default_value": [],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value",
+            "save_custom": 0
+        },
+        {
+            "key": "field_5fb3dee669135",
+            "label": "Investment amount (in kr)",
+            "name": "investment_amount",
+            "type": "number",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5fb3dd4fb968f",
+                        "operator": "==",
+                        "value": "amount"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "kr",
+            "min": "",
+            "max": "",
+            "step": ""
+        },
+        {
+            "key": "field_5fb3df5369136",
+            "label": "Investment in hours",
+            "name": "investment_hours",
+            "type": "number",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5fb3dd4fb968f",
+                        "operator": "==",
+                        "value": "hours"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "hours",
+            "min": "",
+            "max": "",
+            "step": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "project"
+            }
+        ]
+    ],
+    "menu_order": 99999999,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": ""
+}]
+

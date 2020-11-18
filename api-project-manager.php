@@ -42,6 +42,8 @@ add_action('plugins_loaded', function () {
         'project_taxonomies' => 'group_5e8d9b68e7f35',
         'project_about' => 'group_5ec3d447df4ae',
         'project_editor' => 'group_5ec7baa64e985',
+        'project_investment' => 'group_5fb3dd484fcb4',
+        'project_impact' => 'group_5fb4e0ff4c111',
         'challange_taxonomies' => 'group_5fb3c4e538202',
         'challange_details' => 'group_5fb3d23d5b176',
     ));

@@ -49,7 +49,7 @@
                     'name' => 'impact_goal_comment',
                     'type' => 'textarea',
                     'instructions' => '',
-                    'required' => 0,
+                    'required' => 1,
                     'conditional_logic' => array(
                         0 => array(
                             0 => array(

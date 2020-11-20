@@ -46,6 +46,7 @@ add_action('plugins_loaded', function () {
         'project_impact' => 'group_5fb4e0ff4c111',
         'challenge_taxonomies' => 'group_5fb3c4e538202',
         'challenge_details' => 'group_5fb3d23d5b176',
+        'tax_status_fields' => 'group_5fb7d42342ff7',
     ));
     $acfExportManager->import();
 });

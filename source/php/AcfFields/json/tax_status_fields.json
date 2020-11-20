@@ -1,0 +1,44 @@
+[{
+    "key": "group_5fb7d42342ff7",
+    "title": "Status",
+    "fields": [
+        {
+            "key": "field_5fb7d4611f925",
+            "label": "Progress value",
+            "name": "progress_value",
+            "type": "range",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 0,
+            "min": -1,
+            "max": "",
+            "step": 1,
+            "prepend": "",
+            "append": "%"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "status"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": ""
+}]
+

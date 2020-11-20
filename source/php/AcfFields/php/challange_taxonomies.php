@@ -8,7 +8,7 @@
         0 => array(
             'key' => 'field_5fb3c52315a33',
             'label' => __('Category', 'api-project-manager'),
-            'name' => 'chalange_category',
+            'name' => 'challenge_category',
             'type' => 'taxonomy',
             'instructions' => '',
             'required' => 1,

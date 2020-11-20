@@ -5,7 +5,7 @@
         {
             "key": "field_5fb3c52315a33",
             "label": "Category",
-            "name": "chalange_category",
+            "name": "challenge_category",
             "type": "taxonomy",
             "instructions": "",
             "required": 1,

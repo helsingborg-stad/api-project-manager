@@ -1,8 +1,7 @@
-<?php
+<?php 
 
-
-if (function_exists('acf_add_local_field_group')) {
-    acf_add_local_field_group(array(
+if (function_exists('acf_add_local_field_group')) {
+    acf_add_local_field_group(array(
     'key' => 'group_5e8d9b68e7f35',
     'title' => __('Taxonomies', 'api-project-manager'),
     'fields' => array(
@@ -201,4 +200,4 @@ if (function_exists('acf_add_local_field_group')) {
     'active' => 1,
     'description' => '',
 ));
-}
+}

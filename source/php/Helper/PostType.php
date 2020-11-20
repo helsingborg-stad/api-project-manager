@@ -11,7 +11,6 @@ class PostType
     public $postTypeRestArgs;
     public $postTypeLabels;
 
-    /* Class constructor */
     public function __construct($postTypeName, $nameSingular, $namePlural, $args = array(), $labels = array(), $restArgs = array())
     {
         // Set some important variables
@@ -120,20 +119,19 @@ class PostType
             
             // Return different values based on field type
             switch ($type) {
-              case 'true_false':
-                $value = get_field($fieldName, $object['id']);
-                break;
-            case 'taxonomy':
-                $value = !empty(get_field($fieldName, $object['id'])) ? get_field($fieldName, $object['id']) : null;              
-                
-                // Wrapping so that we allways return objects in an array
-                $value = (!empty($value) && is_object($value)) ? array($value) : $value;
-                break;
-
-              default:
-                // Return null if value is empty
-                $value = !empty(get_field($fieldName, $object['id'])) ? get_field($fieldName, $object['id']) : null;
-                break;
+                case 'true_false':
+                    $value = get_field($fieldName, $object['id']);
+                    break;
+                case 'taxonomy':
+                    $value = !empty(get_field($fieldName, $object['id'])) ? get_field($fieldName, $object['id']) : null;
+                    
+                    // Wrapping so that we allways return objects in an array
+                    $value = (!empty($value) && is_object($value)) ? array($value) : $value;
+                    break;
+                default:
+                    // Return null if value is empty
+                    $value = !empty(get_field($fieldName, $object['id'])) ? get_field($fieldName, $object['id']) : null;
+                    break;
             }
             
             $value = apply_filters('api_project_manager/' . $this->postTypeName . '/rest_field', $value, $type, $fieldName);
@@ -158,64 +156,8 @@ class PostType
     }
 
     /* Method to attach the taxonomy to the post type */
-    public function addTaxonomy($taxonomySlug, $nameSingular, $namePlural, $args = array(), $labels = array())
+    public function addTaxonomy($taxonomySlug, $nameSingular, $namePlural, $args = array(), $labels = array(), $restArgs = array())
     {
-        if (!empty($nameSingular)) {
-            // We need to know the post type name, so the new taxonomy can be attached to it.
-            $postTypeName = $this->postTypeName;
-
-            // Taxonomy properties
-            $taxonomyLabels = $labels;
-            $taxonomyArgs = $args;
-
-            if (!taxonomy_exists($taxonomySlug)) {
-                // Default labels, overwrite them with the given labels.
-                $labels = array_merge(
-                    // Default
-                    array(
-                        'name'              => $namePlural,
-                        'singular_name'     => $nameSingular,
-                        'search_items'      => sprintf(__('Search %s', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($namePlural)),
-                        'all_items'         => sprintf(__('All %s', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($namePlural)),
-                        'parent_item'       => sprintf(__('Parent %s:', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($nameSingular)),
-                        'parent_item_colon' => sprintf(__('Parent %s:', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($nameSingular)) . ':',
-                        'edit_item'         => sprintf(__('Edit %s', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($nameSingular)),
-                        'update_item'       => sprintf(__('Update %s', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($nameSingular)),
-                        'add_new_item'      => sprintf(__('Add new %s', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($nameSingular)),
-                        'new_item_name'     => sprintf(__('New %s Name', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($nameSingular)),
-                        'menu_name'         => $namePlural,
-                    ),
-                    // Given labels
-                    $taxonomyLabels
-                );
-
-                // Default arguments, overwitten with the given arguments
-                $args = array_merge(
-                    array(
-                      'label'                 => $namePlural,
-                      'labels'                => $labels,
-                      'public'                => true,
-                      'show_ui'               => true,
-                      'show_in_nav_menus'     => true,
-                      '_builtin'              => false,
-                      ),
-                    $taxonomyArgs
-                );
-                // Add the taxonomy to the post type
-                add_action(
-                    'init',
-                    function () use ($taxonomySlug, $postTypeName, $args) {
-                        register_taxonomy($taxonomySlug, $postTypeName, $args);
-                    }
-                );
-            } else {
-                add_action(
-                    'init',
-                    function () use ($taxonomySlug, $postTypeName) {
-                        register_taxonomy_for_object_type($taxonomySlug, $postTypeName);
-                    }
-                );
-            }
-        }
+        new Taxonomy($taxonomySlug, $nameSingular, $namePlural, $this->postTypeName, $args, $labels, $restArgs);
     }
 }

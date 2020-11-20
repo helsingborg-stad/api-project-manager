@@ -2,7 +2,7 @@
 
 namespace ApiProjectManager\PostTypes;
 
-class Challange
+class Challenge
 {
     public function __construct()
     {
@@ -30,9 +30,9 @@ class Challange
         );
 
         $postType = new \ApiProjectManager\Helper\PostType(
-            'challange',
-            __('Challange', APIPROJECTMANAGER_TEXTDOMAIN),
-            __('Challanges', APIPROJECTMANAGER_TEXTDOMAIN),
+            'challenge',
+            __('Challenge', APIPROJECTMANAGER_TEXTDOMAIN),
+            __('Challenges', APIPROJECTMANAGER_TEXTDOMAIN),
             $args,
             array(),
             $restArgs

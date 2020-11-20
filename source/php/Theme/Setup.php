@@ -20,7 +20,7 @@ class Setup
 
     public function forceTitleGeneratedSlug($data, $postArr)
     {
-        $allowedPostTypes = array('project', 'challange');
+        $allowedPostTypes = array('project', 'challenge');
         if (!in_array($data['post_status'], array('draft', 'pending', 'auto-draft')) && in_array($data['post_type'], $allowedPostTypes)) {
             $data['post_name'] = sanitize_title($data['post_title']);
         }

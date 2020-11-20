@@ -52,7 +52,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "challange"
+                "value": "challenge"
             }
         ]
     ],
@@ -65,4 +65,4 @@
     "active": 1,
     "description": ""
 }]
-
+

@@ -1,9 +1,10 @@
-<?php 
+<?php
 
-if (function_exists('acf_add_local_field_group')) {
-    acf_add_local_field_group(array(
+
+if (function_exists('acf_add_local_field_group')) {
+    acf_add_local_field_group(array(
     'key' => 'group_5fb3d23d5b176',
-    'title' => __('Challange details', 'api-project-manager'),
+    'title' => __('Challenge details', 'api-project-manager'),
     'fields' => array(
         0 => array(
             'key' => 'field_5fb3d29ed0769',
@@ -69,7 +70,7 @@
             0 => array(
                 'param' => 'post_type',
                 'operator' => '==',
-                'value' => 'challange',
+                'value' => 'challenge',
             ),
         ),
     ),
@@ -82,4 +83,4 @@
     'active' => 1,
     'description' => '',
 ));
-}
+}

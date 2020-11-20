@@ -1,6 +1,6 @@
 [{
     "key": "group_5fb3d23d5b176",
-    "title": "Challange details",
+    "title": "Challenge details",
     "fields": [
         {
             "key": "field_5fb3d29ed0769",
@@ -66,7 +66,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "challange"
+                "value": "challenge"
             }
         ]
     ],
@@ -79,4 +79,4 @@
     "active": 1,
     "description": ""
 }]
-
+

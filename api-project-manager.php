@@ -37,11 +37,19 @@ add_action('plugins_loaded', function () {
     $acfExportManager->setExportFolder(APIPROJECTMANAGER_PATH . 'source/php/AcfFields/');
     $acfExportManager->autoExport(array(
         'project' => 'group_5e859cc1f2e8e',
-        'internal_project' => 'group_5e85b62821647',
+        'project_internal' => 'group_5e85b62821647',
         'project_settings' => 'group_5e8d8de5b9d01',
         'project_taxonomies' => 'group_5e8d9b68e7f35',
         'project_about' => 'group_5ec3d447df4ae',
-        'project_editor' => 'group_5ec7baa64e985'
+        'project_editor' => 'group_5ec7baa64e985',
+        'project_budget' => 'group_5fb3dd484fcb4',
+        'project_impact' => 'group_5fb4e0ff4c111',
+        'challenge_taxonomies' => 'group_5fb3c4e538202',
+        'challenge_contacts' => 'group_5fc754f516d03',
+        'challenge_appearance' => 'group_5fbe2df2d16dc',
+        'challenge_preamble' => 'group_5fc4984e90cf0',
+        'tax_status_fields' => 'group_5fb7d42342ff7',
+        'tax_featured_image' => 'group_5fbffed2803dd',
     ));
     $acfExportManager->import();
 });

@@ -2,14 +2,14 @@
 
 if (function_exists('acf_add_local_field_group')) {
     acf_add_local_field_group(array(
-    'key' => 'group_5e8d8de5b9d01',
-    'title' => __('Project settings', 'api-project-manager'),
+    'key' => 'group_5fb7d42342ff7',
+    'title' => __('Status', 'api-project-manager'),
     'fields' => array(
         0 => array(
-            'key' => 'field_5e8d8df909b3b',
-            'label' => __('Google API key', 'api-project-manager'),
-            'name' => 'google_maps_api_key',
-            'type' => 'text',
+            'key' => 'field_5fb7d4611f925',
+            'label' => __('Progress value', 'api-project-manager'),
+            'name' => 'progress_value',
+            'type' => 'range',
             'instructions' => '',
             'required' => 1,
             'conditional_logic' => 0,
@@ -18,19 +18,20 @@
                 'class' => '',
                 'id' => '',
             ),
-            'default_value' => '',
-            'placeholder' => '',
+            'default_value' => 0,
+            'min' => -1,
+            'max' => '',
+            'step' => 1,
             'prepend' => '',
-            'append' => '',
-            'maxlength' => '',
+            'append' => __('%', 'api-project-manager'),
         ),
     ),
     'location' => array(
         0 => array(
             0 => array(
-                'param' => 'options_page',
+                'param' => 'taxonomy',
                 'operator' => '==',
-                'value' => 'project-options',
+                'value' => 'status',
             ),
         ),
     ),

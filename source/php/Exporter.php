@@ -96,11 +96,15 @@ class Exporter
         $exportData[__('How?', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['project_how']) ? sanitize_text_field($metaData['project_how']) : '';
         $exportData[__('Organisation', APIPROJECTMANAGER_TEXTDOMAIN)] = $metaData['organisation']->name ?? '';
         $exportData[__('Status', APIPROJECTMANAGER_TEXTDOMAIN)] = $metaData['status']->name ?? '';
+        $exportData[__('Challenge', APIPROJECTMANAGER_TEXTDOMAIN)] = $metaData['challenge']->post_title ?? '';
+        $exportData[__('Category', APIPROJECTMANAGER_TEXTDOMAIN)] = $metaData['challenge_category']->name ?? '';
         $exportData[__('Technologies', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['technology']) ? $this->gatherTaxonomyValues($metaData['technology']) : '';
         $exportData[__('Partners', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['partner']) ? $this->gatherTaxonomyValues($metaData['partner']) : '';
         $exportData[__('Sectors', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['sector']) ? $this->gatherTaxonomyValues($metaData['sector']) : '';
         $exportData[__('Global goals', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['global_goal']) ? $this->gatherTaxonomyValues($metaData['global_goal']) : '';
         $exportData[__('Address', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['address']) && is_array($metaData['address']) ? implode(array_filter($metaData['address']), ', ') : '';
+        $exportData[__('Estimated budget', APIPROJECTMANAGER_TEXTDOMAIN)] = $metaData['estimated_budget'] ?? '';
+        $exportData[__('Cost so far', APIPROJECTMANAGER_TEXTDOMAIN)] = $metaData['cost_so_far'] ?? '';
 
         return $exportData;
     }

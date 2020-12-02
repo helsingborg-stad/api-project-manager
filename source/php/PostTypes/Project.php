@@ -4,9 +4,14 @@ namespace ApiProjectManager\PostTypes;
 
 class Project
 {
+    public static $postType = 'project';
+
     public function __construct()
     {
         add_action('init', array($this, 'registerPostType'), 9);
+        add_action('acf/save_post', array($this, 'saveLastStatusWithPositiveRange'), 5, 1);
+        add_action('acf/save_post', array($this, 'inheritChallengeTermsOnSave'));
+        add_filter('acf/load_value/name=challenge_category', array($this, 'resetCategoryField'), 10, 3);
     }
 
     public function registerPostType()
@@ -29,6 +34,8 @@ class Project
           'exclude_keys' => array('author', 'acf', 'guid', 'link', 'template', 'meta', 'taxonomy', 'menu_order')
         );
 
+        $exposedPostMetaKeys = ['previous_status_progress_value', 'previous_status'];
+
         $postType = new \ApiProjectManager\Helper\PostType(
             'project',
             __('Project', APIPROJECTMANAGER_TEXTDOMAIN),
@@ -38,11 +45,27 @@ class Project
             $restArgs
         );
 
+        $postType->registerRestPostMeta($exposedPostMetaKeys);
+
         // Statuses
         $postType->addTaxonomy(
             'status',
             __('Status', APIPROJECTMANAGER_TEXTDOMAIN),
             __('Statuses', APIPROJECTMANAGER_TEXTDOMAIN),
+            array(
+              'hierarchical' => false,
+              'show_ui' => true,
+              'show_in_rest' => true,
+              'show_in_quick_edit' => false,
+              'meta_box_cb' => false,
+            )
+        );
+
+        // Category
+        $postType->addTaxonomy(
+            'challenge_category',
+            __('Category', APIPROJECTMANAGER_TEXTDOMAIN),
+            __('Categories', APIPROJECTMANAGER_TEXTDOMAIN),
             array(
               'hierarchical' => false,
               'show_ui' => true,
@@ -121,5 +144,106 @@ class Project
                 'meta_box_cb' => false,
             )
         );
+    }
+
+    /**
+     * Resets category field to avoid confusion of inherited term
+     */
+    public function resetCategoryField($value, $postId, $field)
+    {
+        if (!function_exists('get_current_screen')) {
+            return $value;
+        }
+
+        $currentScreen = get_current_screen();
+        if (empty($currentScreen)
+        || $currentScreen->parent_base !== 'edit'
+        || $currentScreen->post_type !== self::$postType
+        || empty(get_field('challenge', $postId))) {
+            return $value;
+        }
+
+        return null;
+    }
+
+    /**
+     * Inherit term from Challenge post type
+     */
+    public function inheritChallengeTermsOnSave($postId)
+    {
+        if (get_post_type($postId) !== self::$postType) {
+            return;
+        }
+        
+        $challenge = get_field('challenge', $postId);
+        $termFromTaxField = get_field('challenge_category', $postId);
+        $existingTerms = get_the_terms($postId, 'challenge_category');
+
+        // Inherit term from challenge post type
+        if (!empty($challenge)) {
+            $challengeTerms = get_the_terms($challenge->ID, 'challenge_category');
+            $challengeTerm = !empty($challengeTerms) ? $challengeTerms[0] : false;
+
+            // Set term
+            if (count($existingTerms) !== 1 && $challengeTerm
+            || in_array($challengeTerm, $existingTerms) && $challengeTerm) {
+                wp_set_post_terms($postId, array($challengeTerm->term_id), false);
+            }
+
+            // Set ACF field
+            if (empty($termFromTaxField) && $challengeTerm
+            || $challengeTerm && $termFromTaxField !== $challengeTerm) {
+                update_field('challenge_category', $challengeTerm, $postId);
+            }
+
+            return;
+        }
+
+        // Make sure we have the correct and only 1 term
+        if (!empty($termFromTaxField) && count($existingTerms) !== 1
+        || !empty($termFromTaxField) && in_array($termFromTaxField, $existingTerms)) {
+            wp_set_post_terms($postId, array($termFromTaxField->term_id), false);
+        }
+    }
+
+    /**
+     * Logs the previous status progress value if new status has negative progress value (-1)
+     */
+    public function saveLastStatusWithPositiveRange($postId)
+    {
+        $acfKeys = array(
+            'status' => 'field_5e8d9b71fc34b'
+        );
+
+        if (get_post_type($postId) !== self::$postType
+        || !isset($_POST['acf'])
+        || !isset($_POST['acf'][$acfKeys['status']])) {
+            return;
+        }
+
+        $newStatus = get_term((int) $_POST['acf'][$acfKeys['status']], 'status');
+
+        if (!$newStatus instanceof \WP_Term) {
+            return;
+        }
+        
+        $newStatusRange = get_field('progress_value', 'term_' . $newStatus->term_id);
+        
+        if ((int) $newStatusRange === -1) {
+            $prevStatus = get_field('status', $postId);
+
+            if ($prevStatus instanceof \WP_Term) {
+                $prevProgressValue = get_field('progress_value', 'term_' . $prevStatus->term_id);
+
+                if ((int) $prevProgressValue > -1) {
+                    update_post_meta($postId, 'previous_status', $prevStatus->term_id);
+                    update_post_meta($postId, 'previous_status_progress_value', (int) $prevProgressValue);
+                }
+            }
+            return;
+        }
+
+        delete_post_meta($postId, 'previous_status');
+        delete_post_meta($postId, 'previous_status_progress_value');
     }
 }

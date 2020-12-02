@@ -11,7 +11,6 @@ class PostType
     public $postTypeRestArgs;
     public $postTypeLabels;
 
-    /* Class constructor */
     public function __construct($postTypeName, $nameSingular, $namePlural, $args = array(), $labels = array(), $restArgs = array())
     {
         // Set some important variables
@@ -84,7 +83,10 @@ class PostType
         $groups = acf_get_field_groups(array('post_type' => $this->postTypeName));
 
         // List of field types to skip
-        $skipTypes = array('tab', 'accordion');
+        $skipTypes = apply_filters('api_project_manager/acf/rest_types_to_skip', array('tab', 'accordion'), $this);
+
+        // List of field keys to skip (eg. field_5fbe2dfba1337)
+        $skipKeys = apply_filters('api_project_manager/acf/rest_keys_to_skip', array(), $this);
 
         // Loop over field groups
         foreach ($groups as $key => $group) {
@@ -96,7 +98,9 @@ class PostType
             }
             // Loop over meta fields and register to rest response
             foreach ($fields as $key => $field) {
-                if (!$field['name'] || in_array($field['type'], $skipTypes)) {
+                if (!$field['name']
+                || in_array($field['type'], $skipTypes)
+                || in_array($field['key'], $skipKeys)) {
                     continue;
                 }
                 // Register meta as rest field
@@ -114,37 +118,74 @@ class PostType
 
     public function getCallback($object, $fieldName, $request)
     {
+        $isTerm = isset($object['taxonomy']);
+
         if (function_exists('get_field')) {
-            $fieldObj = get_field_object($fieldName);
+            // Adds prefix to ID and can be used for both terms and posts when getting acf fields
+            $ID = $isTerm ? 'term_' . $object['id'] : $object['id'];
+
+            $fieldObj = get_field_object($fieldName, $ID);
             $type = $fieldObj['type'] ?? 'text';
-            
+
             // Return different values based on field type
             switch ($type) {
-              case 'true_false':
-                $value = get_field($fieldName, $object['id']);
-                break;
-            case 'taxonomy':
-                $value = !empty(get_field($fieldName, $object['id'])) ? get_field($fieldName, $object['id']) : null;              
-                
-                // Wrapping so that we allways return objects in an array
-                $value = (!empty($value) && is_object($value)) ? array($value) : $value;
-                break;
+                case 'true_false':
+                    $value = get_field($fieldName, $ID);
+                    
+                    break;
+                case 'image':
+                    $value = get_field($fieldName, $ID);
+                    
+                    if (!empty($value) && is_int($value)) {
+                        $value = get_post($value, ARRAY_A);
+                    }
 
-              default:
-                // Return null if value is empty
-                $value = !empty(get_field($fieldName, $object['id'])) ? get_field($fieldName, $object['id']) : null;
-                break;
+                    break;
+                case 'taxonomy':
+                    $value = !empty(get_field($fieldName, $ID)) ? get_field($fieldName, $ID) : null;
+
+                    if (!empty($value)) {
+                        $value = is_array($value) ? $value : [$value];
+                        $value = array_map(function ($term) {
+                            $term = (array) $term;
+                            $acfFields = get_fields('term_' . $term['term_id']);
+
+                            // Merge attached term fields (from acf)
+                            if (!empty($acfFields)) {
+                                return array_merge($term, $acfFields);
+                            }
+                            
+                            return $term;
+                        }, $value);
+                    }
+                    
+                    // Wrapping so that we allways return objects in an array
+                    $value = (!empty($value) && is_object($value)) ? array($value) : $value;
+
+                    break;
+                default:
+                    // Return null if value is empty
+                    $value = !empty(get_field($fieldName, $ID)) ? get_field($fieldName, $ID) : null;
+
+                    break;
             }
-            
-            $value = apply_filters('api_project_manager/' . $this->postTypeName . '/rest_field', $value, $type, $fieldName);
-
-            return $value;
+        } else {
+            if ($isTerm) {
+                $type = 'term_meta';
+                $value = get_term_meta($object['id'], $fieldName, true);
+            } else {
+                $type = 'post_meta';
+                $value = get_post_meta($object['id'], $fieldName, true);
+            }
         }
 
-        $value = get_post_meta($object['id'], $fieldName, true);
-        $value = apply_filters('api_project_manager/' . $this->postTypeName . '/rest_field', $value, $type, $fieldName);
+        $value = apply_filters('api_project_manager/rest_field', $value, $type, $fieldName, $object);
 
-        return $value;
+        if ($isTerm) {
+            return apply_filters('api_project_manager/' . $object['taxonomy'] . '/rest_field', $value, $type, $fieldName, $object);
+        }
+        
+        return apply_filters('api_project_manager/' . $object['type'] . '/rest_field', $value, $type, $fieldName, $object);
     }
 
     public function removeResponseKeys($response, $post, $request)
@@ -158,64 +199,36 @@ class PostType
     }
 
     /* Method to attach the taxonomy to the post type */
-    public function addTaxonomy($taxonomySlug, $nameSingular, $namePlural, $args = array(), $labels = array())
+    public function addTaxonomy($taxonomySlug, $nameSingular, $namePlural, $args = array(), $labels = array(), $restArgs = array())
     {
-        if (!empty($nameSingular)) {
-            // We need to know the post type name, so the new taxonomy can be attached to it.
-            $postTypeName = $this->postTypeName;
+        new Taxonomy($taxonomySlug, $nameSingular, $namePlural, $this->postTypeName, $args, $labels, $restArgs);
+    }
 
-            // Taxonomy properties
-            $taxonomyLabels = $labels;
-            $taxonomyArgs = $args;
-
-            if (!taxonomy_exists($taxonomySlug)) {
-                // Default labels, overwrite them with the given labels.
-                $labels = array_merge(
-                    // Default
-                    array(
-                        'name'              => $namePlural,
-                        'singular_name'     => $nameSingular,
-                        'search_items'      => sprintf(__('Search %s', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($namePlural)),
-                        'all_items'         => sprintf(__('All %s', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($namePlural)),
-                        'parent_item'       => sprintf(__('Parent %s:', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($nameSingular)),
-                        'parent_item_colon' => sprintf(__('Parent %s:', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($nameSingular)) . ':',
-                        'edit_item'         => sprintf(__('Edit %s', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($nameSingular)),
-                        'update_item'       => sprintf(__('Update %s', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($nameSingular)),
-                        'add_new_item'      => sprintf(__('Add new %s', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($nameSingular)),
-                        'new_item_name'     => sprintf(__('New %s Name', APIPROJECTMANAGER_TEXTDOMAIN), strtolower($nameSingular)),
-                        'menu_name'         => $namePlural,
-                    ),
-                    // Given labels
-                    $taxonomyLabels
-                );
-
-                // Default arguments, overwitten with the given arguments
-                $args = array_merge(
-                    array(
-                      'label'                 => $namePlural,
-                      'labels'                => $labels,
-                      'public'                => true,
-                      'show_ui'               => true,
-                      'show_in_nav_menus'     => true,
-                      '_builtin'              => false,
-                      ),
-                    $taxonomyArgs
-                );
-                // Add the taxonomy to the post type
-                add_action(
-                    'init',
-                    function () use ($taxonomySlug, $postTypeName, $args) {
-                        register_taxonomy($taxonomySlug, $postTypeName, $args);
-                    }
-                );
-            } else {
-                add_action(
-                    'init',
-                    function () use ($taxonomySlug, $postTypeName) {
-                        register_taxonomy_for_object_type($taxonomySlug, $postTypeName);
-                    }
-                );
-            }
+    /* Method to attach post meta (without acf) as rest fields */
+    public function registerRestPostMeta($metaKeys)
+    {
+        $metaKeys = is_array($metaKeys) ? $metaKeys : [$metaKeys];
+        
+        if (empty($metaKeys)) {
+            return;
         }
+
+        foreach ($metaKeys as $key) {
+            register_rest_field(
+                $this->postTypeName,
+                $key,
+                array(
+                      'get_callback' => array($this, 'getPostMetaCallback'),
+                      'schema' => null,
+                    )
+            );
+        }
+    }
+
+    public function getPostMetaCallback($object, $fieldName, $request)
+    {
+        $value = get_post_meta($object['id'], $fieldName, true);
+
+        return $value;
     }
 }

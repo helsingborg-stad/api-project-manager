@@ -1,14 +1,14 @@
 [{
-    "key": "group_5e8d8de5b9d01",
-    "title": "Project settings",
+    "key": "group_5fc4984e90cf0",
+    "title": "Preamble",
     "fields": [
         {
-            "key": "field_5e8d8df909b3b",
-            "label": "Google API key",
-            "name": "google_maps_api_key",
-            "type": "text",
+            "key": "field_5fc4986242d11",
+            "label": "Preamble",
+            "name": "preamble",
+            "type": "textarea",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -17,23 +17,23 @@
             },
             "default_value": "",
             "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
+            "maxlength": "",
+            "rows": 1,
+            "new_lines": ""
         }
     ],
     "location": [
         [
             {
-                "param": "options_page",
+                "param": "post_type",
                 "operator": "==",
-                "value": "project-options"
+                "value": "challenge"
             }
         ]
     ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
+    "menu_order": -9999,
+    "position": "acf_after_title",
+    "style": "seamless",
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",

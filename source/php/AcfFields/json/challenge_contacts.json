@@ -1,10 +1,10 @@
 [{
-    "key": "group_5fb3d23d5b176",
-    "title": "Challenge details",
+    "key": "group_5fc754f516d03",
+    "title": "Contact",
     "fields": [
         {
             "key": "field_5fb3d29ed0769",
-            "label": "Contacts",
+            "label": "",
             "name": "contacts",
             "type": "repeater",
             "instructions": "",
@@ -46,7 +46,7 @@
                     "name": "email",
                     "type": "email",
                     "instructions": "",
-                    "required": 1,
+                    "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "50",

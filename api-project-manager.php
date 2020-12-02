@@ -45,7 +45,7 @@ add_action('plugins_loaded', function () {
         'project_budget' => 'group_5fb3dd484fcb4',
         'project_impact' => 'group_5fb4e0ff4c111',
         'challenge_taxonomies' => 'group_5fb3c4e538202',
-        'challenge_details' => 'group_5fb3d23d5b176',
+        'challenge_contacts' => 'group_5fc754f516d03',
         'challenge_appearance' => 'group_5fbe2df2d16dc',
         'challenge_preamble' => 'group_5fc4984e90cf0',
         'tax_status_fields' => 'group_5fb7d42342ff7',

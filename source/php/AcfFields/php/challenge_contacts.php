@@ -2,12 +2,12 @@
 
 if (function_exists('acf_add_local_field_group')) {
     acf_add_local_field_group(array(
-    'key' => 'group_5fb3d23d5b176',
-    'title' => __('Challenge details', 'api-project-manager'),
+    'key' => 'group_5fc754f516d03',
+    'title' => __('Contact', 'api-project-manager'),
     'fields' => array(
         0 => array(
             'key' => 'field_5fb3d29ed0769',
-            'label' => __('Contacts', 'api-project-manager'),
+            'label' => '',
             'name' => 'contacts',
             'type' => 'repeater',
             'instructions' => '',
@@ -20,7 +20,7 @@
             ),
             'collapsed' => '',
             'min' => 0,
-            'max' => 0,
+            'max' => 1,
             'layout' => 'block',
             'button_label' => __('Add contact person', 'api-project-manager'),
             'sub_fields' => array(
@@ -30,7 +30,7 @@
                     'name' => 'name',
                     'type' => 'text',
                     'instructions' => '',
-                    'required' => 0,
+                    'required' => 1,
                     'conditional_logic' => 0,
                     'wrapper' => array(
                         'width' => '50',

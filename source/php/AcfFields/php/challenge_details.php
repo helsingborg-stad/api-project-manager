@@ -20,7 +20,7 @@
             ),
             'collapsed' => '',
             'min' => 0,
-            'max' => 0,
+            'max' => 1,
             'layout' => 'block',
             'button_label' => __('Add contact person', 'api-project-manager'),
             'sub_fields' => array(
@@ -30,7 +30,7 @@
                     'name' => 'name',
                     'type' => 'text',
                     'instructions' => '',
-                    'required' => 0,
+                    'required' => 1,
                     'conditional_logic' => 0,
                     'wrapper' => array(
                         'width' => '50',
@@ -49,7 +49,7 @@
                     'name' => 'email',
                     'type' => 'email',
                     'instructions' => '',
-                    'required' => 0,
+                    'required' => 1,
                     'conditional_logic' => 0,
                     'wrapper' => array(
                         'width' => '50',

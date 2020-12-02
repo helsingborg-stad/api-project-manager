@@ -3,28 +3,6 @@
     "title": "Taxonomies",
     "fields": [
         {
-            "key": "field_5e8dce344f6b4",
-            "label": "Organisation",
-            "name": "organisation",
-            "type": "taxonomy",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "taxonomy": "organisation",
-            "field_type": "select",
-            "allow_null": 0,
-            "add_term": 1,
-            "save_terms": 1,
-            "load_terms": 1,
-            "return_format": "object",
-            "multiple": 0
-        },
-        {
             "key": "field_5e8d9b71fc34b",
             "label": "Status",
             "name": "status",
@@ -38,31 +16,9 @@
                 "id": ""
             },
             "taxonomy": "status",
-            "field_type": "select",
+            "field_type": "radio",
             "allow_null": 0,
-            "add_term": 1,
-            "save_terms": 1,
-            "load_terms": 1,
-            "return_format": "object",
-            "multiple": 0
-        },
-        {
-            "key": "field_5fb3d0dbb2bd9",
-            "label": "Category",
-            "name": "challenge_category",
-            "type": "taxonomy",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "taxonomy": "challenge_category",
-            "field_type": "select",
-            "allow_null": 0,
-            "add_term": 1,
+            "add_term": 0,
             "save_terms": 1,
             "load_terms": 1,
             "return_format": "object",
@@ -89,6 +45,57 @@
             "multiple": 0,
             "return_format": "object",
             "ui": 1
+        },
+        {
+            "key": "field_5fb3d0dbb2bd9",
+            "label": "Category",
+            "name": "challenge_category",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5fb3d0a6b2bd8",
+                        "operator": "==empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "challenge_category",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 0,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_5e8dce344f6b4",
+            "label": "Organisation",
+            "name": "organisation",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "organisation",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 1,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
         },
         {
             "key": "field_5e8dd435ea9df",
@@ -188,7 +195,7 @@
             }
         ]
     ],
-    "menu_order": 99,
+    "menu_order": 10,
     "position": "side",
     "style": "default",
     "label_placement": "top",

@@ -83,7 +83,10 @@ class PostType
         $groups = acf_get_field_groups(array('post_type' => $this->postTypeName));
 
         // List of field types to skip
-        $skipTypes = array('tab', 'accordion');
+        $skipTypes = apply_filters('api_project_manager/acf/rest_types_to_skip', array('tab', 'accordion'), $this);
+
+        // List of field keys to skip (eg. field_5fbe2dfba1337)
+        $skipKeys = apply_filters('api_project_manager/acf/rest_keys_to_skip', array(), $this);
 
         // Loop over field groups
         foreach ($groups as $key => $group) {
@@ -95,7 +98,9 @@ class PostType
             }
             // Loop over meta fields and register to rest response
             foreach ($fields as $key => $field) {
-                if (!$field['name'] || in_array($field['type'], $skipTypes)) {
+                if (!$field['name']
+                || in_array($field['type'], $skipTypes)
+                || in_array($field['key'], $skipKeys)) {
                     continue;
                 }
                 // Register meta as rest field
@@ -113,36 +118,74 @@ class PostType
 
     public function getCallback($object, $fieldName, $request)
     {
+        $isTerm = isset($object['taxonomy']);
+
         if (function_exists('get_field')) {
-            $fieldObj = get_field_object($fieldName);
+            // Adds prefix to ID and can be used for both terms and posts when getting acf fields
+            $ID = $isTerm ? 'term_' . $object['id'] : $object['id'];
+
+            $fieldObj = get_field_object($fieldName, $ID);
             $type = $fieldObj['type'] ?? 'text';
-            
+
             // Return different values based on field type
             switch ($type) {
                 case 'true_false':
-                    $value = get_field($fieldName, $object['id']);
+                    $value = get_field($fieldName, $ID);
+                    
+                    break;
+                case 'image':
+                    $value = get_field($fieldName, $ID);
+                    
+                    if (!empty($value) && is_int($value)) {
+                        $value = get_post($value, ARRAY_A);
+                    }
+
                     break;
                 case 'taxonomy':
-                    $value = !empty(get_field($fieldName, $object['id'])) ? get_field($fieldName, $object['id']) : null;
+                    $value = !empty(get_field($fieldName, $ID)) ? get_field($fieldName, $ID) : null;
+
+                    if (!empty($value)) {
+                        $value = is_array($value) ? $value : [$value];
+                        $value = array_map(function ($term) {
+                            $term = (array) $term;
+                            $acfFields = get_fields('term_' . $term['term_id']);
+
+                            // Merge attached term fields (from acf)
+                            if (!empty($acfFields)) {
+                                return array_merge($term, $acfFields);
+                            }
+                            
+                            return $term;
+                        }, $value);
+                    }
                     
                     // Wrapping so that we allways return objects in an array
                     $value = (!empty($value) && is_object($value)) ? array($value) : $value;
+
                     break;
                 default:
                     // Return null if value is empty
-                    $value = !empty(get_field($fieldName, $object['id'])) ? get_field($fieldName, $object['id']) : null;
+                    $value = !empty(get_field($fieldName, $ID)) ? get_field($fieldName, $ID) : null;
+
                     break;
             }
-            
-            $value = apply_filters('api_project_manager/' . $this->postTypeName . '/rest_field', $value, $type, $fieldName);
-
-            return $value;
+        } else {
+            if ($isTerm) {
+                $type = 'term_meta';
+                $value = get_term_meta($object['id'], $fieldName, true);
+            } else {
+                $type = 'post_meta';
+                $value = get_post_meta($object['id'], $fieldName, true);
+            }
         }
 
-        $value = get_post_meta($object['id'], $fieldName, true);
-        $value = apply_filters('api_project_manager/' . $this->postTypeName . '/rest_field', $value, $type, $fieldName);
+        $value = apply_filters('api_project_manager/rest_field', $value, $type, $fieldName, $object);
 
-        return $value;
+        if ($isTerm) {
+            return apply_filters('api_project_manager/' . $object['taxonomy'] . '/rest_field', $value, $type, $fieldName, $object);
+        }
+        
+        return apply_filters('api_project_manager/' . $object['type'] . '/rest_field', $value, $type, $fieldName, $object);
     }
 
     public function removeResponseKeys($response, $post, $request)
@@ -159,5 +202,33 @@ class PostType
     public function addTaxonomy($taxonomySlug, $nameSingular, $namePlural, $args = array(), $labels = array(), $restArgs = array())
     {
         new Taxonomy($taxonomySlug, $nameSingular, $namePlural, $this->postTypeName, $args, $labels, $restArgs);
+    }
+
+    /* Method to attach post meta (without acf) as rest fields */
+    public function registerRestPostMeta($metaKeys)
+    {
+        $metaKeys = is_array($metaKeys) ? $metaKeys : [$metaKeys];
+        
+        if (empty($metaKeys)) {
+            return;
+        }
+
+        foreach ($metaKeys as $key) {
+            register_rest_field(
+                $this->postTypeName,
+                $key,
+                array(
+                      'get_callback' => array($this, 'getPostMetaCallback'),
+                      'schema' => null,
+                    )
+            );
+        }
+    }
+
+    public function getPostMetaCallback($object, $fieldName, $request)
+    {
+        $value = get_post_meta($object['id'], $fieldName, true);
+
+        return $value;
     }
 }

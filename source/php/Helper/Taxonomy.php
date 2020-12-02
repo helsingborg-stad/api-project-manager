@@ -2,7 +2,7 @@
 
 namespace ApiProjectManager\Helper;
 
-class Taxonomy
+class Taxonomy extends PostType
 {
     public $taxonomyName;
     public $nameSingular;
@@ -21,7 +21,7 @@ class Taxonomy
         $this->namePlural = $namePlural;
         $this->taxonomyArgs = $taxonomyArgs;
         $this->taxonomyLabels = $taxonomyLabels;
-        $this->taxonomyRestArgs = $restArgs;
+        $this->taxonomyRestArgs = $taxonomyRestArgs;
 
 
         $this->postTypeName = $postTypeName;
@@ -113,7 +113,7 @@ class Taxonomy
                 if (!$field['name'] || in_array($field['type'], $skipTypes)) {
                     continue;
                 }
-
+                
                 // Register meta as rest field
                 register_rest_field(
                     $this->taxonomyName,
@@ -125,40 +125,6 @@ class Taxonomy
                 );
             }
         }
-    }
-
-    public function getCallback($object, $fieldName, $request)
-    {
-        if (function_exists('get_field')) {
-            $fieldObj = get_field_object($fieldName);
-            $type = $fieldObj['type'] ?? 'text';
-            
-            // Return different values based on field type
-            switch ($type) {
-                case 'true_false':
-                    $value = get_field($fieldName, 'term_' . $object['id']);
-                    break;
-                case 'taxonomy':
-                    $value = !empty(get_field($fieldName, 'term_' . $object['id'])) ? get_field($fieldName, 'term_' . $object['id']) : null;
-                
-                    // Wrapping so that we allways return objects in an array
-                    $value = (!empty($value) && is_object($value)) ? array($value) : $value;
-                    break;
-                default:
-                    // Return null if value is empty
-                    $value = !empty(get_field($fieldName, 'term_' . $object['id'])) ? get_field($fieldName, 'term_' . $object['id']) : null;
-                    break;
-            }
-            
-            $value = apply_filters('api_project_manager/taxonomy/' . $this->taxonomyName . '/rest_field', $value, $type, $fieldName);
-
-            return $value;
-        }
-
-        $value = get_term_meta($object['id'], $fieldName, true);
-        $value = apply_filters('api_project_manager/taxonomy/' . $this->taxonomyName . '/rest_field', $value, $type, $fieldName);
-
-        return $value;
     }
 
     public function removeResponseKeys($response, $post, $request)
@@ -175,5 +141,32 @@ class Taxonomy
         $response->data = array_diff_key($response->data, array_flip($excludeKeys));
 
         return $response;
+    }
+
+    public function registerRestTermMeta($metaKeys)
+    {
+        $metaKeys = is_array($metaKeys) ? $metaKeys : [$metaKeys];
+
+        if (empty($metaKeys)) {
+            return;
+        }
+
+        foreach ($metaKeys as $key) {
+            register_rest_field(
+                $this->taxonomyName,
+                $key,
+                array(
+                      'get_callback' => array($this, 'getTermMetaCallback'),
+                      'schema' => null,
+                    )
+            );
+        }
+    }
+
+    public function getTermMetaCallback($object, $fieldName, $request)
+    {
+        $value = get_term_meta($object['id'], $fieldName, true);
+
+        return $value;
     }
 }

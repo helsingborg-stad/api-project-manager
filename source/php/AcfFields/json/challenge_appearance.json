@@ -1,0 +1,109 @@
+[{
+    "key": "group_5fbe2df2d16dc",
+    "title": "Appearance",
+    "fields": [
+        {
+            "key": "field_5fbe2dfba3637",
+            "label": "Theme Color",
+            "name": "theme_color",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "purple": "Purple",
+                "blue": "Blue",
+                "green": "Green",
+                "red": "Red"
+            },
+            "default_value": [
+                "purple"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5fc1838e39cba",
+            "label": "Featured Image position X",
+            "name": "featured_image_position_x",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "left": "Left",
+                "center": "Center",
+                "right": "Right"
+            },
+            "default_value": [
+                "center"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5fc1830739cb9",
+            "label": "Featured Image position Y",
+            "name": "featured_image_position_y",
+            "type": "select",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "top": "Top",
+                "center": "Center",
+                "bottom": "Bottom"
+            },
+            "default_value": [
+                "center"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "challenge"
+            }
+        ]
+    ],
+    "menu_order": 10000,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": ""
+}]
+

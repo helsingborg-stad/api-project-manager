@@ -12,9 +12,28 @@ class UI
     {
         add_action('admin_menu', array($this, 'removeAdminMenuItems'), 100);
         add_action('wp_before_admin_bar_render', array($this, 'removeAdminBarItems'), 100);
-        add_action('admin_menu', array($this, 'removeMetaBox'));
+        add_action('admin_menu', array($this, 'removeMetaBoxes'), 100);
         add_filter('post_row_actions', array($this, 'removeRowActions'), 10, 1);
         add_filter('page_row_actions', array($this, 'removeRowActions'), 10, 1);
+        add_filter('acf/get_field_groups', array($this, 'removeMunicipioAcfGroups'), 100, 1);
+    }
+
+    public function removeMunicipioAcfGroups($groups)
+    {
+        $groupsToDisable = array(
+            'group_56d83cff12bb3',  //Navigation settings
+            'group_56c33cf1470dc'   //Display settings
+        );
+
+        $groups = array_map(function ($group) use ($groupsToDisable) {
+            if (isset($group['key']) && in_array($group['key'], $groupsToDisable)) {
+                $group['active'] = 0;
+            }
+
+            return $group;
+        }, $groups);
+
+        return $groups;
     }
 
     public function removeAdminMenuItems()
@@ -22,6 +41,7 @@ class UI
         remove_menu_page('index.php');                      // Dashboard
         remove_menu_page('edit.php');                       // Posts
         remove_menu_page('edit.php?post_type=page');        // Pages
+        remove_menu_page('nestedpages');                    // nestedpages
         remove_menu_page('edit-comments.php');              // Comments
         remove_menu_page('tools.php');                      // Tools
     }
@@ -54,8 +74,43 @@ class UI
     }
 
     // Remove Permalink meta box on edit posts
-    public function removeMetaBox()
+    public function removeMetaBoxes()
     {
-        remove_meta_box('slugdiv', array('project'), 'normal');
+        $screens = array('project', 'challenge');
+        $metaBoxesToRemove = array(
+            [
+                'id' => 'slugdiv',
+                'screens' => $screens,
+                'context' => 'side'
+            ],
+            [
+                'id' => 'pageparentdiv',
+                'screens' => $screens,
+                'context' => 'side'
+            ],
+            [
+                'id' => 'lix-calculator',
+                'screens' => $screens,
+                'context' => 'advanced'
+            ],
+            [
+                'id' => 'commentstatusdiv',
+                'screens' => $screens,
+                'context' => 'side'
+            ],
+            [
+                'id' => 'commentsdiv',
+                'screens' => $screens,
+                'context' => 'side'
+            ],
+        );
+        
+        $metaBoxesToRemove  = apply_filters('ApiProjectManager/Theme/UI/removeMetaBoxes', $metaBoxesToRemove);
+
+        if (!empty($metaBoxesToRemove)) {
+            foreach ($metaBoxesToRemove as $metaBox) {
+                remove_meta_box($metaBox['id'], $metaBox['screens'], $metaBox['context']);
+            }
+        }
     }
 }

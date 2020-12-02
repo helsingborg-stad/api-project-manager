@@ -30,7 +30,7 @@
                     'name' => 'impact_goal',
                     'type' => 'text',
                     'instructions' => '',
-                    'required' => 0,
+                    'required' => 1,
                     'conditional_logic' => 0,
                     'wrapper' => array(
                         'width' => '',
@@ -102,7 +102,7 @@
         ),
     ),
     'menu_order' => 0,
-    'position' => 'normal',
+    'position' => 'acf_after_title',
     'style' => 'default',
     'label_placement' => 'top',
     'instruction_placement' => 'label',

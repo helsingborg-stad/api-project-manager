@@ -26,7 +26,7 @@ class Challenge
         );
 
         $restArgs = array(
-          'exclude_keys' => array('author', 'acf', 'guid', 'link', 'template', 'meta', 'taxonomy', 'menu_order')
+          'exclude_keys' => array('author', 'acf', 'guid', 'link', 'template', 'meta', 'taxonomy')
         );
 
         $postType = new \ApiProjectManager\Helper\PostType(

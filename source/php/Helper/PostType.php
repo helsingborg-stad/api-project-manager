@@ -26,6 +26,12 @@ class PostType
             add_action('init', array(&$this, 'registerPostType'));
             add_action('rest_api_init', array($this, 'registerAcfMetadataInApi'));
             add_action('rest_prepare_' . $postTypeName, array($this, 'removeResponseKeys'), 10, 3);
+
+            if (!empty($restArgs)
+                && !empty($restArgs['exclude_keys'])
+                && !in_array('menu_order', $restArgs['exclude_keys'])) {
+                add_action('rest_api_init', array($this, 'registerMenuOrderInApi'));
+            }
         }
     }
 
@@ -230,5 +236,20 @@ class PostType
         $value = get_post_meta($object['id'], $fieldName, true);
 
         return $value;
+    }
+
+    public function registerMenuOrderInApi()
+    {
+        register_rest_field(
+            $this->postTypeName,
+            'menu_order',
+            array(
+                'get_callback' => function ($object, $fieldName, $request) {
+                    $post = get_post($object['id']);
+                    return $post->menu_order;
+                },
+                'schema' => null,
+            )
+        );
     }
 }

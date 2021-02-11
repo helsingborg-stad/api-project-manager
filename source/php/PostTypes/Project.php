@@ -82,7 +82,7 @@ class Project
             __('Technologies', APIPROJECTMANAGER_TEXTDOMAIN),
             array(
               'hierarchical' => true,
-              'show_ui' => true,
+              'show_ui' => in_array('project_editor', wp_get_current_user()->roles) ? false : true,
               'show_in_rest' => true,
               'show_in_quick_edit' => false,
               'meta_box_cb' => false,

@@ -65,5 +65,19 @@ class Challenge
                 'meta_box_cb' => false,
             )
         );
+        
+        // Global goals
+        $postType->addTaxonomy(
+            'focal_point',
+            __('Focal Point', APIPROJECTMANAGER_TEXTDOMAIN),
+            __('Focal points', APIPROJECTMANAGER_TEXTDOMAIN),
+            array(
+                'hierarchical' => true,
+                'show_ui' => true,
+                'show_in_rest' => true,
+                'show_in_quick_edit' => false,
+                'meta_box_cb' => false,
+            )
+        );
     }
 }

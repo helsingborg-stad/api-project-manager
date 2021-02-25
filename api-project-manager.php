@@ -51,6 +51,7 @@ add_action('plugins_loaded', function () {
         'challenge_preamble' => 'group_5fc4984e90cf0',
         'tax_status_fields' => 'group_5fb7d42342ff7',
         'tax_featured_image' => 'group_5fbffed2803dd',
+        'tax_focal_point_meta' => 'group_6037bb3ded5e1',
     ));
     $acfExportManager->import();
 });

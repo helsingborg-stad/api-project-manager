@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Project manager\n"
-"POT-Creation-Date: 2021-02-09 14:41+0100\n"
-"PO-Revision-Date: 2021-02-09 14:43+0100\n"
+"POT-Creation-Date: 2021-02-25 16:37+0100\n"
+"PO-Revision-Date: 2021-02-25 16:38+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -20,30 +20,13 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: api-project-manager.php:69
+#: api-project-manager.php:70
 msgid ""
 "API Project Manager require Advanced Custom Fields PRO to function. Please "
 "make sure that this is installed and enabled."
 msgstr ""
-
-#: source/php/AcfFields/php/challange_taxonomies.php:6
-#: source/php/AcfFields/php/challenge_taxonomies.php:6
-#: source/php/AcfFields/php/project_taxonomies.php:6
-msgid "Taxonomies"
-msgstr "Taxonomier"
-
-#: source/php/AcfFields/php/challange_taxonomies.php:10
-#: source/php/AcfFields/php/challenge_taxonomies.php:10
-#: source/php/AcfFields/php/project_taxonomies.php:54
-#: source/php/Exporter.php:100 source/php/PostTypes/Challenge.php:44
-#: source/php/PostTypes/Project.php:67
-msgid "Category"
-msgstr "Kategori"
-
-#: source/php/AcfFields/php/challange_taxonomies.php:32
-#: source/php/AcfFields/php/challenge_taxonomies.php:32
-msgid "Global Goal"
-msgstr "Globala mål"
+"API Project Manager kräver Advanced Custom Fields PRO för att fungera. Se "
+"till att detta är installerat och aktiverat."
 
 #: source/php/AcfFields/php/challenge_appearance.php:6
 msgid "Appearance"
@@ -109,69 +92,91 @@ msgstr "Nertill"
 
 #: source/php/AcfFields/php/challenge_contacts.php:6
 msgid "Contact"
-msgstr ""
+msgstr "Kontakt"
 
 #: source/php/AcfFields/php/challenge_contacts.php:25
 #: source/php/AcfFields/php/project.php:59
 msgid "Add contact person"
-msgstr ""
+msgstr "Lägg till kontaktperson"
 
 #: source/php/AcfFields/php/challenge_contacts.php:29
 #: source/php/AcfFields/php/project.php:63
 msgid "Name"
-msgstr ""
+msgstr "Namn"
 
 #: source/php/AcfFields/php/challenge_contacts.php:48
 #: source/php/AcfFields/php/project.php:82
 msgid "Email"
-msgstr ""
+msgstr "E-post"
 
 #: source/php/AcfFields/php/challenge_preamble.php:6
 #: source/php/AcfFields/php/challenge_preamble.php:10
 msgid "Preamble"
-msgstr ""
+msgstr "Inledning"
+
+#: source/php/AcfFields/php/challenge_taxonomies.php:6
+#: source/php/AcfFields/php/project_taxonomies.php:6
+msgid "Taxonomies"
+msgstr "Taxonomier"
+
+#: source/php/AcfFields/php/challenge_taxonomies.php:10
+#: source/php/AcfFields/php/project_taxonomies.php:54
+#: source/php/Exporter.php:100 source/php/PostTypes/Challenge.php:44
+#: source/php/PostTypes/Project.php:67
+msgid "Category"
+msgstr "Kategori"
+
+#: source/php/AcfFields/php/challenge_taxonomies.php:32
+msgid "Global Goal"
+msgstr "Globala mål"
+
+#: source/php/AcfFields/php/challenge_taxonomies.php:54
+msgid "Focal Points"
+msgstr "Brännpunkter"
 
 #: source/php/AcfFields/php/project.php:6
 msgid "Project details"
-msgstr ""
+msgstr "Initiativets detaljer"
 
 #: source/php/AcfFields/php/project.php:10
 msgid "Location & Contact"
-msgstr ""
+msgstr "Plats & kontaktpersoner"
 
 #: source/php/AcfFields/php/project.php:26
 msgid "Map"
-msgstr ""
+msgstr "Karta"
 
 #: source/php/AcfFields/php/project.php:44
 msgid "Contacts"
-msgstr ""
+msgstr "Kontaktpersoner"
 
 #: source/php/AcfFields/php/project.php:102
 #: source/php/AcfFields/php/project.php:118
 msgid "Links"
-msgstr ""
+msgstr "Länkar"
 
 #: source/php/AcfFields/php/project.php:137
 #: source/php/AcfFields/php/project.php:209 source/php/Exporter.php:93
 msgid "Title"
 msgstr "Titel"
 
-#: source/php/AcfFields/php/project.php:156 source/php/Theme/Setup.php:41
+#: source/php/AcfFields/php/project.php:156
+#: source/php/AcfFields/php/tax_focal_point_meta.php:10
+#: source/php/Theme/Setup.php:41
 msgid "URL"
 msgstr "URL\v"
 
 #: source/php/AcfFields/php/project.php:174
 msgid "Media"
-msgstr ""
+msgstr "Media"
 
 #: source/php/AcfFields/php/project.php:190
 msgid "Files"
-msgstr ""
+msgstr "Filer"
 
 #: source/php/AcfFields/php/project.php:228
 msgid "File"
-msgstr ""
+msgstr "Fil"
 
 #: source/php/AcfFields/php/project.php:249
 msgid "Gallery"
@@ -225,11 +230,11 @@ msgstr "Hur löser vi detta - vilken typ av lösningar är det vi testar"
 
 #: source/php/AcfFields/php/project_budget.php:6
 msgid "Budget"
-msgstr ""
+msgstr "Budget"
 
 #: source/php/AcfFields/php/project_budget.php:10 source/php/Exporter.php:106
 msgid "Estimated budget"
-msgstr ""
+msgstr "Estimerad budget"
 
 #: source/php/AcfFields/php/project_budget.php:24
 #: source/php/AcfFields/php/project_budget.php:45
@@ -238,12 +243,12 @@ msgstr ""
 
 #: source/php/AcfFields/php/project_budget.php:31 source/php/Exporter.php:107
 msgid "Cost so far"
-msgstr ""
+msgstr "Kostnad hitintills"
 
 #: source/php/AcfFields/php/project_editor.php:6
 #: source/php/Roles/ProjectEditor.php:175
 msgid "Project Editor"
-msgstr ""
+msgstr "Projektredaktör"
 
 #: source/php/AcfFields/php/project_editor.php:10
 #: source/php/AcfFields/php/project_taxonomies.php:83
@@ -251,41 +256,45 @@ msgstr ""
 msgid "Organisation"
 msgstr "Organisation"
 
-#: source/php/AcfFields/php/project_impact.php:10
+#: source/php/AcfFields/php/project_impact.php:8
+msgid "Project impact"
+msgstr "Initiativets påverkan"
+
+#: source/php/AcfFields/php/project_impact.php:12
 msgid "Impact Goals"
 msgstr "Effekmål"
 
-#: source/php/AcfFields/php/project_impact.php:25
+#: source/php/AcfFields/php/project_impact.php:27
 msgid "Add goal"
-msgstr ""
+msgstr "Lägg till mål"
 
-#: source/php/AcfFields/php/project_impact.php:29
+#: source/php/AcfFields/php/project_impact.php:31
 msgid "Expected output"
-msgstr ""
+msgstr "Förväntat resultat"
 
-#: source/php/AcfFields/php/project_impact.php:48
+#: source/php/AcfFields/php/project_impact.php:50
 msgid "Comment"
-msgstr ""
+msgstr "Kommentera"
 
-#: source/php/AcfFields/php/project_impact.php:75
+#: source/php/AcfFields/php/project_impact.php:77
 msgid "Completed"
-msgstr ""
+msgstr "Slutförd"
 
 #: source/php/AcfFields/php/project_internal.php:6
 msgid "Internal project"
-msgstr ""
+msgstr "Internt initiativ"
 
 #: source/php/AcfFields/php/project_internal.php:13
 msgid "Select if this is an internal project."
-msgstr ""
+msgstr "Välj om detta är ett internt projekt"
 
 #: source/php/AcfFields/php/project_internal.php:24
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: source/php/AcfFields/php/project_internal.php:25
 msgid "No"
-msgstr ""
+msgstr "Nej"
 
 #: source/php/AcfFields/php/project_resident_involvement.php:6
 #: source/php/AcfFields/php/project_resident_involvement.php:10
@@ -340,6 +349,10 @@ msgstr "Globala mål"
 msgid "Featured Image"
 msgstr "Utvald Bild"
 
+#: source/php/AcfFields/php/tax_focal_point_meta.php:6
+msgid "Focal Point Meta"
+msgstr "Brännpunkts meta"
+
 #: source/php/AcfFields/php/tax_status_fields.php:10
 msgid "Progress value"
 msgstr "Framstegsvärde"
@@ -369,43 +382,43 @@ msgstr "Globala mål"
 msgid "Address"
 msgstr "Adress"
 
-#: source/php/Helper/PostType.php:41 source/php/Helper/PostType.php:42
+#: source/php/Helper/PostType.php:47 source/php/Helper/PostType.php:48
 #: source/php/Helper/Taxonomy.php:67
 #, php-format
 msgid "Add new %s"
 msgstr "Skapa nytt %s"
 
-#: source/php/Helper/PostType.php:43 source/php/Helper/Taxonomy.php:65
+#: source/php/Helper/PostType.php:49 source/php/Helper/Taxonomy.php:65
 #, php-format
 msgid "Edit %s"
 msgstr "Redigera %s"
 
-#: source/php/Helper/PostType.php:44
+#: source/php/Helper/PostType.php:50
 #, php-format
 msgid "New %s"
 msgstr "Nytt %s"
 
-#: source/php/Helper/PostType.php:45
+#: source/php/Helper/PostType.php:51
 #, php-format
 msgid "View %s"
 msgstr "Visa %s"
 
-#: source/php/Helper/PostType.php:46 source/php/Helper/Taxonomy.php:61
+#: source/php/Helper/PostType.php:52 source/php/Helper/Taxonomy.php:61
 #, php-format
 msgid "Search %s"
 msgstr "Sök %s"
 
-#: source/php/Helper/PostType.php:47
+#: source/php/Helper/PostType.php:53
 #, php-format
 msgid "No %s found"
 msgstr "Inga %s hittades"
 
-#: source/php/Helper/PostType.php:48
+#: source/php/Helper/PostType.php:54
 #, php-format
 msgid "No %s found in trash"
 msgstr "Inga %s hittades i papperskorgen"
 
-#: source/php/Helper/PostType.php:49 source/php/Helper/Taxonomy.php:63
+#: source/php/Helper/PostType.php:55 source/php/Helper/Taxonomy.php:63
 #: source/php/Helper/Taxonomy.php:64
 #, php-format
 msgid "Parent %s:"
@@ -444,6 +457,14 @@ msgstr "Utmaningar"
 msgid "Categories"
 msgstr "Kategorier"
 
+#: source/php/PostTypes/Challenge.php:72
+msgid "Focal Point"
+msgstr "Brännpunkt"
+
+#: source/php/PostTypes/Challenge.php:73
+msgid "Focal points"
+msgstr "Brännpunkter"
+
 #: source/php/PostTypes/Project.php:41
 msgid "Project"
 msgstr "Projekt"
@@ -474,19 +495,19 @@ msgstr "Partner"
 
 #: source/php/Theme/Setup.php:105
 msgid "Post updated."
-msgstr ""
+msgstr "Inlägget uppdaterades."
 
 #: source/php/Theme/Setup.php:106
 msgid "Post published."
-msgstr ""
+msgstr "Inlägget publicerat."
 
 #: source/php/Theme/Setup.php:107
 msgid "Post submitted."
-msgstr ""
+msgstr "Inlägg skickat."
 
 #: source/php/Theme/Setup.php:108
 msgid "Post draft updated."
-msgstr ""
+msgstr "Utkast uppdaterades."
 
 #: vendor/helsingborg-stad/acf-export-manager/src/AcfExportManager.php:364
 msgid "Export with AcfExportManager"

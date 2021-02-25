@@ -48,8 +48,8 @@
         },
         {
             "key": "field_6037bbc034155",
-            "label": "Focal Points",
-            "name": "focal_points",
+            "label": "Focal Point",
+            "name": "focal_point",
             "type": "taxonomy",
             "instructions": "",
             "required": 0,
@@ -59,9 +59,9 @@
                 "class": "",
                 "id": ""
             },
-            "taxonomy": "category",
+            "taxonomy": "focal_point",
             "field_type": "multi_select",
-            "allow_null": 0,
+            "allow_null": 1,
             "add_term": 0,
             "save_terms": 1,
             "load_terms": 1,

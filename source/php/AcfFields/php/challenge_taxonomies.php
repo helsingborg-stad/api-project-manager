@@ -49,6 +49,28 @@
             'return_format' => 'object',
             'multiple' => 0,
         ),
+        2 => array(
+            'key' => 'field_6037bbc034155',
+            'label' => __('Focal Points', 'api-project-manager'),
+            'name' => 'focal_points',
+            'type' => 'taxonomy',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'taxonomy' => 'category',
+            'field_type' => 'multi_select',
+            'allow_null' => 0,
+            'add_term' => 0,
+            'save_terms' => 1,
+            'load_terms' => 1,
+            'return_format' => 'object',
+            'multiple' => 0,
+        ),
     ),
     'location' => array(
         0 => array(

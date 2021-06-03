@@ -11,6 +11,7 @@ class App
         new Theme\Enqueue();
         new PostTypes\Project();
         new PostTypes\Challenge();
+        new PostTypes\Platform();
         new Roles\ProjectEditor();
         new Options();
         new Exporter();

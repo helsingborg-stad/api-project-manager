@@ -37,5 +37,19 @@ class Platform
             array(),
             $restArgs
         );
+
+        // Partners
+        $postType->addTaxonomy(
+            'partner',
+            __('Partner', APIPROJECTMANAGER_TEXTDOMAIN),
+            __('Partners', APIPROJECTMANAGER_TEXTDOMAIN),
+            array(
+                'hierarchical' => true,
+                'show_ui' => true,
+                'show_in_rest' => true,
+                'show_in_quick_edit' => false,
+                'meta_box_cb' => false,
+            )
+        );
     }
 }

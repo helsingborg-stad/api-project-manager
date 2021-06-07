@@ -54,7 +54,7 @@
                             "class": "",
                             "id": ""
                         },
-                        "return_format": "array",
+                        "return_format": "url",
                         "library": "all",
                         "min_size": "",
                         "max_size": "",
@@ -194,6 +194,28 @@
                         "placeholder": ""
                     }
                 ]
+            },
+            {
+                "key": "field_60bdef9149be4",
+                "label": "Partners",
+                "name": "partner",
+                "type": "taxonomy",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "taxonomy": "partner",
+                "field_type": "multi_select",
+                "allow_null": 1,
+                "add_term": 1,
+                "save_terms": 0,
+                "load_terms": 0,
+                "return_format": "object",
+                "multiple": 0
             }
         ],
         "location": [

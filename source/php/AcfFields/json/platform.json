@@ -1,7 +1,7 @@
 [
     {
         "key": "group_60bde20356c2c",
-        "title": "Platform Details",
+        "title": "Platform details",
         "fields": [
             {
                 "key": "field_60bde2424521c",
@@ -59,6 +59,83 @@
                         "min_size": "",
                         "max_size": "",
                         "mime_types": ""
+                    }
+                ]
+            },
+            {
+                "key": "field_60bdea4794f37",
+                "label": "Contacts",
+                "name": "contacts",
+                "type": "repeater",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "collapsed": "",
+                "min": 1,
+                "max": 0,
+                "layout": "table",
+                "button_label": "",
+                "sub_fields": [
+                    {
+                        "key": "field_60bdea5994f38",
+                        "label": "Name",
+                        "name": "name",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 1,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_60bdea6194f39",
+                        "label": "Role",
+                        "name": "role",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "maxlength": ""
+                    },
+                    {
+                        "key": "field_60bdea6994f3a",
+                        "label": "Mail",
+                        "name": "mail",
+                        "type": "email",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": ""
                     }
                 ]
             }

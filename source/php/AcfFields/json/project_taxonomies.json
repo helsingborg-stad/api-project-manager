@@ -76,6 +76,28 @@
             "multiple": 0
         },
         {
+            "key": "field_60bdbc9b94295",
+            "label": "Platform",
+            "name": "platform",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "platform"
+            ],
+            "taxonomy": "",
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        },
+        {
             "key": "field_5e8dce344f6b4",
             "label": "Organisation",
             "name": "organisation",
@@ -201,7 +223,7 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": ""
 }]
 

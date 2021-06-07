@@ -67,9 +67,9 @@ class ProjectEditor
 
     public function redirectToProjectsAfterLogin($redirectTo, $requestedRedirectTo, $user)
     {
-        if (!in_array($this->role, $user->roles)) {
-            return $redirectTo;
-        }
+        // if (!in_array($this->role, $user->roles)) {
+        //     return $redirectTo;
+        // }
 
         return 'wp-admin/edit.php?post_type=project';
     }

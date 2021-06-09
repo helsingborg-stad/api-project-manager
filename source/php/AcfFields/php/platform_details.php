@@ -229,7 +229,7 @@
             'taxonomy' => 'partner',
             'field_type' => 'multi_select',
             'allow_null' => 1,
-            'add_term' => 1,
+            'add_term' => 0,
             'save_terms' => 0,
             'load_terms' => 0,
             'return_format' => 'object',

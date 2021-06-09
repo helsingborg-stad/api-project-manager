@@ -6,6 +6,22 @@
     'title' => __('Platform details', 'api-project-manager'),
     'fields' => array(
         0 => array(
+            'key' => 'field_60c0634b8060c',
+            'label' => __('Video URL', 'api-project-manager'),
+            'name' => 'video_url',
+            'type' => 'url',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'default_value' => '',
+            'placeholder' => '',
+        ),
+        1 => array(
             'key' => 'field_60bde2424521c',
             'label' => __('Files', 'api-project-manager'),
             'name' => 'files',
@@ -64,7 +80,7 @@
                 ),
             ),
         ),
-        1 => array(
+        2 => array(
             'key' => 'field_60bdea4794f37',
             'label' => __('Contacts', 'api-project-manager'),
             'name' => 'contacts',
@@ -141,7 +157,7 @@
                 ),
             ),
         ),
-        2 => array(
+        3 => array(
             'key' => 'field_60bdec7558496',
             'label' => __('Links', 'api-project-manager'),
             'name' => 'links',
@@ -197,7 +213,7 @@
                 ),
             ),
         ),
-        3 => array(
+        4 => array(
             'key' => 'field_60bdef9149be4',
             'label' => __('Partners', 'api-project-manager'),
             'name' => 'partner',

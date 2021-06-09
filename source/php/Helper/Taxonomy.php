@@ -13,6 +13,8 @@ class Taxonomy extends PostType
 
     public $postTypeName;
 
+    protected static $_registredTaxonomies = array();
+
     public function __construct($taxonomyName, $nameSingular, $namePlural, $postTypeName = '', $taxonomyArgs = array(), $taxonomyLabels = array(), $taxonomyRestArgs = array())
     {
         // Set some important variables
@@ -26,8 +28,13 @@ class Taxonomy extends PostType
 
         $this->postTypeName = $postTypeName;
 
+        $hasBeenRegistred = in_array($taxonomyName, self::$_registredTaxonomies);
+
+
+
         // Add action to register the post type, if the post type doesnt exist
-        if (!taxonomy_exists($taxonomyName) && !empty($postTypeName)) {
+        if (!taxonomy_exists($taxonomyName) && !empty($postTypeName) && !$hasBeenRegistred) {
+            self::$_registredTaxonomies[] = $taxonomyName;
             add_action('init', array(&$this, 'registerTaxonomy'));
             add_action('rest_api_init', array($this, 'registerAcfMetadataInApi'));
             add_action('rest_prepare_' . $taxonomyName, array($this, 'removeResponseKeys'), 10, 3);

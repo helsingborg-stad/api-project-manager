@@ -1,0 +1,119 @@
+[{
+    "key": "group_60c05ed83a959",
+    "title": "Platform Roadmap",
+    "fields": [
+        {
+            "key": "field_60c05ed83d123",
+            "label": "Roadmap",
+            "name": "platform_roadmap",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_60c05ed83e1af",
+            "min": 0,
+            "max": 0,
+            "layout": "row",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_60c05ed83e1af",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_60c05f1b71add",
+                    "label": "Date",
+                    "name": "date",
+                    "type": "date_picker",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "d\/m\/Y",
+                    "return_format": "d\/m\/Y",
+                    "first_day": 1
+                },
+                {
+                    "key": "field_60c05f0071adc",
+                    "label": "Category",
+                    "name": "category",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_60c05ed83e1bb",
+                    "label": "Content",
+                    "name": "content",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": 200,
+                    "rows": "",
+                    "new_lines": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "platform"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": ""
+}]
+

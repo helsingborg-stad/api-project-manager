@@ -57,7 +57,7 @@
                         'id' => '',
                     ),
                     'display_format' => 'd/m/Y',
-                    'return_format' => 'd/m/Y',
+                    'return_format' => 'd-m-Y',
                     'first_day' => 1,
                 ),
                 2 => array(
@@ -94,7 +94,7 @@
                     ),
                     'default_value' => '',
                     'placeholder' => '',
-                    'maxlength' => 200,
+                    'maxlength' => 500,
                     'rows' => '',
                     'new_lines' => '',
                 ),

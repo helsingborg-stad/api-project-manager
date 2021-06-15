@@ -77,7 +77,7 @@
                     ),
                     'default_value' => '',
                     'placeholder' => '',
-                    'maxlength' => 200,
+                    'maxlength' => 500,
                     'rows' => '',
                     'new_lines' => '',
                 ),

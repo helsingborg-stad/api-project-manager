@@ -63,7 +63,7 @@
                     "name": "category",
                     "type": "text",
                     "instructions": "",
-                    "required": 1,
+                    "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
@@ -75,6 +75,32 @@
                     "prepend": "",
                     "append": "",
                     "maxlength": ""
+                },
+                {
+                    "key": "field_60cb40bf0cedf",
+                    "label": "Status",
+                    "name": "status",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "not-started": "Not started",
+                        "in-progress": "In progress",
+                        "done": "Done"
+                    },
+                    "default_value": false,
+                    "allow_null": 1,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": ""
                 },
                 {
                     "key": "field_60c05ed83e1bb",

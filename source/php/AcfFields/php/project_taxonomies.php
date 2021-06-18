@@ -79,28 +79,6 @@
             'multiple' => 0,
         ),
         3 => array(
-            'key' => 'field_60bdbc9b94295',
-            'label' => __('Platform', 'api-project-manager'),
-            'name' => 'platform',
-            'type' => 'post_object',
-            'instructions' => '',
-            'required' => 0,
-            'conditional_logic' => 0,
-            'wrapper' => array(
-                'width' => '',
-                'class' => '',
-                'id' => '',
-            ),
-            'post_type' => array(
-                0 => 'platform',
-            ),
-            'taxonomy' => '',
-            'allow_null' => 1,
-            'multiple' => 0,
-            'return_format' => 'object',
-            'ui' => 1,
-        ),
-        4 => array(
             'key' => 'field_5e8dce344f6b4',
             'label' => __('Organisation', 'api-project-manager'),
             'name' => 'organisation',
@@ -122,7 +100,7 @@
             'return_format' => 'object',
             'multiple' => 0,
         ),
-        5 => array(
+        4 => array(
             'key' => 'field_5e8dd435ea9df',
             'label' => __('Partners', 'api-project-manager'),
             'name' => 'partner',
@@ -144,7 +122,7 @@
             'return_format' => 'object',
             'multiple' => 0,
         ),
-        6 => array(
+        5 => array(
             'key' => 'field_5e8dcdf152c5d',
             'label' => __('Sectors', 'api-project-manager'),
             'name' => 'sector',
@@ -166,7 +144,7 @@
             'return_format' => 'object',
             'multiple' => 0,
         ),
-        7 => array(
+        6 => array(
             'key' => 'field_5e8d9d0289bc7',
             'label' => __('Technologies', 'api-project-manager'),
             'name' => 'technology',
@@ -188,7 +166,7 @@
             'return_format' => 'object',
             'multiple' => 0,
         ),
-        8 => array(
+        7 => array(
             'key' => 'field_5e8dce65e835b',
             'label' => __('Global goal', 'api-project-manager'),
             'name' => 'global_goal',
@@ -209,6 +187,28 @@
             'load_terms' => 1,
             'return_format' => 'object',
             'multiple' => 0,
+        ),
+        8 => array(
+            'key' => 'field_60ba1a1941860',
+            'label' => __('Platforms', 'api-project-manager'),
+            'name' => 'platforms',
+            'type' => 'post_object',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'post_type' => array(
+                0 => 'platform',
+            ),
+            'taxonomy' => '',
+            'allow_null' => 1,
+            'multiple' => 1,
+            'return_format' => 'id',
+            'ui' => 1,
         ),
     ),
     'location' => array(

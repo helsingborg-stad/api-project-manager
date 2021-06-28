@@ -56,6 +56,7 @@ add_action('plugins_loaded', function () {
         'platform_features' => 'group_60c05e6dedc15',
         'platform_roadmap' => 'group_60c05ed83a959',
         'platform_details' => 'group_60bde20356c2c',
+        'platform_get_started' => 'group_60d9b2cfcbda3',
     ));
     $acfExportManager->import();
 });

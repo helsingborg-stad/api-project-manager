@@ -210,6 +210,28 @@
             'return_format' => 'id',
             'ui' => 1,
         ),
+        9 => array(
+            'key' => 'field_6213a7e057273',
+            'label' => __('Innovation potential', 'api-project-manager'),
+            'name' => 'innovation_potential',
+            'type' => 'taxonomy',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'taxonomy' => 'innovation-potential',
+            'field_type' => 'checkbox',
+            'add_term' => 0,
+            'save_terms' => 1,
+            'load_terms' => 1,
+            'return_format' => 'object',
+            'multiple' => 0,
+            'allow_null' => 0,
+        ),
     ),
     'location' => array(
         0 => array(

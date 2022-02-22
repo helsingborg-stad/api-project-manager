@@ -120,6 +120,28 @@
             "multiple": 0
         },
         {
+            "key": "field_6214b4a611d13",
+            "label": "Expected Impact",
+            "name": "expected_impact",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "expected-impact",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
             "key": "field_5e8dcdf152c5d",
             "label": "Sectors",
             "name": "sector",

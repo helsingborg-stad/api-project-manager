@@ -123,6 +123,28 @@
             'multiple' => 0,
         ),
         5 => array(
+            'key' => 'field_6214b4a611d13',
+            'label' => __('Expected Impact', 'api-project-manager'),
+            'name' => 'expected_impact',
+            'type' => 'taxonomy',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'taxonomy' => 'expected-impact',
+            'field_type' => 'select',
+            'allow_null' => 0,
+            'add_term' => 0,
+            'save_terms' => 1,
+            'load_terms' => 1,
+            'return_format' => 'object',
+            'multiple' => 0,
+        ),
+        6 => array(
             'key' => 'field_5e8dcdf152c5d',
             'label' => __('Sectors', 'api-project-manager'),
             'name' => 'sector',
@@ -144,7 +166,7 @@
             'return_format' => 'object',
             'multiple' => 0,
         ),
-        6 => array(
+        7 => array(
             'key' => 'field_5e8d9d0289bc7',
             'label' => __('Technologies', 'api-project-manager'),
             'name' => 'technology',
@@ -166,7 +188,7 @@
             'return_format' => 'object',
             'multiple' => 0,
         ),
-        7 => array(
+        8 => array(
             'key' => 'field_5e8dce65e835b',
             'label' => __('Global goal', 'api-project-manager'),
             'name' => 'global_goal',
@@ -188,7 +210,7 @@
             'return_format' => 'object',
             'multiple' => 0,
         ),
-        8 => array(
+        9 => array(
             'key' => 'field_60ba1a1941860',
             'label' => __('Platforms', 'api-project-manager'),
             'name' => 'platforms',

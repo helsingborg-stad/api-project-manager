@@ -46,6 +46,7 @@ add_action('plugins_loaded', function () {
         'project_accounting' => 'group_6213918ce807a',
         'project_impact' => 'group_5fb4e0ff4c111',
         'project_resident_involvement' => 'group_6022843249a67',
+        'project_meta' => 'group_6214fca7b9225',
         'challenge_taxonomies' => 'group_5fb3c4e538202',
         'challenge_contacts' => 'group_5fc754f516d03',
         'challenge_appearance' => 'group_5fbe2df2d16dc',

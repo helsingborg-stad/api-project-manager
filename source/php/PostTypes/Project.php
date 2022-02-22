@@ -144,6 +144,20 @@ class Project
                 'meta_box_cb' => false,
             )
         );
+
+        // Expected Impact
+        $postType->addTaxonomy(
+            'expected-impact',
+            __('Expected Impact', APIPROJECTMANAGER_TEXTDOMAIN),
+            __('Expected Impact', APIPROJECTMANAGER_TEXTDOMAIN),
+            array(
+                'hierarchical' => false,
+                'show_ui' => true,
+                'show_in_rest' => true,
+                'show_in_quick_edit' => false,
+                'meta_box_cb' => false,
+            )
+        );
     }
 
     /**
@@ -174,7 +188,7 @@ class Project
         if (get_post_type($postId) !== self::$postType) {
             return;
         }
-        
+
         $challenge = get_field('challenge', $postId);
         $termFromTaxField = get_field('challenge_category', $postId);
         $existingTerms = get_the_terms($postId, 'challenge_category');
@@ -226,9 +240,9 @@ class Project
         if (!$newStatus instanceof \WP_Term) {
             return;
         }
-        
+
         $newStatusRange = get_field('progress_value', 'term_' . $newStatus->term_id);
-        
+
         if ((int) $newStatusRange === -1) {
             $prevStatus = get_field('status', $postId);
 

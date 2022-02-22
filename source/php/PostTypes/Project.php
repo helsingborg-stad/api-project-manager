@@ -158,6 +158,20 @@ class Project
                 'meta_box_cb' => false,
             )
         );
+
+        // Expected Impact
+        $postType->addTaxonomy(
+            'expected-impact',
+            __('Expected Impact', APIPROJECTMANAGER_TEXTDOMAIN),
+            __('Expected Impact', APIPROJECTMANAGER_TEXTDOMAIN),
+            array(
+                'hierarchical' => false,
+                'show_ui' => true,
+                'show_in_rest' => true,
+                'show_in_quick_edit' => false,
+                'meta_box_cb' => false,
+            )
+        );
     }
 
     /**

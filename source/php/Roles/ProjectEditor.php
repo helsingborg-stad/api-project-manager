@@ -63,7 +63,7 @@ class ProjectEditor
         if (
             $screen->base !== 'post'
             || $screen->post_type !== 'project'
-            || !in_array($this->role, $user->roles)
+            || !in_array($this->role, $user->roles ?? [])
         ) {
             return;
         }
@@ -73,7 +73,7 @@ class ProjectEditor
 
     public function redirectToProjectsAfterLogin($redirectTo, $requestedRedirectTo, $user)
     {
-        if (!in_array($this->role, $user->roles)) {
+        if (!in_array($this->role, $user->roles ?? [])) {
             return $redirectTo;
         }
 

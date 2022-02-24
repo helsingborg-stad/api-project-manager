@@ -77,7 +77,7 @@
         },
         {
             "key": "field_5e8dce344f6b4",
-            "label": "Organisation",
+            "label": "Owner (organisation)",
             "name": "organisation",
             "type": "taxonomy",
             "instructions": "",
@@ -91,9 +91,31 @@
             "taxonomy": "organisation",
             "field_type": "select",
             "allow_null": 0,
-            "add_term": 1,
+            "add_term": 0,
             "save_terms": 1,
-            "load_terms": 1,
+            "load_terms": 0,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_62162d6ece420",
+            "label": "Participants",
+            "name": "participants",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "organisation",
+            "field_type": "multi_select",
+            "allow_null": 1,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 0,
             "return_format": "object",
             "multiple": 0
         },

@@ -7,8 +7,8 @@
     'fields' => array(
         0 => array(
             'key' => 'field_6214fc6377600',
-            'label' => __('City Wide', 'api-project-manager'),
-            'name' => 'city_wide',
+            'label' => __('City wide Initiative', 'api-project-manager'),
+            'name' => 'city_wide_initiative',
             'type' => 'true_false',
             'instructions' => '',
             'required' => 0,
@@ -42,6 +42,25 @@
             'ui' => 1,
             'ui_on_text' => '',
             'ui_off_text' => '',
+        ),
+        2 => array(
+            'key' => 'field_5e85b631d7f04',
+            'label' => __('Internal Project', 'api-project-manager'),
+            'name' => 'internal_project',
+            'type' => 'true_false',
+            'instructions' => __('Select if this is an internal project.', 'api-project-manager'),
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'message' => '',
+            'default_value' => 0,
+            'ui' => 1,
+            'ui_on_text' => __('Yes', 'api-project-manager'),
+            'ui_off_text' => __('No', 'api-project-manager'),
         ),
     ),
     'location' => array(

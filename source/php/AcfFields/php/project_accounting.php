@@ -6,6 +6,27 @@
     'title' => __('Accounting', 'api-project-manager'),
     'fields' => array(
         0 => array(
+            'key' => 'field_5fc0009408b9d',
+            'label' => __('Estimated budget', 'api-project-manager'),
+            'name' => 'estimated_budget',
+            'type' => 'number',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'default_value' => '',
+            'placeholder' => '',
+            'prepend' => '',
+            'append' => __('kr', 'api-project-manager'),
+            'min' => '',
+            'max' => '',
+            'step' => '',
+        ),
+        1 => array(
             'key' => 'field_62138e1575c9a',
             'label' => __('Funds granted', 'api-project-manager'),
             'name' => 'funds_granted',
@@ -83,7 +104,7 @@
                 ),
             ),
         ),
-        1 => array(
+        2 => array(
             'key' => 'field_621394116960a',
             'label' => __('Funds used', 'api-project-manager'),
             'name' => 'funds_used',

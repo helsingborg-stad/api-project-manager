@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Project manager\n"
-"POT-Creation-Date: 2022-02-28 12:59+0100\n"
-"PO-Revision-Date: 2022-02-28 13:00+0100\n"
+"POT-Creation-Date: 2022-03-14 09:26+0100\n"
+"PO-Revision-Date: 2022-03-14 09:29+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -103,18 +103,18 @@ msgid "Contact"
 msgstr "Kontakt"
 
 #: source/php/AcfFields/php/challenge_contacts.php:25
-#: source/php/AcfFields/php/project.php:60
+#: source/php/AcfFields/php/project.php:59
 msgid "Add contact person"
 msgstr "Lägg till kontaktperson"
 
 #: source/php/AcfFields/php/challenge_contacts.php:29
 #: source/php/AcfFields/php/platform_details.php:29
-#: source/php/AcfFields/php/project.php:64
+#: source/php/AcfFields/php/project.php:63
 msgid "Name"
 msgstr "Namn"
 
 #: source/php/AcfFields/php/challenge_contacts.php:48
-#: source/php/AcfFields/php/project.php:83
+#: source/php/AcfFields/php/project.php:82
 msgid "Email"
 msgstr "E-post"
 
@@ -167,7 +167,7 @@ msgid "Platform details"
 msgstr "Plattformsdetaljer"
 
 #: source/php/AcfFields/php/platform_details.php:10
-#: source/php/AcfFields/php/project.php:45
+#: source/php/AcfFields/php/project.php:44
 msgid "Contacts"
 msgstr "Kontaktpersoner"
 
@@ -184,7 +184,7 @@ msgid "Video URL"
 msgstr ""
 
 #: source/php/AcfFields/php/platform_details.php:103
-#: source/php/AcfFields/php/project.php:191
+#: source/php/AcfFields/php/project.php:190
 msgid "Files"
 msgstr "Filer"
 
@@ -192,8 +192,8 @@ msgstr "Filer"
 #: source/php/AcfFields/php/platform_details.php:181
 #: source/php/AcfFields/php/platform_features.php:29
 #: source/php/AcfFields/php/platform_roadmap.php:29
-#: source/php/AcfFields/php/project.php:138
-#: source/php/AcfFields/php/project.php:210 source/php/Exporter.php:93
+#: source/php/AcfFields/php/project.php:137
+#: source/php/AcfFields/php/project.php:209 source/php/Exporter.php:93
 msgid "Title"
 msgstr "Titel"
 
@@ -202,13 +202,13 @@ msgid "Attachment"
 msgstr ""
 
 #: source/php/AcfFields/php/platform_details.php:162
-#: source/php/AcfFields/php/project.php:103
-#: source/php/AcfFields/php/project.php:119
+#: source/php/AcfFields/php/project.php:102
+#: source/php/AcfFields/php/project.php:118
 msgid "Links"
 msgstr "Länkar"
 
 #: source/php/AcfFields/php/platform_details.php:200
-#: source/php/AcfFields/php/project.php:157
+#: source/php/AcfFields/php/project.php:156
 #: source/php/AcfFields/php/tax_focal_point_meta.php:10
 #: source/php/Theme/Setup.php:41
 msgid "URL"
@@ -255,8 +255,8 @@ msgid "Roadmap"
 msgstr ""
 
 #: source/php/AcfFields/php/platform_roadmap.php:48
-#: source/php/AcfFields/php/project_accounting.php:50
-#: source/php/AcfFields/php/project_accounting.php:128
+#: source/php/AcfFields/php/project_accounting.php:71
+#: source/php/AcfFields/php/project_accounting.php:149
 msgid "Date"
 msgstr "Datum"
 
@@ -279,41 +279,41 @@ msgstr "Under arbete"
 msgid "Done"
 msgstr "Färdig"
 
-#: source/php/AcfFields/php/project.php:7
+#: source/php/AcfFields/php/project.php:6
 msgid "Project details"
 msgstr "Initiativets detaljer"
 
-#: source/php/AcfFields/php/project.php:11
+#: source/php/AcfFields/php/project.php:10
 msgid "Location & Contact"
 msgstr "Plats & kontaktpersoner"
 
-#: source/php/AcfFields/php/project.php:27
+#: source/php/AcfFields/php/project.php:26
 msgid "Map"
 msgstr "Karta"
 
-#: source/php/AcfFields/php/project.php:175
+#: source/php/AcfFields/php/project.php:174
 msgid "Media"
 msgstr "Media"
 
-#: source/php/AcfFields/php/project.php:229
+#: source/php/AcfFields/php/project.php:228
 msgid "File"
 msgstr "Fil"
 
-#: source/php/AcfFields/php/project.php:250
-msgid "Gallery"
-msgstr "Bildgalleri"
-
-#: source/php/AcfFields/php/project.php:253
-msgid "Add images to this project."
-msgstr "Lägg till bilder till detta intiativ"
-
-#: source/php/AcfFields/php/project.php:277
+#: source/php/AcfFields/php/project.php:249
 msgid "Video"
 msgstr ""
 
-#: source/php/AcfFields/php/project.php:296
-msgid "Url"
+#: source/php/AcfFields/php/project.php:268
+msgid "URL (Youtube)"
 msgstr ""
+
+#: source/php/AcfFields/php/project.php:286
+msgid "Gallery"
+msgstr "Bildgalleri"
+
+#: source/php/AcfFields/php/project.php:289
+msgid "Add images to this project."
+msgstr "Lägg till bilder till detta intiativ"
 
 #: source/php/AcfFields/php/project_about.php:6
 msgid "About the project"
@@ -354,42 +354,34 @@ msgid "Accounting"
 msgstr "Ekonomi"
 
 #: source/php/AcfFields/php/project_accounting.php:10
-msgid "Funds granted"
-msgstr "Beviljade medel"
+#: source/php/Exporter.php:106
+msgid "Estimated budget"
+msgstr "Estimerad budget"
 
-#: source/php/AcfFields/php/project_accounting.php:29
-#: source/php/AcfFields/php/project_accounting.php:107
-msgid "Amount"
-msgstr "Belopp"
-
-#: source/php/AcfFields/php/project_accounting.php:43
-#: source/php/AcfFields/php/project_accounting.php:121
-#: source/php/AcfFields/php/project_budget.php:24
-#: source/php/AcfFields/php/project_budget.php:45
+#: source/php/AcfFields/php/project_accounting.php:24
+#: source/php/AcfFields/php/project_accounting.php:64
+#: source/php/AcfFields/php/project_accounting.php:142
 msgid "kr"
 msgstr "kr"
 
-#: source/php/AcfFields/php/project_accounting.php:67
-#: source/php/AcfFields/php/project_accounting.php:145
+#: source/php/AcfFields/php/project_accounting.php:31
+msgid "Funds granted"
+msgstr "Beviljade medel"
+
+#: source/php/AcfFields/php/project_accounting.php:50
+#: source/php/AcfFields/php/project_accounting.php:128
+msgid "Amount"
+msgstr "Belopp"
+
+#: source/php/AcfFields/php/project_accounting.php:88
+#: source/php/AcfFields/php/project_accounting.php:166
 #: source/php/AcfFields/php/project_impact.php:50
 msgid "Comment"
 msgstr "Kommentera"
 
-#: source/php/AcfFields/php/project_accounting.php:88
+#: source/php/AcfFields/php/project_accounting.php:109
 msgid "Funds used"
 msgstr "Använda medel"
-
-#: source/php/AcfFields/php/project_budget.php:6
-msgid "Budget"
-msgstr "Budget"
-
-#: source/php/AcfFields/php/project_budget.php:10 source/php/Exporter.php:106
-msgid "Estimated budget"
-msgstr "Estimerad budget"
-
-#: source/php/AcfFields/php/project_budget.php:31 source/php/Exporter.php:107
-msgid "Cost so far"
-msgstr "Kostnad hitintills"
 
 #: source/php/AcfFields/php/project_editor.php:8
 #: source/php/Roles/ProjectEditor.php:183
@@ -421,10 +413,6 @@ msgstr "Förväntat resultat"
 msgid "Completed"
 msgstr "Slutförd"
 
-#: source/php/AcfFields/php/project_internal.php:6
-msgid "Internal project"
-msgstr "Internt initiativ"
-
 #: source/php/AcfFields/php/project_meta.php:6
 msgid "Project meta"
 msgstr "Intiativ meta"
@@ -433,23 +421,23 @@ msgstr "Intiativ meta"
 msgid "City wide Initiative"
 msgstr "Stadsgemensamt initiativ"
 
-#: source/php/AcfFields/php/project_meta.php:29
+#: source/php/AcfFields/php/project_meta.php:37
 msgid "Challenging The Core Business"
 msgstr "Utmanar kärnverksamheten"
 
-#: source/php/AcfFields/php/project_meta.php:48
+#: source/php/AcfFields/php/project_meta.php:64
 msgid "Internal Project"
 msgstr "Internt initiativ"
 
-#: source/php/AcfFields/php/project_meta.php:51
+#: source/php/AcfFields/php/project_meta.php:67
 msgid "Select if this is an internal project."
 msgstr "Välj om detta är ett internt projekt"
 
-#: source/php/AcfFields/php/project_meta.php:62
+#: source/php/AcfFields/php/project_meta.php:78
 msgid "Yes"
 msgstr "Ja"
 
-#: source/php/AcfFields/php/project_meta.php:63
+#: source/php/AcfFields/php/project_meta.php:79
 msgid "No"
 msgstr "Nej"
 
@@ -550,6 +538,10 @@ msgstr "Globala mål"
 #: source/php/Exporter.php:105
 msgid "Address"
 msgstr "Adress"
+
+#: source/php/Exporter.php:107
+msgid "Cost so far"
+msgstr "Kostnad hitintills"
 
 #: source/php/Helper/PostType.php:47 source/php/Helper/PostType.php:48
 #: source/php/Helper/Taxonomy.php:74
@@ -666,6 +658,14 @@ msgstr "Organisationer"
 msgid "Innovation potentials"
 msgstr "Innovationshöjd"
 
+#: source/php/PostTypes/Project.php:179
+msgid "Operation"
+msgstr "Verksamhet"
+
+#: source/php/PostTypes/Project.php:180
+msgid "Operations"
+msgstr ""
+
 #: source/php/Theme/Setup.php:105
 msgid "Post updated."
 msgstr "Inlägget uppdaterades."
@@ -710,6 +710,12 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "(#plugin_author_url#)"
 msgstr ""
+
+#~ msgid "Budget"
+#~ msgstr "Budget"
+
+#~ msgid "Internal project"
+#~ msgstr "Internt initiativ"
 
 #~ msgid "City Wide"
 #~ msgstr "Stadsgemensam"

@@ -153,7 +153,7 @@ class Project
             array(
                 'hierarchical' => false,
                 'show_ui' => true,
-                'show_in_rest' => true,
+                'show_in_rest' => false,
                 'show_in_quick_edit' => true,
                 'meta_box_cb' => false,
             )
@@ -167,7 +167,21 @@ class Project
             array(
                 'hierarchical' => false,
                 'show_ui' => true,
-                'show_in_rest' => true,
+                'show_in_rest' => false,
+                'show_in_quick_edit' => false,
+                'meta_box_cb' => false,
+            )
+        );
+
+        // Operation
+        $postType->addTaxonomy(
+            'operation',
+            __('Operation', APIPROJECTMANAGER_TEXTDOMAIN),
+            __('Operations', APIPROJECTMANAGER_TEXTDOMAIN),
+            array(
+                'hierarchical' => false,
+                'show_ui' => true,
+                'show_in_rest' => false,
                 'show_in_quick_edit' => false,
                 'meta_box_cb' => false,
             )

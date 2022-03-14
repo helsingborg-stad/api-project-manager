@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Project manager\n"
 "POT-Creation-Date: 2022-03-14 09:26+0100\n"
-"PO-Revision-Date: 2022-03-14 09:29+0100\n"
+"PO-Revision-Date: 2022-03-14 09:35+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -664,7 +664,7 @@ msgstr "Verksamhet"
 
 #: source/php/PostTypes/Project.php:180
 msgid "Operations"
-msgstr ""
+msgstr "Verksamheter"
 
 #: source/php/Theme/Setup.php:105
 msgid "Post updated."

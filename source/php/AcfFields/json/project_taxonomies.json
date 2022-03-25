@@ -142,6 +142,28 @@
             "multiple": 0
         },
         {
+            "key": "field_623d531356e0e",
+            "label": "Operation Domain",
+            "name": "operation_domain",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "operation-domain",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 1,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
             "key": "field_5e8dd435ea9df",
             "label": "Partners",
             "name": "partner",

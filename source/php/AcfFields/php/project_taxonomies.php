@@ -145,6 +145,28 @@
             'multiple' => 0,
         ),
         6 => array(
+            'key' => 'field_623d531356e0e',
+            'label' => __('Operation Domain', 'api-project-manager'),
+            'name' => 'operation_domain',
+            'type' => 'taxonomy',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'taxonomy' => 'operation-domain',
+            'field_type' => 'select',
+            'allow_null' => 0,
+            'add_term' => 1,
+            'save_terms' => 1,
+            'load_terms' => 1,
+            'return_format' => 'object',
+            'multiple' => 0,
+        ),
+        7 => array(
             'key' => 'field_5e8dd435ea9df',
             'label' => __('Partners', 'api-project-manager'),
             'name' => 'partner',
@@ -166,7 +188,7 @@
             'return_format' => 'object',
             'multiple' => 0,
         ),
-        7 => array(
+        8 => array(
             'key' => 'field_6214b4a611d13',
             'label' => __('Expected Impact', 'api-project-manager'),
             'name' => 'expected_impact',
@@ -188,7 +210,7 @@
             'return_format' => 'object',
             'multiple' => 0,
         ),
-        8 => array(
+        9 => array(
             'key' => 'field_5e8dcdf152c5d',
             'label' => __('Sectors', 'api-project-manager'),
             'name' => 'sector',
@@ -210,7 +232,7 @@
             'return_format' => 'object',
             'multiple' => 0,
         ),
-        9 => array(
+        10 => array(
             'key' => 'field_5e8d9d0289bc7',
             'label' => __('Technologies', 'api-project-manager'),
             'name' => 'technology',
@@ -232,7 +254,7 @@
             'return_format' => 'object',
             'multiple' => 0,
         ),
-        10 => array(
+        11 => array(
             'key' => 'field_5e8dce65e835b',
             'label' => __('Global goal', 'api-project-manager'),
             'name' => 'global_goal',
@@ -254,7 +276,7 @@
             'return_format' => 'object',
             'multiple' => 0,
         ),
-        11 => array(
+        12 => array(
             'key' => 'field_60ba1a1941860',
             'label' => __('Platforms', 'api-project-manager'),
             'name' => 'platforms',
@@ -276,7 +298,7 @@
             'return_format' => 'id',
             'ui' => 1,
         ),
-        12 => array(
+        13 => array(
             'key' => 'field_6213a7e057273',
             'label' => __('Innovation potential', 'api-project-manager'),
             'name' => 'innovation_potential',

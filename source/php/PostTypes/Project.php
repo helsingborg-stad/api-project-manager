@@ -159,7 +159,7 @@ class Project
             )
         );
 
-        // Expected Impact
+        // Förväntad effekt
         $postType->addTaxonomy(
             'expected-impact',
             __('Expected Impact', APIPROJECTMANAGER_TEXTDOMAIN),
@@ -173,11 +173,25 @@ class Project
             )
         );
 
-        // Operation
+        // Verksamhet
         $postType->addTaxonomy(
             'operation',
             __('Operation', APIPROJECTMANAGER_TEXTDOMAIN),
             __('Operations', APIPROJECTMANAGER_TEXTDOMAIN),
+            array(
+                'hierarchical' => false,
+                'show_ui' => true,
+                'show_in_rest' => false,
+                'show_in_quick_edit' => false,
+                'meta_box_cb' => false,
+            )
+        );
+
+        // Verksamhetsområde
+        $postType->addTaxonomy(
+            'operation-domain',
+            __('Operation Domain', APIPROJECTMANAGER_TEXTDOMAIN),
+            __('Operation Domains', APIPROJECTMANAGER_TEXTDOMAIN),
             array(
                 'hierarchical' => false,
                 'show_ui' => true,

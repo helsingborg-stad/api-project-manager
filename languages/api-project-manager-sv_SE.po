@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Project manager\n"
-"POT-Creation-Date: 2022-03-14 09:26+0100\n"
-"PO-Revision-Date: 2022-03-14 09:35+0100\n"
+"POT-Creation-Date: 2022-03-25 06:25+0100\n"
+"PO-Revision-Date: 2022-03-25 06:26+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
@@ -215,7 +215,7 @@ msgid "URL"
 msgstr "URL\v"
 
 #: source/php/AcfFields/php/platform_details.php:218
-#: source/php/AcfFields/php/project_taxonomies.php:127
+#: source/php/AcfFields/php/project_taxonomies.php:149
 #: source/php/Exporter.php:102 source/php/PostTypes/Platform.php:45
 #: source/php/PostTypes/Project.php:138
 msgid "Partners"
@@ -471,32 +471,37 @@ msgstr "Ägare (organisation)"
 msgid "Participants"
 msgstr "Medverkande (organisationer)"
 
-#: source/php/AcfFields/php/project_taxonomies.php:149
+#: source/php/AcfFields/php/project_taxonomies.php:127
+#: source/php/PostTypes/Project.php:179
+msgid "Operation"
+msgstr "Verksamhet"
+
+#: source/php/AcfFields/php/project_taxonomies.php:171
 #: source/php/PostTypes/Project.php:165 source/php/PostTypes/Project.php:166
 msgid "Expected Impact"
 msgstr "Förväntad effekt"
 
-#: source/php/AcfFields/php/project_taxonomies.php:171
+#: source/php/AcfFields/php/project_taxonomies.php:193
 #: source/php/Exporter.php:103 source/php/PostTypes/Project.php:96
 msgid "Sectors"
 msgstr "Sektorer"
 
-#: source/php/AcfFields/php/project_taxonomies.php:193
+#: source/php/AcfFields/php/project_taxonomies.php:215
 #: source/php/Exporter.php:101 source/php/PostTypes/Project.php:82
 msgid "Technologies"
 msgstr "Teknologier"
 
-#: source/php/AcfFields/php/project_taxonomies.php:215
+#: source/php/AcfFields/php/project_taxonomies.php:237
 #: source/php/PostTypes/Challenge.php:58 source/php/PostTypes/Project.php:123
 msgid "Global goal"
 msgstr "Globala mål"
 
-#: source/php/AcfFields/php/project_taxonomies.php:237
+#: source/php/AcfFields/php/project_taxonomies.php:259
 #: source/php/PostTypes/Platform.php:35
 msgid "Platforms"
 msgstr "Plattformar"
 
-#: source/php/AcfFields/php/project_taxonomies.php:259
+#: source/php/AcfFields/php/project_taxonomies.php:281
 #: source/php/PostTypes/Project.php:151
 msgid "Innovation potential"
 msgstr "Innovationshöjd"
@@ -658,13 +663,17 @@ msgstr "Organisationer"
 msgid "Innovation potentials"
 msgstr "Innovationshöjd"
 
-#: source/php/PostTypes/Project.php:179
-msgid "Operation"
-msgstr "Verksamhet"
-
 #: source/php/PostTypes/Project.php:180
 msgid "Operations"
 msgstr "Verksamheter"
+
+#: source/php/PostTypes/Project.php:193
+msgid "Operation Domain"
+msgstr "Verksamhetsområde"
+
+#: source/php/PostTypes/Project.php:194
+msgid "Operation Domains"
+msgstr "Verksamhetsområden"
 
 #: source/php/Theme/Setup.php:105
 msgid "Post updated."

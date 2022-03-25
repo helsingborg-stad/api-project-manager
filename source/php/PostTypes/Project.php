@@ -31,7 +31,7 @@ class Project
         );
 
         $restArgs = array(
-          'exclude_keys' => array('author', 'acf', 'guid', 'link', 'template', 'meta', 'taxonomy', 'menu_order')
+            'exclude_keys' => array('author', 'acf', 'guid', 'link', 'template', 'meta', 'taxonomy', 'menu_order')
         );
 
         $exposedPostMetaKeys = ['previous_status_progress_value', 'previous_status'];
@@ -53,11 +53,11 @@ class Project
             __('Status', APIPROJECTMANAGER_TEXTDOMAIN),
             __('Statuses', APIPROJECTMANAGER_TEXTDOMAIN),
             array(
-              'hierarchical' => false,
-              'show_ui' => true,
-              'show_in_rest' => true,
-              'show_in_quick_edit' => false,
-              'meta_box_cb' => false,
+                'hierarchical' => false,
+                'show_ui' => true,
+                'show_in_rest' => true,
+                'show_in_quick_edit' => false,
+                'meta_box_cb' => false,
             )
         );
 
@@ -67,11 +67,11 @@ class Project
             __('Category', APIPROJECTMANAGER_TEXTDOMAIN),
             __('Categories', APIPROJECTMANAGER_TEXTDOMAIN),
             array(
-              'hierarchical' => false,
-              'show_ui' => true,
-              'show_in_rest' => true,
-              'show_in_quick_edit' => false,
-              'meta_box_cb' => false,
+                'hierarchical' => false,
+                'show_ui' => true,
+                'show_in_rest' => true,
+                'show_in_quick_edit' => false,
+                'meta_box_cb' => false,
             )
         );
 
@@ -81,11 +81,11 @@ class Project
             __('Technology', APIPROJECTMANAGER_TEXTDOMAIN),
             __('Technologies', APIPROJECTMANAGER_TEXTDOMAIN),
             array(
-              'hierarchical' => true,
-              'show_ui' => in_array('project_editor', wp_get_current_user()->roles) ? false : true,
-              'show_in_rest' => true,
-              'show_in_quick_edit' => false,
-              'meta_box_cb' => false,
+                'hierarchical' => true,
+                'show_ui' => in_array('project_editor', wp_get_current_user()->roles) ? false : true,
+                'show_in_rest' => true,
+                'show_in_quick_edit' => false,
+                'meta_box_cb' => false,
             )
         );
 
@@ -144,6 +144,62 @@ class Project
                 'meta_box_cb' => false,
             )
         );
+
+        //  Innovation traits
+        $postType->addTaxonomy(
+            'innovation-potential',
+            __('Innovation potential', APIPROJECTMANAGER_TEXTDOMAIN),
+            __('Innovation potentials', APIPROJECTMANAGER_TEXTDOMAIN),
+            array(
+                'hierarchical' => false,
+                'show_ui' => true,
+                'show_in_rest' => false,
+                'show_in_quick_edit' => true,
+                'meta_box_cb' => false,
+            )
+        );
+
+        // Förväntad effekt
+        $postType->addTaxonomy(
+            'expected-impact',
+            __('Expected Impact', APIPROJECTMANAGER_TEXTDOMAIN),
+            __('Expected Impact', APIPROJECTMANAGER_TEXTDOMAIN),
+            array(
+                'hierarchical' => false,
+                'show_ui' => true,
+                'show_in_rest' => false,
+                'show_in_quick_edit' => false,
+                'meta_box_cb' => false,
+            )
+        );
+
+        // Verksamhet
+        $postType->addTaxonomy(
+            'operation',
+            __('Operation', APIPROJECTMANAGER_TEXTDOMAIN),
+            __('Operations', APIPROJECTMANAGER_TEXTDOMAIN),
+            array(
+                'hierarchical' => false,
+                'show_ui' => true,
+                'show_in_rest' => false,
+                'show_in_quick_edit' => false,
+                'meta_box_cb' => false,
+            )
+        );
+
+        // Verksamhetsområde
+        $postType->addTaxonomy(
+            'operation-domain',
+            __('Operation Domain', APIPROJECTMANAGER_TEXTDOMAIN),
+            __('Operation Domains', APIPROJECTMANAGER_TEXTDOMAIN),
+            array(
+                'hierarchical' => false,
+                'show_ui' => true,
+                'show_in_rest' => false,
+                'show_in_quick_edit' => false,
+                'meta_box_cb' => false,
+            )
+        );
     }
 
     /**
@@ -156,10 +212,12 @@ class Project
         }
 
         $currentScreen = get_current_screen();
-        if (empty($currentScreen)
-        || $currentScreen->parent_base !== 'edit'
-        || $currentScreen->post_type !== self::$postType
-        || empty(get_field('challenge', $postId))) {
+        if (
+            empty($currentScreen)
+            || $currentScreen->parent_base !== 'edit'
+            || $currentScreen->post_type !== self::$postType
+            || empty(get_field('challenge', $postId))
+        ) {
             return $value;
         }
 
@@ -174,7 +232,7 @@ class Project
         if (get_post_type($postId) !== self::$postType) {
             return;
         }
-        
+
         $challenge = get_field('challenge', $postId);
         $termFromTaxField = get_field('challenge_category', $postId);
         $existingTerms = get_the_terms($postId, 'challenge_category');
@@ -185,14 +243,18 @@ class Project
             $challengeTerm = !empty($challengeTerms) ? $challengeTerms[0] : false;
 
             // Set term
-            if (count($existingTerms) !== 1 && $challengeTerm
-            || in_array($challengeTerm, $existingTerms) && $challengeTerm) {
+            if (
+                count($existingTerms) !== 1 && $challengeTerm
+                || in_array($challengeTerm, $existingTerms) && $challengeTerm
+            ) {
                 wp_set_post_terms($postId, array($challengeTerm->term_id), false);
             }
 
             // Set ACF field
-            if (empty($termFromTaxField) && $challengeTerm
-            || $challengeTerm && $termFromTaxField !== $challengeTerm) {
+            if (
+                empty($termFromTaxField) && $challengeTerm
+                || $challengeTerm && $termFromTaxField !== $challengeTerm
+            ) {
                 update_field('challenge_category', $challengeTerm, $postId);
             }
 
@@ -200,8 +262,10 @@ class Project
         }
 
         // Make sure we have the correct and only 1 term
-        if (!empty($termFromTaxField) && count($existingTerms) !== 1
-        || !empty($termFromTaxField) && in_array($termFromTaxField, $existingTerms)) {
+        if (
+            !empty($termFromTaxField) && count($existingTerms) !== 1
+            || !empty($termFromTaxField) && in_array($termFromTaxField, $existingTerms)
+        ) {
             wp_set_post_terms($postId, array($termFromTaxField->term_id), false);
         }
     }
@@ -215,9 +279,11 @@ class Project
             'status' => 'field_5e8d9b71fc34b'
         );
 
-        if (get_post_type($postId) !== self::$postType
-        || !isset($_POST['acf'])
-        || !isset($_POST['acf'][$acfKeys['status']])) {
+        if (
+            get_post_type($postId) !== self::$postType
+            || !isset($_POST['acf'])
+            || !isset($_POST['acf'][$acfKeys['status']])
+        ) {
             return;
         }
 
@@ -226,9 +292,9 @@ class Project
         if (!$newStatus instanceof \WP_Term) {
             return;
         }
-        
+
         $newStatusRange = get_field('progress_value', 'term_' . $newStatus->term_id);
-        
+
         if ((int) $newStatusRange === -1) {
             $prevStatus = get_field('status', $postId);
 

@@ -1,8 +1,7 @@
-<?php
+<?php 
 
-
-if (function_exists('acf_add_local_field_group')) {
-    acf_add_local_field_group(array(
+if (function_exists('acf_add_local_field_group')) {
+    acf_add_local_field_group(array(
     'key' => 'group_5e859cc1f2e8e',
     'title' => __('Project details', 'api-project-manager'),
     'fields' => array(
@@ -139,7 +138,7 @@ if (function_exists('acf_add_local_field_group')) {
                     'name' => 'title',
                     'type' => 'text',
                     'instructions' => '',
-                    'required' => 0,
+                    'required' => 1,
                     'conditional_logic' => 0,
                     'wrapper' => array(
                         'width' => '50',
@@ -158,7 +157,7 @@ if (function_exists('acf_add_local_field_group')) {
                     'name' => 'url',
                     'type' => 'url',
                     'instructions' => '',
-                    'required' => 0,
+                    'required' => 1,
                     'conditional_logic' => 0,
                     'wrapper' => array(
                         'width' => '50',
@@ -211,7 +210,7 @@ if (function_exists('acf_add_local_field_group')) {
                     'name' => 'title',
                     'type' => 'text',
                     'instructions' => '',
-                    'required' => 0,
+                    'required' => 1,
                     'conditional_logic' => 0,
                     'wrapper' => array(
                         'width' => '',
@@ -230,7 +229,7 @@ if (function_exists('acf_add_local_field_group')) {
                     'name' => 'file',
                     'type' => 'file',
                     'instructions' => '',
-                    'required' => 0,
+                    'required' => 1,
                     'conditional_logic' => 0,
                     'wrapper' => array(
                         'width' => '',
@@ -246,6 +245,43 @@ if (function_exists('acf_add_local_field_group')) {
             ),
         ),
         7 => array(
+            'key' => 'field_5e8d89e3d1e27',
+            'label' => __('Video', 'api-project-manager'),
+            'name' => 'video',
+            'type' => 'repeater',
+            'instructions' => '',
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => array(
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ),
+            'collapsed' => '',
+            'min' => 0,
+            'max' => 1,
+            'layout' => 'block',
+            'button_label' => '',
+            'sub_fields' => array(
+                0 => array(
+                    'key' => 'field_5e8d8a44d1e28',
+                    'label' => __('URL (Youtube)', 'api-project-manager'),
+                    'name' => 'url',
+                    'type' => 'url',
+                    'instructions' => '',
+                    'required' => 1,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'placeholder' => '',
+                ),
+            ),
+        ),
+        8 => array(
             'key' => 'field_5e85c486d76c6',
             'label' => __('Gallery', 'api-project-manager'),
             'name' => 'gallery',
@@ -272,43 +308,6 @@ if (function_exists('acf_add_local_field_group')) {
             'max_size' => '',
             'mime_types' => '',
         ),
-        8 => array(
-            'key' => 'field_5e8d89e3d1e27',
-            'label' => __('Video', 'api-project-manager'),
-            'name' => 'video',
-            'type' => 'repeater',
-            'instructions' => '',
-            'required' => 0,
-            'conditional_logic' => 0,
-            'wrapper' => array(
-                'width' => '',
-                'class' => '',
-                'id' => '',
-            ),
-            'collapsed' => '',
-            'min' => 0,
-            'max' => 0,
-            'layout' => 'block',
-            'button_label' => '',
-            'sub_fields' => array(
-                0 => array(
-                    'key' => 'field_5e8d8a44d1e28',
-                    'label' => __('Url', 'api-project-manager'),
-                    'name' => 'url',
-                    'type' => 'url',
-                    'instructions' => '',
-                    'required' => 1,
-                    'conditional_logic' => 0,
-                    'wrapper' => array(
-                        'width' => '',
-                        'class' => '',
-                        'id' => '',
-                    ),
-                    'default_value' => '',
-                    'placeholder' => '',
-                ),
-            ),
-        ),
     ),
     'location' => array(
         0 => array(
@@ -325,7 +324,7 @@ if (function_exists('acf_add_local_field_group')) {
     'label_placement' => 'top',
     'instruction_placement' => 'label',
     'hide_on_screen' => '',
-    'active' => 1,
+    'active' => true,
     'description' => '',
 ));
-}
+}

@@ -23,11 +23,13 @@ class ProjectEditor
         $user = get_user_by('id', get_current_user_id());
         $userOrganisations = get_field('organisation', 'user_' . $user->ID);
 
-        if (get_post_type($postId) !== 'project'
-        || get_post_status($postId) !== 'draft'
-        || !empty(get_field('organisation', $postId))
-        || !in_array($this->role, $user->roles)
-        || empty($userOrganisations)) {
+        if (
+            get_post_type($postId) !== 'project'
+            || get_post_status($postId) !== 'draft'
+            || !empty(get_field('organisation', $postId))
+            || !in_array($this->role, $user->roles)
+            || empty($userOrganisations)
+        ) {
             return;
         }
 
@@ -39,9 +41,11 @@ class ProjectEditor
         $user = get_user_by('id', get_current_user_id());
         $userOrganisations = get_field('organisation', 'user_' . $user->ID);
 
-        if (!in_array($this->role, $user->roles)
-        || empty($userOrganisations)
-        || $field['key'] !== 'field_5e8dce344f6b4') {
+        if (
+            !in_array($this->role, $user->roles)
+            || empty($userOrganisations)
+            || $field['key'] !== 'field_5e8dce344f6b4'
+        ) {
             return $args;
         }
 
@@ -56,9 +60,11 @@ class ProjectEditor
         $user = get_user_by('id', get_current_user_id());
         $screen = get_current_screen();
 
-        if ($screen->base !== 'post'
-        || $screen->post_type !== 'project'
-        || !in_array($this->role, $user->roles)) {
+        if (
+            $screen->base !== 'post'
+            || $screen->post_type !== 'project'
+            || !in_array($this->role, $user->roles ?? [])
+        ) {
             return;
         }
 
@@ -67,7 +73,7 @@ class ProjectEditor
 
     public function redirectToProjectsAfterLogin($redirectTo, $requestedRedirectTo, $user)
     {
-        if (!in_array($this->role, $user->roles)) {
+        if (!in_array($this->role, $user->roles ?? [])) {
             return $redirectTo;
         }
 
@@ -76,10 +82,12 @@ class ProjectEditor
 
     public function filterProjectsByOrganisation($query)
     {
-        if (!is_admin()
-        || !$query->is_main_query()
-        || !isset($_GET['post_type'])
-        || $_GET['post_type'] !== 'project') {
+        if (
+            !is_admin()
+            || !$query->is_main_query()
+            || !isset($_GET['post_type'])
+            || $_GET['post_type'] !== 'project'
+        ) {
             return;
         }
 
@@ -95,7 +103,7 @@ class ProjectEditor
                 'taxonomy' => 'organisation',
                 'field' => 'id',
                 'terms' => $userOrganisations,
-                'operator'=> 'IN'
+                'operator' => 'IN'
             )
         );
 
@@ -136,7 +144,7 @@ class ProjectEditor
         foreach ($postStatues as $status) {
             if (isset($view[$status])) {
                 $onQuery = implode(' OR ', array_map(function ($organisationId) use ($status, $wpdb) {
-                    $queryString = $wpdb->posts . ".ID = " .$wpdb->term_relationships . ".object_id AND " .$wpdb->term_relationships . ".term_taxonomy_id = " . $organisationId . " AND " . $wpdb->posts .".post_type = 'project'";
+                    $queryString = $wpdb->posts . ".ID = " . $wpdb->term_relationships . ".object_id AND " . $wpdb->term_relationships . ".term_taxonomy_id = " . $organisationId . " AND " . $wpdb->posts . ".post_type = 'project'";
 
                     if ($status !== 'all') {
                         $queryString .= " AND " . $wpdb->posts . ".post_status = '$status'";
@@ -155,12 +163,12 @@ class ProjectEditor
                     ON {$onQuery};"
                 );
 
-                $view[$status] = preg_replace('/\(.+\)/U', '('.$queryResult.')', $view[$status]);
+                $view[$status] = preg_replace('/\(.+\)/U', '(' . $queryResult . ')', $view[$status]);
             }
         }
 
         $postStatuesToRemove = array('mine');
-        
+
         foreach ($postStatuesToRemove as $status) {
             if (isset($view[$status])) {
                 unset($view[$status]);

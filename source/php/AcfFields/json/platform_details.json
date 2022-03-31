@@ -81,10 +81,10 @@
         },
         {
             "key": "field_60c0634b8060c",
-            "label": "Video URL",
+            "label": "Youtube URL",
             "name": "video_url",
             "type": "url",
-            "instructions": "",
+            "instructions": "URL must contain \"youtube\" eg. \"https:\/\/www.youtube.com\/watch?v=XmQ3AXebByY\", shorter URLs eg. \"https:\/\/youtu.be\/XmQ3AXebByY\" will not work.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -93,7 +93,7 @@
                 "id": ""
             },
             "default_value": "",
-            "placeholder": ""
+            "placeholder": "https:\/\/www.youtube.com\/watch?v="
         },
         {
             "key": "field_60bde2424521c",

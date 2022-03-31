@@ -265,7 +265,7 @@
                     "label": "URL (Youtube)",
                     "name": "url",
                     "type": "url",
-                    "instructions": "",
+                    "instructions": "URL must contain \"youtube\" eg. \"https:\/\/www.youtube.com\/watch?v=XmQ3AXebByY\", shorter URLs eg. \"https:\/\/youtu.be\/XmQ3AXebByY\" will not work.",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -274,7 +274,7 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "placeholder": ""
+                    "placeholder": "https:\/\/www.youtube.com\/watch?v="
                 }
             ]
         },

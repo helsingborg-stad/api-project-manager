@@ -84,10 +84,10 @@
         ),
         1 => array(
             'key' => 'field_60c0634b8060c',
-            'label' => __('Video URL', 'api-project-manager'),
+            'label' => __('Youtube URL', 'api-project-manager'),
             'name' => 'video_url',
             'type' => 'url',
-            'instructions' => '',
+            'instructions' => __('URL must contain "youtube" eg. "https://www.youtube.com/watch?v=XmQ3AXebByY", shorter URLs eg. "https://youtu.be/XmQ3AXebByY" will not work.', 'api-project-manager'),
             'required' => 0,
             'conditional_logic' => 0,
             'wrapper' => array(
@@ -96,7 +96,7 @@
                 'id' => '',
             ),
             'default_value' => '',
-            'placeholder' => '',
+            'placeholder' => __('https://www.youtube.com/watch?v=', 'api-project-manager'),
         ),
         2 => array(
             'key' => 'field_60bde2424521c',

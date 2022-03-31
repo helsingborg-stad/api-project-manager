@@ -268,7 +268,7 @@
                     'label' => __('URL (Youtube)', 'api-project-manager'),
                     'name' => 'url',
                     'type' => 'url',
-                    'instructions' => '',
+                    'instructions' => __('URL must contain "youtube" eg. "https://www.youtube.com/watch?v=XmQ3AXebByY", shorter URLs eg. "https://youtu.be/XmQ3AXebByY" will not work.', 'api-project-manager'),
                     'required' => 1,
                     'conditional_logic' => 0,
                     'wrapper' => array(
@@ -277,7 +277,7 @@
                         'id' => '',
                     ),
                     'default_value' => '',
-                    'placeholder' => '',
+                    'placeholder' => __('https://www.youtube.com/watch?v=', 'api-project-manager'),
                 ),
             ),
         ),

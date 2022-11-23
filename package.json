@@ -25,7 +25,7 @@
     "IE 11"
   ],
   "dependencies": {
-    "browser-sync": "^2.26.7",
+    "browser-sync": "^2.27.10",
     "get-video-id": "^3.1.3",
     "gsap": "^1.20.3",
     "object-fit-images": "^3.2.4",

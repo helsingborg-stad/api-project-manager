@@ -6,6 +6,7 @@
             "key": "field_5fb7d4611f925",
             "label": "Progress value",
             "name": "progress_value",
+            "aria-label": "",
             "type": "range",
             "instructions": "",
             "required": 1,
@@ -21,6 +22,26 @@
             "step": 1,
             "prepend": "",
             "append": "%"
+        },
+        {
+            "key": "field_6391e4303f343",
+            "label": "Requires \"Lessons learned\"",
+            "name": "lessons_learned_is_obligatory",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "The lessons learned field is obligatory when this status is active",
+            "default_value": 0,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No",
+            "ui": 1
         }
     ],
     "location": [
@@ -38,7 +59,8 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
-    "description": ""
+    "active": true,
+    "description": "",
+    "show_in_rest": 0
 }]
 

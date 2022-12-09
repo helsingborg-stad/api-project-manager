@@ -42,9 +42,9 @@
             ),
             'message' => __('The lessons learned field is obligatory when this status is active', 'api-project-manager'),
             'default_value' => 0,
-            'ui_on_text' => __('Yes', 'api-project-manager'),
-            'ui_off_text' => __('No', 'api-project-manager'),
-            'ui' => 1,
+            'ui' => 0,
+            'ui_on_text' => '',
+            'ui_off_text' => '',
         ),
     ),
     'location' => array(

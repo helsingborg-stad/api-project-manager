@@ -39,9 +39,9 @@
             },
             "message": "The lessons learned field is obligatory when this status is active",
             "default_value": 0,
-            "ui_on_text": "Yes",
-            "ui_off_text": "No",
-            "ui": 1
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [

@@ -12,6 +12,13 @@ class Project
         add_action('acf/save_post', array($this, 'saveLastStatusWithPositiveRange'), 5, 1);
         add_action('acf/save_post', array($this, 'inheritChallengeTermsOnSave'));
         add_filter('acf/load_value/name=challenge_category', array($this, 'resetCategoryField'), 10, 3);
+        
+        add_filter(
+            'acf/validate_value',
+            array($this, 'conditionallyRequireField'),
+            10,
+            3
+        );
     }
 
     public function registerPostType()
@@ -311,5 +318,31 @@ class Project
 
         delete_post_meta($postId, 'previous_status');
         delete_post_meta($postId, 'previous_status_progress_value');
+    }
+    
+    
+    // $valid (mixed) Whether or not the value is valid (boolean) or a custom error message (string).
+    // $value (mixed) The field value.
+    // $field (array) The field array containing all settings.
+    // $inputName (string) The field DOM element name attribute.
+    public function conditionallyRequireField($valid, $value, $field)
+    {
+        if ($valid !== true) {
+            return $valid;
+        }
+        
+        if ('project_lessons_learned'=== $field['name']) {
+            $statusTermId = !empty($_POST['acf']['field_5e8d9b71fc34b']) ? $_POST['acf']['field_5e8d9b71fc34b'] : 0;
+            $status = get_term($statusTermId, 'status');
+            
+            if (term_exists($status)) {
+                $lessonsLearnedIsObligatory = (bool) get_field('lessons_learned_is_obligatory', $status);
+                if ($lessonsLearnedIsObligatory && empty($value)) {
+                    return sprintf(__('Lessons learned is a required field for initiatives with the status "%s".'), $status->name);
+                }
+            }
+        }
+    
+        return $valid;
     }
 }

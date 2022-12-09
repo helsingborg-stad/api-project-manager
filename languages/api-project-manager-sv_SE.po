@@ -1,18 +1,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Project manager\n"
-"POT-Creation-Date: 2022-03-25 06:25+0100\n"
-"PO-Revision-Date: 2022-03-25 06:26+0100\n"
+"POT-Creation-Date: 2022-12-09 11:29+0100\n"
+"PO-Revision-Date: 2022-12-09 11:32+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv_SE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-WPHeader: api-project-manager.php\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
@@ -133,7 +133,7 @@ msgstr "Taxonomier"
 #: source/php/AcfFields/php/platform_roadmap.php:65
 #: source/php/AcfFields/php/project_taxonomies.php:54
 #: source/php/Exporter.php:100 source/php/PostTypes/Challenge.php:44
-#: source/php/PostTypes/Project.php:67
+#: source/php/PostTypes/Project.php:74
 msgid "Category"
 msgstr "Kategori"
 
@@ -180,7 +180,20 @@ msgid "Role"
 msgstr ""
 
 #: source/php/AcfFields/php/platform_details.php:87
-msgid "Video URL"
+msgid "Youtube URL"
+msgstr ""
+
+#: source/php/AcfFields/php/platform_details.php:90
+#: source/php/AcfFields/php/project.php:271
+msgid ""
+"URL must contain \"youtube\" eg. \"https://www.youtube.com/watch?"
+"v=XmQ3AXebByY\", shorter URLs eg. \"https://youtu.be/XmQ3AXebByY\" will not "
+"work."
+msgstr ""
+
+#: source/php/AcfFields/php/platform_details.php:99
+#: source/php/AcfFields/php/project.php:280
+msgid "https://www.youtube.com/watch?v="
 msgstr ""
 
 #: source/php/AcfFields/php/platform_details.php:103
@@ -215,9 +228,9 @@ msgid "URL"
 msgstr "URL\v"
 
 #: source/php/AcfFields/php/platform_details.php:218
-#: source/php/AcfFields/php/project_taxonomies.php:149
+#: source/php/AcfFields/php/project_taxonomies.php:171
 #: source/php/Exporter.php:102 source/php/PostTypes/Platform.php:45
-#: source/php/PostTypes/Project.php:138
+#: source/php/PostTypes/Project.php:145
 msgid "Partners"
 msgstr "Partners"
 
@@ -263,7 +276,7 @@ msgstr "Datum"
 #: source/php/AcfFields/php/platform_roadmap.php:84
 #: source/php/AcfFields/php/project_taxonomies.php:10
 #: source/php/AcfFields/php/tax_status_fields.php:6 source/php/Exporter.php:98
-#: source/php/PostTypes/Project.php:53
+#: source/php/PostTypes/Project.php:60
 msgid "Status"
 msgstr "Status"
 
@@ -323,17 +336,17 @@ msgstr "Om projektet"
 msgid "What?"
 msgstr "Vad?"
 
-#: source/php/AcfFields/php/project_about.php:13
+#: source/php/AcfFields/php/project_about.php:14
 msgid "What are we telling - pick up a core sentence and use it as a preamble"
 msgstr ""
 "Vad är det vi berättar om – plocka upp en kärnfull mening och använd som "
 "ingress"
 
-#: source/php/AcfFields/php/project_about.php:29 source/php/Exporter.php:95
+#: source/php/AcfFields/php/project_about.php:30 source/php/Exporter.php:95
 msgid "Why?"
 msgstr "Varför?"
 
-#: source/php/AcfFields/php/project_about.php:32
+#: source/php/AcfFields/php/project_about.php:34
 msgid ""
 "Why is it good - what is the benefit / what need is addressed and what is "
 "new with the solution."
@@ -341,13 +354,29 @@ msgstr ""
 "Varför är det bra – vad är nyttan/vilket behov adresseras och vad är nytt "
 "med lösningen."
 
-#: source/php/AcfFields/php/project_about.php:48 source/php/Exporter.php:96
+#: source/php/AcfFields/php/project_about.php:50 source/php/Exporter.php:96
 msgid "How?"
 msgstr "Hur?"
 
-#: source/php/AcfFields/php/project_about.php:51
+#: source/php/AcfFields/php/project_about.php:54
 msgid "How do we solve this - what kind of solutions are we testing"
 msgstr "Hur löser vi detta - vilken typ av lösningar är det vi testar"
+
+#: source/php/AcfFields/php/project_about.php:70
+msgid "Lessons learned"
+msgstr "Lärdomar"
+
+#: source/php/AcfFields/php/project_about.php:74
+msgid ""
+"What challenges did you encounter during the course of the work and how did "
+"you get on? What other insights have you gained during the course of the "
+"work that may be of importance to others working with a similar initiative? "
+"You can fill in the results under each effect goal."
+msgstr ""
+"Vilka utmaningar stötte ni på under arbetets gång och hur kom ni vidare? "
+"Vilka fler insikter har ni fått under arbetets gång som kan vara av "
+"betydelse för andra som jobbar med ett liknande initiativ? Resultat kan du "
+"fylla i under vardera effektmål."
 
 #: source/php/AcfFields/php/project_accounting.php:6
 msgid "Accounting"
@@ -389,7 +418,7 @@ msgid "Project Editor"
 msgstr "Projektredaktör"
 
 #: source/php/AcfFields/php/project_editor.php:12 source/php/Exporter.php:97
-#: source/php/PostTypes/Project.php:109
+#: source/php/PostTypes/Project.php:116
 msgid "Organisation"
 msgstr "Organisation"
 
@@ -421,23 +450,23 @@ msgstr "Intiativ meta"
 msgid "City wide Initiative"
 msgstr "Stadsgemensamt initiativ"
 
-#: source/php/AcfFields/php/project_meta.php:37
+#: source/php/AcfFields/php/project_meta.php:29
 msgid "Challenging The Core Business"
 msgstr "Utmanar kärnverksamheten"
 
-#: source/php/AcfFields/php/project_meta.php:64
+#: source/php/AcfFields/php/project_meta.php:48
 msgid "Internal Project"
 msgstr "Internt initiativ"
 
-#: source/php/AcfFields/php/project_meta.php:67
+#: source/php/AcfFields/php/project_meta.php:51
 msgid "Select if this is an internal project."
 msgstr "Välj om detta är ett internt projekt"
 
-#: source/php/AcfFields/php/project_meta.php:78
+#: source/php/AcfFields/php/project_meta.php:62
 msgid "Yes"
 msgstr "Ja"
 
-#: source/php/AcfFields/php/project_meta.php:79
+#: source/php/AcfFields/php/project_meta.php:63
 msgid "No"
 msgstr "Nej"
 
@@ -472,37 +501,42 @@ msgid "Participants"
 msgstr "Medverkande (organisationer)"
 
 #: source/php/AcfFields/php/project_taxonomies.php:127
-#: source/php/PostTypes/Project.php:179
+#: source/php/PostTypes/Project.php:186
 msgid "Operation"
 msgstr "Verksamhet"
 
-#: source/php/AcfFields/php/project_taxonomies.php:171
-#: source/php/PostTypes/Project.php:165 source/php/PostTypes/Project.php:166
+#: source/php/AcfFields/php/project_taxonomies.php:149
+#: source/php/PostTypes/Project.php:200
+msgid "Operation Domain"
+msgstr "Verksamhetsområde"
+
+#: source/php/AcfFields/php/project_taxonomies.php:193
+#: source/php/PostTypes/Project.php:172 source/php/PostTypes/Project.php:173
 msgid "Expected Impact"
 msgstr "Förväntad effekt"
 
-#: source/php/AcfFields/php/project_taxonomies.php:193
-#: source/php/Exporter.php:103 source/php/PostTypes/Project.php:96
+#: source/php/AcfFields/php/project_taxonomies.php:215
+#: source/php/Exporter.php:103 source/php/PostTypes/Project.php:103
 msgid "Sectors"
 msgstr "Sektorer"
 
-#: source/php/AcfFields/php/project_taxonomies.php:215
-#: source/php/Exporter.php:101 source/php/PostTypes/Project.php:82
+#: source/php/AcfFields/php/project_taxonomies.php:237
+#: source/php/Exporter.php:101 source/php/PostTypes/Project.php:89
 msgid "Technologies"
 msgstr "Teknologier"
 
-#: source/php/AcfFields/php/project_taxonomies.php:237
-#: source/php/PostTypes/Challenge.php:58 source/php/PostTypes/Project.php:123
+#: source/php/AcfFields/php/project_taxonomies.php:259
+#: source/php/PostTypes/Challenge.php:58 source/php/PostTypes/Project.php:130
 msgid "Global goal"
 msgstr "Globala mål"
 
-#: source/php/AcfFields/php/project_taxonomies.php:259
+#: source/php/AcfFields/php/project_taxonomies.php:281
 #: source/php/PostTypes/Platform.php:35
 msgid "Platforms"
 msgstr "Plattformar"
 
-#: source/php/AcfFields/php/project_taxonomies.php:281
-#: source/php/PostTypes/Project.php:151
+#: source/php/AcfFields/php/project_taxonomies.php:303
+#: source/php/PostTypes/Project.php:158
 msgid "Innovation potential"
 msgstr "Innovationshöjd"
 
@@ -519,9 +553,18 @@ msgstr "Brännpunkts meta"
 msgid "Progress value"
 msgstr "Framstegsvärde"
 
-#: source/php/AcfFields/php/tax_status_fields.php:26
+#: source/php/AcfFields/php/tax_status_fields.php:27
 msgid "%"
+msgstr "%"
+
+#: source/php/AcfFields/php/tax_status_fields.php:31
+msgid "Requires \"Lessons learned\""
+msgstr "Kräver lärdomar"
+
+#: source/php/AcfFields/php/tax_status_fields.php:43
+msgid "The lessons learned field is obligatory when this status is active"
 msgstr ""
+"Fältet \"Lärdomar\" är obligatoriskt att fylla i när denna status är aktiv"
 
 #: source/php/Exporter.php:21
 msgid "Export as CSV"
@@ -536,7 +579,7 @@ msgid "Last modified"
 msgstr "Senast ändrad"
 
 #: source/php/Exporter.php:104 source/php/PostTypes/Challenge.php:59
-#: source/php/PostTypes/Project.php:124
+#: source/php/PostTypes/Project.php:131
 msgid "Global goals"
 msgstr "Globala mål"
 
@@ -619,7 +662,7 @@ msgstr ""
 msgid "Challenges"
 msgstr "Utmaningar"
 
-#: source/php/PostTypes/Challenge.php:45 source/php/PostTypes/Project.php:68
+#: source/php/PostTypes/Challenge.php:45 source/php/PostTypes/Project.php:75
 msgid "Categories"
 msgstr "Kategorier"
 
@@ -631,49 +674,51 @@ msgstr "Brännpunkter"
 msgid "Platform"
 msgstr "Plattform"
 
-#: source/php/PostTypes/Platform.php:44 source/php/PostTypes/Project.php:137
+#: source/php/PostTypes/Platform.php:44 source/php/PostTypes/Project.php:144
 msgid "Partner"
 msgstr "Partner"
 
-#: source/php/PostTypes/Project.php:41
+#: source/php/PostTypes/Project.php:48
 msgid "Project"
 msgstr "Projekt"
 
-#: source/php/PostTypes/Project.php:42
+#: source/php/PostTypes/Project.php:49
 msgid "Projects"
 msgstr "Projekt"
 
-#: source/php/PostTypes/Project.php:54
+#: source/php/PostTypes/Project.php:61
 msgid "Statuses"
 msgstr "Statusar"
 
-#: source/php/PostTypes/Project.php:81
+#: source/php/PostTypes/Project.php:88
 msgid "Technology"
 msgstr "Teknologi"
 
-#: source/php/PostTypes/Project.php:95
+#: source/php/PostTypes/Project.php:102
 msgid "Sector"
 msgstr "Sektor"
 
-#: source/php/PostTypes/Project.php:110
+#: source/php/PostTypes/Project.php:117
 msgid "Organisations"
 msgstr "Organisationer"
 
-#: source/php/PostTypes/Project.php:152
+#: source/php/PostTypes/Project.php:159
 msgid "Innovation potentials"
 msgstr "Innovationshöjd"
 
-#: source/php/PostTypes/Project.php:180
+#: source/php/PostTypes/Project.php:187
 msgid "Operations"
 msgstr "Verksamheter"
 
-#: source/php/PostTypes/Project.php:193
-msgid "Operation Domain"
-msgstr "Verksamhetsområde"
-
-#: source/php/PostTypes/Project.php:194
+#: source/php/PostTypes/Project.php:201
 msgid "Operation Domains"
 msgstr "Verksamhetsområden"
+
+#: source/php/PostTypes/Project.php:345
+#, php-format
+msgid ""
+"Lessons learned is a required field for initiatives with the status \"%s\"."
+msgstr "Lärdomar är ett obligatoriskt fält för initiativ med statusen \"%s\"."
 
 #: source/php/Theme/Setup.php:105
 msgid "Post updated."
@@ -700,25 +745,8 @@ msgstr ""
 msgid "Exported %d fieldgroup(s)."
 msgstr ""
 
-#. Plugin Name of the plugin/theme
-msgid "API Project Manager"
-msgstr "Projekthanterare (Projekt API)"
-
-#. Plugin URI of the plugin/theme
-msgid "(#plugin_url#)"
-msgstr ""
-
-#. Description of the plugin/theme
-msgid "Creates WordPress Rest API endpoint for projects"
-msgstr ""
-
-#. Author of the plugin/theme
-msgid "Jonatan Hanson"
-msgstr ""
-
-#. Author URI of the plugin/theme
-msgid "(#plugin_author_url#)"
-msgstr ""
+#~ msgid "API Project Manager"
+#~ msgstr "Projekthanterare (Projekt API)"
 
 #~ msgid "Budget"
 #~ msgstr "Budget"

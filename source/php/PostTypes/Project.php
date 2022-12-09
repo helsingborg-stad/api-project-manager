@@ -319,12 +319,16 @@ class Project
         delete_post_meta($postId, 'previous_status');
         delete_post_meta($postId, 'previous_status_progress_value');
     }
-    
-    
-    // $valid (mixed) Whether or not the value is valid (boolean) or a custom error message (string).
-    // $value (mixed) The field value.
-    // $field (array) The field array containing all settings.
-    // $inputName (string) The field DOM element name attribute.
+
+    /**
+     * Require a value for project_lessons_learned if the current status set requires it.
+     *
+     * @param mixed $valid Whether or not the value is valid (boolean) or a custom error message (string).
+     * @param string $value The field value.
+     * @param array $field The field array containing all settings.
+     *
+     * @return mixed
+     */
     public function conditionallyRequireField($valid, $value, $field)
     {
         if ($valid !== true) {

@@ -352,7 +352,7 @@
                 {
                     "param": "post_type",
                     "operator": "==",
-                    "value": "all"
+                    "value": "project"
                 }
             ]
         ],

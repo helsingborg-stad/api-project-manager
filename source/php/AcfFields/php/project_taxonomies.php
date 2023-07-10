@@ -30,9 +30,9 @@ acf_add_local_field_group(array(
 			'multiple' => 0,
 		),
 		array(
-			'key' => 'field_64a54ee29ec73',
-			'label' => 'Searching collaborator explaination',
-			'name' => 'searching_collaborator_explaination',
+			'key' => 'field_64a537c8926ca',
+			'label' => 'Searching collaborator explanation',
+			'name' => 'searching_collaborator',
 			'type' => 'textarea',
 			'instructions' => '',
 			'required' => 0,
@@ -41,7 +41,7 @@ acf_add_local_field_group(array(
 					array(
 						'field' => 'field_5e8d9b71fc34b',
 						'operator' => '==',
-						'value' => 'Samarbete sökes',
+						'value' => '460',
 					),
 				),
 			),

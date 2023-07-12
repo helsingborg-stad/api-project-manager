@@ -12,13 +12,35 @@ class Project
         add_action('acf/save_post', array($this, 'saveLastStatusWithPositiveRange'), 5, 1);
         add_action('acf/save_post', array($this, 'inheritChallengeTermsOnSave'));
         add_filter('acf/load_value/name=challenge_category', array($this, 'resetCategoryField'), 10, 3);
-        
+        add_filter( 'acf/load_field/name=searching_collaborator', array($this, 'setSearchingCollaboratorCondition'));
+
         add_filter(
             'acf/validate_value',
             array($this, 'conditionallyRequireField'),
             10,
             3
         );
+    }
+
+    public function setSearchingCollaboratorCondition($field) {
+
+        $terms = get_terms([
+            'taxonomy' => 'status',
+            'hide_empty' => false,
+        ]);
+
+        $termId = null;
+
+        foreach ($terms as $term) {
+            if ($term->name == 'Samarbete sökes') {
+                $termId = $term->term_id;
+                break;
+            }
+        }
+
+        $field['conditional_logic'][0][0]['value'] = $termId;
+
+        return $field;
     }
 
     public function registerPostType()

@@ -33,8 +33,8 @@
         ),
         1 => array(
             'key' => 'field_64a537c8926ca',
-            'label' => __('Searching collaborator explanation', 'api-project-manager'),
-            'name' => 'searching_collaborator',
+            'label' => __('Status explanation', 'api-project-manager'),
+            'name' => 'project_status_description',
             'aria-label' => '',
             'type' => 'textarea',
             'instructions' => '',

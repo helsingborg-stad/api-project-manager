@@ -30,8 +30,8 @@
         },
         {
             "key": "field_64a537c8926ca",
-            "label": "Searching collaborator explanation",
-            "name": "searching_collaborator",
+            "label": "Status explanation",
+            "name": "project_status_description",
             "aria-label": "",
             "type": "textarea",
             "instructions": "",

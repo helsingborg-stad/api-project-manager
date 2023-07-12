@@ -1,377 +1,390 @@
-[
-    {
-        "key": "group_5e8d9b68e7f35",
-        "title": "Taxonomies",
-        "fields": [
-            {
-                "key": "field_5e8d9b71fc34b",
-                "label": "Status",
-                "name": "status",
-                "type": "taxonomy",
-                "instructions": "",
-                "required": 1,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "taxonomy": "status",
-                "add_term": 0,
-                "save_terms": 1,
-                "load_terms": 1,
-                "return_format": "object",
-                "field_type": "radio",
-                "acfe_bidirectional": {
-                    "acfe_bidirectional_enabled": "0"
-                },
-                "allow_null": 0,
-                "multiple": 0
+[{
+    "key": "group_5e8d9b68e7f35",
+    "title": "Taxonomies",
+    "fields": [
+        {
+            "key": "field_5e8d9b71fc34b",
+            "label": "Status",
+            "name": "status",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
             },
-            {
-                "key": "field_64a537c8926ca",
-                "label": "Searching collaborator explanation",
-                "name": "searching_collaborator",
-                "type": "textarea",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": [
-                    [
-                        {
-                            "field": "field_5e8d9b71fc34b",
-                            "operator": "==",
-                            "value": 592
-                        }
-                    ]
-                ],
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "acfe_textarea_code": 0,
-                "maxlength": "",
-                "rows": "",
-                "placeholder": "",
-                "new_lines": ""
+            "taxonomy": "status",
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "field_type": "radio",
+            "acfe_bidirectional": {
+                "acfe_bidirectional_enabled": "0"
             },
-            {
-                "key": "field_5fb3d0a6b2bd8",
-                "label": "Challenge",
-                "name": "challenge",
-                "type": "post_object",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "post_type": [
-                    "challenge"
-                ],
-                "taxonomy": "",
-                "allow_null": 1,
-                "multiple": 0,
-                "return_format": "object",
-                "ui": 1
+            "allow_null": 0,
+            "multiple": 0
+        },
+        {
+            "key": "field_64a537c8926ca",
+            "label": "Searching collaborator explanation",
+            "name": "searching_collaborator",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
             },
-            {
-                "key": "field_5fb3d0dbb2bd9",
-                "label": "Category",
-                "name": "challenge_category",
-                "type": "taxonomy",
-                "instructions": "",
-                "required": 1,
-                "conditional_logic": [
-                    [
-                        {
-                            "field": "field_5fb3d0a6b2bd8",
-                            "operator": "==empty"
-                        }
-                    ]
-                ],
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "taxonomy": "challenge_category",
-                "field_type": "select",
-                "allow_null": 0,
-                "add_term": 0,
-                "save_terms": 1,
-                "load_terms": 0,
-                "return_format": "object",
-                "multiple": 0
+            "acfe_save_meta": 0,
+            "default_value": "",
+            "acfe_textarea_code": 0,
+            "maxlength": "",
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_5fb3d0a6b2bd8",
+            "label": "Challenge",
+            "name": "challenge",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
             },
-            {
-                "key": "field_5e8dce344f6b4",
-                "label": "Owner (organisation)",
-                "name": "organisation",
-                "type": "taxonomy",
-                "instructions": "",
-                "required": 1,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "taxonomy": "organisation",
-                "field_type": "select",
-                "allow_null": 0,
-                "add_term": 0,
-                "save_terms": 1,
-                "load_terms": 0,
-                "return_format": "object",
-                "multiple": 0
+            "post_type": [
+                "challenge"
+            ],
+            "taxonomy": "",
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1,
+            "save_custom": 0,
+            "save_post_type": "",
+            "save_post_status": ""
+        },
+        {
+            "key": "field_5fb3d0dbb2bd9",
+            "label": "Category",
+            "name": "challenge_category",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5fb3d0a6b2bd8",
+                        "operator": "==empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
             },
-            {
-                "key": "field_62162d6ece420",
-                "label": "Participants",
-                "name": "participants",
-                "type": "taxonomy",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "taxonomy": "organisation",
-                "field_type": "multi_select",
-                "allow_null": 1,
-                "add_term": 0,
-                "save_terms": 1,
-                "load_terms": 0,
-                "return_format": "object",
-                "multiple": 0
+            "taxonomy": "challenge_category",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 0,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_5e8dce344f6b4",
+            "label": "Owner (organisation)",
+            "name": "organisation",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
             },
-            {
-                "key": "field_622efd1a5ee42",
-                "label": "Operation",
-                "name": "operation",
-                "type": "taxonomy",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "taxonomy": "operation",
-                "field_type": "multi_select",
-                "allow_null": 0,
-                "add_term": 1,
-                "save_terms": 1,
-                "load_terms": 1,
-                "return_format": "object",
-                "multiple": 0
+            "taxonomy": "organisation",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 0,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_62162d6ece420",
+            "label": "Participants",
+            "name": "participants",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
             },
-            {
-                "key": "field_623d531356e0e",
-                "label": "Operation Domain",
-                "name": "operation_domain",
-                "type": "taxonomy",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "taxonomy": "operation-domain",
-                "field_type": "select",
-                "allow_null": 0,
-                "add_term": 1,
-                "save_terms": 1,
-                "load_terms": 1,
-                "return_format": "object",
-                "multiple": 0
+            "taxonomy": "organisation",
+            "field_type": "multi_select",
+            "allow_null": 1,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 0,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_622efd1a5ee42",
+            "label": "Operation",
+            "name": "operation",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
             },
-            {
-                "key": "field_5e8dd435ea9df",
-                "label": "Partners",
-                "name": "partner",
-                "type": "taxonomy",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "taxonomy": "partner",
-                "field_type": "multi_select",
-                "allow_null": 0,
-                "add_term": 1,
-                "save_terms": 0,
-                "load_terms": 0,
-                "return_format": "object",
-                "multiple": 0
+            "taxonomy": "operation",
+            "field_type": "multi_select",
+            "allow_null": 0,
+            "add_term": 1,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_623d531356e0e",
+            "label": "Operation Domain",
+            "name": "operation_domain",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
             },
-            {
-                "key": "field_6214b4a611d13",
-                "label": "Expected Impact",
-                "name": "expected_impact",
-                "type": "taxonomy",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "taxonomy": "expected-impact",
-                "field_type": "select",
-                "allow_null": 0,
-                "add_term": 0,
-                "save_terms": 1,
-                "load_terms": 1,
-                "return_format": "object",
-                "multiple": 0
+            "taxonomy": "operation-domain",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 1,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_5e8dd435ea9df",
+            "label": "Partners",
+            "name": "partner",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
             },
-            {
-                "key": "field_5e8dcdf152c5d",
-                "label": "Sectors",
-                "name": "sector",
-                "type": "taxonomy",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "taxonomy": "sector",
-                "field_type": "multi_select",
-                "allow_null": 1,
-                "add_term": 1,
-                "save_terms": 1,
-                "load_terms": 1,
-                "return_format": "object",
-                "multiple": 0
+            "taxonomy": "partner",
+            "field_type": "multi_select",
+            "allow_null": 0,
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_6214b4a611d13",
+            "label": "Expected Impact",
+            "name": "expected_impact",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
             },
-            {
-                "key": "field_5e8d9d0289bc7",
-                "label": "Technologies",
-                "name": "technology",
-                "type": "taxonomy",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "taxonomy": "technology",
-                "field_type": "multi_select",
-                "allow_null": 1,
-                "add_term": 0,
-                "save_terms": 1,
-                "load_terms": 1,
-                "return_format": "object",
-                "multiple": 0
+            "taxonomy": "expected-impact",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_5e8dcdf152c5d",
+            "label": "Sectors",
+            "name": "sector",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
             },
-            {
-                "key": "field_5e8dce65e835b",
-                "label": "Global goal",
-                "name": "global_goal",
-                "type": "taxonomy",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "taxonomy": "global_goal",
-                "field_type": "multi_select",
-                "allow_null": 1,
-                "add_term": 1,
-                "save_terms": 1,
-                "load_terms": 1,
-                "return_format": "object",
-                "multiple": 0
+            "taxonomy": "sector",
+            "field_type": "multi_select",
+            "allow_null": 1,
+            "add_term": 1,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_5e8d9d0289bc7",
+            "label": "Technologies",
+            "name": "technology",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
             },
-            {
-                "key": "field_60ba1a1941860",
-                "label": "Platforms",
-                "name": "platforms",
-                "type": "post_object",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "post_type": [
-                    "platform"
-                ],
-                "taxonomy": "",
-                "allow_null": 1,
-                "multiple": 1,
-                "return_format": "id",
-                "ui": 1
+            "taxonomy": "technology",
+            "field_type": "multi_select",
+            "allow_null": 1,
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_5e8dce65e835b",
+            "label": "Global goal",
+            "name": "global_goal",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
             },
+            "taxonomy": "global_goal",
+            "field_type": "multi_select",
+            "allow_null": 1,
+            "add_term": 1,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0
+        },
+        {
+            "key": "field_60ba1a1941860",
+            "label": "Platforms",
+            "name": "platforms",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "platform"
+            ],
+            "taxonomy": "",
+            "allow_null": 1,
+            "multiple": 1,
+            "return_format": "id",
+            "ui": 1,
+            "save_custom": 0,
+            "save_post_type": "",
+            "save_post_status": ""
+        },
+        {
+            "key": "field_6213a7e057273",
+            "label": "Innovation potential",
+            "name": "innovation_potential",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "innovation-potential",
+            "field_type": "checkbox",
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "multiple": 0,
+            "allow_null": 0
+        }
+    ],
+    "location": [
+        [
             {
-                "key": "field_6213a7e057273",
-                "label": "Innovation potential",
-                "name": "innovation_potential",
-                "type": "taxonomy",
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "taxonomy": "innovation-potential",
-                "field_type": "checkbox",
-                "add_term": 0,
-                "save_terms": 1,
-                "load_terms": 1,
-                "return_format": "object",
-                "multiple": 0,
-                "allow_null": 0
+                "param": "post_type",
+                "operator": "==",
+                "value": "project"
             }
-        ],
-        "location": [
-            [
-                {
-                    "param": "post_type",
-                    "operator": "==",
-                    "value": "project"
-                }
-            ]
-        ],
-        "menu_order": 10,
-        "position": "side",
-        "style": "default",
-        "label_placement": "top",
-        "instruction_placement": "label",
-        "hide_on_screen": "",
-        "active": true,
-        "description": "",
-        "show_in_rest": 0,
-        "acfe_display_title": "",
-        "acfe_autosync": "",
-        "acfe_form": 0,
-        "acfe_meta": "",
-        "acfe_note": ""
-    }
-]
+        ]
+    ],
+    "menu_order": 10,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": "",
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": ""
+}]
+

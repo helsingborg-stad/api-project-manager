@@ -12,7 +12,6 @@ class Project
         add_action('acf/save_post', array($this, 'saveLastStatusWithPositiveRange'), 5, 1);
         add_action('acf/save_post', array($this, 'inheritChallengeTermsOnSave'));
         add_filter('acf/load_value/name=challenge_category', array($this, 'resetCategoryField'), 10, 3);
-        add_filter( 'acf/load_field/name=searching_collaborator', array($this, 'setSearchingCollaboratorCondition'));
 
         add_filter(
             'acf/validate_value',
@@ -20,27 +19,6 @@ class Project
             10,
             3
         );
-    }
-
-    public function setSearchingCollaboratorCondition($field) {
-
-        $terms = get_terms([
-            'taxonomy' => 'status',
-            'hide_empty' => false,
-        ]);
-
-        $termId = null;
-
-        foreach ($terms as $term) {
-            if ($term->name == 'Samarbete sökes') {
-                $termId = $term->term_id;
-                break;
-            }
-        }
-
-        $field['conditional_logic'][0][0]['value'] = $termId;
-
-        return $field;
     }
 
     public function registerPostType()
@@ -356,11 +334,11 @@ class Project
         if ($valid !== true) {
             return $valid;
         }
-        
-        if ('project_lessons_learned'=== $field['name']) {
+
+        if ('project_lessons_learned' === $field['name']) {
             $statusTermId = !empty($_POST['acf']['field_5e8d9b71fc34b']) ? $_POST['acf']['field_5e8d9b71fc34b'] : 0;
             $status = get_term($statusTermId, 'status');
-            
+
             if (term_exists($status)) {
                 $lessonsLearnedIsObligatory = (bool) get_field('lessons_learned_is_obligatory', $status);
                 if ($lessonsLearnedIsObligatory && empty($value)) {
@@ -368,7 +346,7 @@ class Project
                 }
             }
         }
-    
+
         return $valid;
     }
 }

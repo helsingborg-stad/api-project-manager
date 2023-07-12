@@ -21,12 +21,15 @@ acf_add_local_field_group(array(
 				'id' => '',
 			),
 			'taxonomy' => 'status',
-			'field_type' => 'radio',
-			'allow_null' => 0,
 			'add_term' => 0,
 			'save_terms' => 1,
 			'load_terms' => 1,
 			'return_format' => 'object',
+			'field_type' => 'radio',
+			'acfe_bidirectional' => array(
+				'acfe_bidirectional_enabled' => '0',
+			),
+			'allow_null' => 0,
 			'multiple' => 0,
 		),
 		array(
@@ -41,7 +44,7 @@ acf_add_local_field_group(array(
 					array(
 						'field' => 'field_5e8d9b71fc34b',
 						'operator' => '==',
-						'value' => '460',
+						'value' => 592,
 					),
 				),
 			),

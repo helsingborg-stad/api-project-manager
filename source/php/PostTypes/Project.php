@@ -242,7 +242,7 @@ class Project
 
         $challenge = get_field('challenge', $postId);
         $termFromTaxField = get_field('challenge_category', $postId);
-        $existingTerms = get_the_terms($postId, 'challenge_category');
+        $existingTerms = get_the_terms($postId, 'challenge_category') ?? [];
 
         // Inherit term from challenge post type
         if (!empty($challenge)) {

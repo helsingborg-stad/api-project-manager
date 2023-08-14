@@ -95,7 +95,7 @@ class Exporter
         $exportData[__('Why?', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['project_why']) ? sanitize_text_field($metaData['project_why']) : '';
         $exportData[__('How?', APIPROJECTMANAGER_TEXTDOMAIN)] = !empty($metaData['project_how']) ? sanitize_text_field($metaData['project_how']) : '';
         $exportData[__('Organisation', APIPROJECTMANAGER_TEXTDOMAIN)] = $metaData['organisation']->name ?? '';
-        $exportData[__('Participants', APIPROJECTMANAGER_TEXTDOMAIN)] = implode(', ', array_map(fn($participant) => $participant->name, $metaData['participants'] ?? []));
+        $exportData[__('Participants', APIPROJECTMANAGER_TEXTDOMAIN)] = \implode(', ', array_map(function($tax) { return $tax->name; }, ($metaData['participants'] ?? []))) ?? '';
         $exportData[__('Status', APIPROJECTMANAGER_TEXTDOMAIN)] = $metaData['status']->name ?? '';
         $exportData[__('Challenge', APIPROJECTMANAGER_TEXTDOMAIN)] = $metaData['challenge']->post_title ?? '';
         $exportData[__('Category', APIPROJECTMANAGER_TEXTDOMAIN)] = $metaData['challenge_category']->name ?? '';
